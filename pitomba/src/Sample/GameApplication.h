@@ -3,11 +3,14 @@
 
 
 #include "..\pitomba\Application\Application.h"
+#include "DummyTask.h"
 
 using namespace pitomba;
 
+
 class GameApplication : public Application {
 private:
+    DummyTask* pDummyTask_;
 
 protected:
 

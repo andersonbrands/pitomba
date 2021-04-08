@@ -140,12 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
+    <ClCompile Include="src\Sample\DummyTask.cpp" />
     <ClCompile Include="src\Sample\GameApplication.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pitomba\Utils\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
+    <ClInclude Include="src\pitomba\Kernel\Task.h" />
+    <ClInclude Include="src\Sample\DummyTask.h" />
     <ClInclude Include="src\Sample\GameApplication.h" />
     <ClInclude Include="src\pitomba\Application\Application.h" />
     <ClInclude Include="src\pitomba\Utils\Logger.h" />
