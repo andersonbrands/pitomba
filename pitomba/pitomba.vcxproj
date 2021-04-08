@@ -139,10 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Sample\GameApplication.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pitomba\Utils\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Sample\GameApplication.h" />
+    <ClInclude Include="src\pitomba\Application\Application.h" />
     <ClInclude Include="src\pitomba\Utils\Logger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
