@@ -2,9 +2,16 @@
 //
 
 #include <iostream>
+#include "pitomba\Utils\Logger.h"
+
+
+using namespace pitomba;
+
 
 int main(int argc, char* argv[]) {
-    std::cout << "Hello World!\n";
+    Logger logger;
+
+    logger.debug("Hello World!");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
