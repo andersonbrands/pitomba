@@ -21,9 +21,7 @@ namespace pitomba {
     }
 
     void Kernel::execute() {
-        Logger logger;
-
-        logger.debug("Kernel executing");
+        Logger::getInstancePtr()->debug("Kernel executing");
 
         while (tasks_.size()) {
 

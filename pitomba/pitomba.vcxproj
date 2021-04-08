@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
+    <ClInclude Include="src\pitomba\Utils\Singleton.h" />
     <ClInclude Include="src\Sample\DummyTask.h" />
     <ClInclude Include="src\Sample\GameApplication.h" />
     <ClInclude Include="src\pitomba\Application\Application.h" />

@@ -21,9 +21,7 @@ void DummyTask::onSuspend() {
 void DummyTask::update() {
     if (isSuspended()) return;
 
-    Logger logger;
-
-    logger.debug(std::to_string(count++));
+    Logger::getInstancePtr()->debug(std::to_string(count++));
 
     if (count >= 10) {
         setCanKill(true);

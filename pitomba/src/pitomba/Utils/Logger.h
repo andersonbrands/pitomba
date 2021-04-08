@@ -2,12 +2,13 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
 
+#include "Singleton.h"
 #include <string>
 
 
 namespace pitomba {
 
-    class Logger {
+    class Logger : public Singleton<Logger> {
 
     private:
         void print(const std::string& message);

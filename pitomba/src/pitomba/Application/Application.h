@@ -12,7 +12,6 @@ namespace pitomba {
     private:
 
     protected:
-        Logger logger_;
         Kernel kernel_;
 
     public:
@@ -21,7 +20,7 @@ namespace pitomba {
 
         virtual bool initialize() = 0;
         virtual void run() {
-            logger_.debug("Application running");
+            Logger::getInstancePtr()->debug("Application running");
             kernel_.execute();
         }
     };

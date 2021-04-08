@@ -2,17 +2,22 @@
 //
 
 #include "Sample\GameApplication.h"
-
+#include "pitomba\Utils\Logger.h"
 
 using namespace pitomba;
 
 
 int main(int argc, char* argv[]) {
+    new Logger();
+
     GameApplication game;
 
     if (game.initialize()) {
         game.run();
     }
+
+    assert(Logger::getInstancePtr());
+    delete Logger::getInstancePtr();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
