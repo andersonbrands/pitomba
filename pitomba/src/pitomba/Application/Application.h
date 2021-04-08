@@ -2,6 +2,7 @@
 #define APPLICATION_H_
 
 #include "..\Utils\Logger.h"
+#include "..\Kernel\Kernel.h"
 
 
 namespace pitomba {
@@ -12,6 +13,7 @@ namespace pitomba {
 
     protected:
         Logger logger_;
+        Kernel kernel_;
 
     public:
         explicit Application() {}
@@ -20,6 +22,7 @@ namespace pitomba {
         virtual bool initialize() = 0;
         virtual void run() {
             logger_.debug("Application running");
+            kernel_.execute();
         }
     };
 
