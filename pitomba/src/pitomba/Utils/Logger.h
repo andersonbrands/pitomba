@@ -4,6 +4,7 @@
 
 #include "Singleton.h"
 #include <string>
+#include <boost/format.hpp>
 
 
 namespace pitomba {
@@ -20,6 +21,7 @@ namespace pitomba {
         virtual ~Logger();
 
         void debug(const std::string& message);
+        void debug(const boost::format& message);
     };
 
 }

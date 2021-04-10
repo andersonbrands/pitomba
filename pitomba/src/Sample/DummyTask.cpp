@@ -2,6 +2,7 @@
 #include "DummyTask.h"
 #include "..\pitomba\Utils\Logger.h"
 #include <string>
+#include <boost\format.hpp>
 
 
 DummyTask::DummyTask(const unsigned int priority) : Task(priority) {
@@ -21,7 +22,7 @@ void DummyTask::onSuspend() {
 void DummyTask::update() {
     if (isSuspended()) return;
 
-    Logger::getInstancePtr()->debug(std::to_string(count++));
+    Logger::getInstancePtr()->debug(boost::format("%1%") % count++);
 
     if (count >= 10) {
         setCanKill(true);

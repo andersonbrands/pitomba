@@ -21,4 +21,8 @@ namespace pitomba {
         print(message);
     }
 
+    void Logger::debug(const boost::format& message) {
+        print(boost::str(message));
+    }
+
 }
