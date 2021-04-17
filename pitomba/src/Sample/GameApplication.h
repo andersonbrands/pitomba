@@ -2,7 +2,8 @@
 #define GAME_APPLICATION_H_
 
 
-#include "..\pitomba\Application\Application.h"
+#include "../pitomba/Application/Application.h"
+#include "../pitomba/Kernel/TimerTask.h"
 #include "DummyTask.h"
 
 using namespace pitomba;
@@ -11,6 +12,7 @@ using namespace pitomba;
 class GameApplication : public Application {
 private:
     DummyTask* pDummyTask_;
+    TimerTask* pTimerTask_;
 
 protected:
 
