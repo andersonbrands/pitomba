@@ -141,6 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
+    <ClCompile Include="src\pitomba\Utils\Timer.cpp" />
+    <ClCompile Include="src\pitomba\Utils\Utils.cpp" />
     <ClCompile Include="src\Sample\DummyTask.cpp" />
     <ClCompile Include="src\Sample\GameApplication.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -150,6 +152,8 @@
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
     <ClInclude Include="src\pitomba\Utils\Singleton.h" />
+    <ClInclude Include="src\pitomba\Utils\Timer.h" />
+    <ClInclude Include="src\pitomba\Utils\Utils.h" />
     <ClInclude Include="src\Sample\DummyTask.h" />
     <ClInclude Include="src\Sample\GameApplication.h" />
     <ClInclude Include="src\pitomba\Application\Application.h" />

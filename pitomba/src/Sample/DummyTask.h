@@ -3,6 +3,7 @@
 
 
 #include "..\pitomba\Kernel\Task.h"
+#include "..\pitomba\Utils\Timer.h"
 
 
 using namespace pitomba;
@@ -11,6 +12,7 @@ class DummyTask : public Task {
 
 private:
     unsigned int count = 0;
+    Timer timer_;
 
 public:
     DummyTask(const unsigned int priority);
