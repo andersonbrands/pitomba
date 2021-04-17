@@ -6,8 +6,8 @@ namespace pitomba {
     class Task {
     private:
         unsigned int priority_;
-        bool canKill_;
-        bool suspended_;
+        bool running_;
+        bool finished_;
 
     protected:
 
@@ -15,44 +15,53 @@ namespace pitomba {
         explicit Task(const unsigned int priority);
         virtual ~Task();
 
-        virtual bool start() = 0;
-        virtual void onSuspend() = 0;
+        virtual void start();
+        virtual void pause();
         virtual void update() = 0;
-        virtual void onResume() = 0;
-        virtual void stop() = 0;
+        virtual void resume();
+        virtual void stop();
 
-        void setSuspended(const bool suspended);
-        bool isSuspended() const;
-        void setCanKill(const bool canKill);
-        bool canKill() const;
+        bool isRunning() const;
+        bool isFinished() const;
         unsigned int getPriority() const;
 
         static const unsigned int MAX_PRIORITY = 0;
+        static const unsigned int TIMER_PRIORITY = MAX_PRIORITY;
     };
 
-    inline Task::Task(const unsigned int priority) : priority_(priority), canKill_(false), suspended_(false) {
+    inline Task::Task(const unsigned int priority) :
+        priority_(priority), running_(false), finished_(false) {
 
     }
 
     inline Task::~Task() {}
 
-    inline void Task::setSuspended(const bool suspended) {
-        suspended_ = suspended;
+    inline void Task::start() {
+        running_ = true;
     }
 
-    inline bool Task::isSuspended() const {
-        return suspended_;
+    inline void Task::pause() {
+        running_ = false;
     }
 
-    inline void Task::setCanKill(const bool canKill) {
-        canKill_ = canKill;
+    inline void Task::resume() {
+        running_ = true;
     }
 
-    inline bool Task::canKill() const {
-        return canKill_;
+    inline void Task::stop() {
+        running_ = false;
+        finished_ = true;
     }
 
-    inline unsigned int	Task::getPriority() const {
+    inline bool Task::isRunning() const {
+        return running_;
+    }
+
+    inline bool Task::isFinished() const {
+        return finished_;
+    }
+
+    inline unsigned int Task::getPriority() const {
         return priority_;
     }
 }

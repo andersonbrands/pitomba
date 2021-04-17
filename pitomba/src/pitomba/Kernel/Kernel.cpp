@@ -28,7 +28,7 @@ namespace pitomba {
             TaskListIterator iter;
             for (iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
                 Task* pTask = (*iter);
-                if (!pTask->canKill()) {
+                if (!pTask->isFinished()) {
                     pTask->update();
                 }
             }
@@ -36,8 +36,7 @@ namespace pitomba {
             for (iter = tasks_.begin(); iter != tasks_.end();) {
                 Task* pTask = (*iter);
                 ++iter;
-                if (pTask->canKill()) {
-                    pTask->stop();
+                if (pTask->isFinished()) {
                     tasks_.remove(pTask);
                     pTask = 0;
                 }
@@ -47,18 +46,14 @@ namespace pitomba {
 
     }
 
-    bool Kernel::addTask(Task* pTask) {
-        bool started = pTask->start();
-
-        if (started) {
-            priorityAdd(pTask);
-        }
-        return started;
+    void Kernel::addTask(Task* pTask) {
+        pTask->start();
+        priorityAdd(pTask);
     }
 
     void Kernel::suspendTask(Task* pTask) {
         if (std::find(tasks_.begin(), tasks_.end(), pTask) != tasks_.end()) {
-            pTask->onSuspend();
+            pTask->pause();
             tasks_.remove(pTask);
             pausedTasks_.push_back(pTask);
         }
@@ -66,7 +61,7 @@ namespace pitomba {
 
     void Kernel::resumeTask(Task* pTask) {
         if (std::find(pausedTasks_.begin(), pausedTasks_.end(), pTask) != pausedTasks_.end()) {
-            pTask->onResume();
+            pTask->resume();
             pausedTasks_.remove(pTask);
 
             priorityAdd(pTask);
@@ -75,13 +70,13 @@ namespace pitomba {
 
     void Kernel::removeTask(Task* pTask) {
         if (std::find(tasks_.begin(), tasks_.end(), pTask) != tasks_.end()) {
-            pTask->setCanKill(true);
+            pTask->stop();
         }
     }
 
     void Kernel::killAllTasks() {
         for (TaskListIterator iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
-            (*iter)->setCanKill(true);
+            (*iter)->stop();
         }
     }
 

@@ -26,13 +26,13 @@ namespace pitomba {
 
         void execute();
 
-        bool addTask(Task* pTask);
+        void addTask(Task* pTask);
         void suspendTask(Task* task);
         void resumeTask(Task* task);
         void removeTask(Task* task);
         void killAllTasks();
 
-        bool	hasTasks() {
+        bool hasTasks() {
             return (tasks_.size() != 0);
         }
     };
