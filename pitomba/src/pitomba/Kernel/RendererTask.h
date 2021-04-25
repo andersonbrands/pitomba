@@ -3,6 +3,7 @@
 
 #include "Task.h"
 #include "../Utils/Singleton.h"
+#include "../Renderer/SDLRenderer.h"
 
 namespace pitomba {
 
@@ -12,10 +13,14 @@ namespace pitomba {
         explicit RendererTask(const unsigned int priority);
         ~RendererTask() final = default;
 
-        // task interface
         void onStart() final;
+        void onUpdate() final;
         void onStop() final;
+
+    private:
+        SDLRenderer renderer = SDLRenderer("Pitomba Sample!");
     };
+
 }
 
 #endif // RENDERER_H_
