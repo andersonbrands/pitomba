@@ -1,4 +1,5 @@
 #include "GameApplication.h"
+#include "../pitomba/Kernel/TimerTask.h"
 
 using namespace pitomba;
 
