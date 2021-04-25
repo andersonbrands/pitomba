@@ -20,8 +20,8 @@ namespace pitomba {
         void onStop() final;
 
     public:
-        TimerTask(const unsigned int priority);
-        virtual ~TimerTask();
+        explicit TimerTask(const unsigned int priority);
+        ~TimerTask() final = default;
 
     };
 

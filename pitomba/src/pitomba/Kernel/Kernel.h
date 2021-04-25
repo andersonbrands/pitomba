@@ -18,11 +18,10 @@ namespace pitomba {
         TaskList pausedTasks_;
 
         void priorityAdd(Task* pTask);
-    protected:
 
     public:
-        Kernel();
-        virtual ~Kernel();
+        Kernel() = default;
+        virtual ~Kernel() = default;
 
         void execute();
 
@@ -32,7 +31,7 @@ namespace pitomba {
         void removeTask(Task* task);
         void killAllTasks();
 
-        bool hasTasks() {
+        bool hasTasks() const {
             return (tasks_.size() != 0);
         }
     };

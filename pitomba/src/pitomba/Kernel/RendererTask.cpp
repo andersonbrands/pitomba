@@ -7,8 +7,6 @@ namespace pitomba {
 
     RendererTask::RendererTask(const unsigned int priority) : Task(priority) {}
 
-    RendererTask::~RendererTask() {}
-
     void RendererTask::onStart() {
         Logger::getInstancePtr()->debug(
             "RendererTask start!"

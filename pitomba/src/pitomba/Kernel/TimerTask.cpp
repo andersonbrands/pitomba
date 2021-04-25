@@ -7,8 +7,6 @@ namespace pitomba {
 
     TimerTask::TimerTask(const unsigned int priority) : Task(priority) {}
 
-    TimerTask::~TimerTask() {}
-
     void TimerTask::onStart() {
         timer_.start();
     }

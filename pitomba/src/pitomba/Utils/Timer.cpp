@@ -4,12 +4,6 @@
 
 namespace pitomba {
 
-    Timer::Timer() : deltaTimeFromLastFrame_(0), lastFrameTime_(now()), elapsedTime_(0), paused_(true) {
-
-    }
-
-    Timer::~Timer() {}
-
     void Timer::tick() {
         if (paused_) {
             return;

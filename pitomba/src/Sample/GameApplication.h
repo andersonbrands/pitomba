@@ -10,17 +10,16 @@ using namespace pitomba;
 
 class GameApplication : public Application {
 private:
-    DummyTask* pDummyTask_;
+    std::unique_ptr<DummyTask> pDummyTask_ = nullptr;
 
-protected:
-    virtual void createSingletons();
-    virtual void destroySingletons();
+    void createSingletons();
+    void destroySingletons();
 
 public:
     explicit GameApplication();
-    virtual ~GameApplication();
+    ~GameApplication() final;
 
-    virtual bool initialize();
+    bool initialize() final;
 };
 
 #endif // GAME_APPLICATION_H_

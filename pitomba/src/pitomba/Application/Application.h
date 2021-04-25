@@ -1,8 +1,8 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
-#include "..\Utils\Logger.h"
-#include "..\Kernel\Kernel.h"
+#include "../Utils/Logger.h"
+#include "../Kernel/Kernel.h"
 
 
 namespace pitomba {
@@ -10,19 +10,21 @@ namespace pitomba {
     class Application {
 
     private:
-
-    protected:
         Kernel kernel_;
 
     public:
-        explicit Application() {}
-        virtual ~Application() {}
+        explicit Application() = default;
+        virtual ~Application() = default;
 
         virtual bool initialize() = 0;
         virtual void run() {
             Logger::getInstancePtr()->debug("Application running");
             kernel_.execute();
         }
+
+        void addTask(Task* pTask) {
+            kernel_.addTask(pTask);
+        };
     };
 
 }

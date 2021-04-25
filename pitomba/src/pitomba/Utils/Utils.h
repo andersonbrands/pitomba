@@ -5,7 +5,7 @@
 
 namespace pitomba {
 
-    typedef long long TimeUnit;
+    using TimeUnit = long long;
 
     void sleep(long);
     TimeUnit now();

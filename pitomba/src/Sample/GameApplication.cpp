@@ -5,16 +5,12 @@
 using namespace pitomba;
 
 
-GameApplication::GameApplication() :
-    Application(), pDummyTask_(nullptr) {
+GameApplication::GameApplication() : Application() {
 
 }
 
 GameApplication::~GameApplication() {
-    if (pDummyTask_) {
-        delete pDummyTask_;
-        pDummyTask_ = nullptr;
-    }
+    destroySingletons();
 }
 
 bool GameApplication::initialize() {
@@ -22,15 +18,14 @@ bool GameApplication::initialize() {
 
     createSingletons();
 
-    pDummyTask_ = new DummyTask(10000);
-    kernel_.addTask(pDummyTask_);
+    pDummyTask_ = std::make_unique<DummyTask>(10000);
+    addTask(pDummyTask_.get());
 
     assert(TimerTask::getInstancePtr());
-    kernel_.addTask(TimerTask::getInstancePtr());
-
+    addTask(TimerTask::getInstancePtr());
 
     assert(RendererTask::getInstancePtr());
-    kernel_.addTask(RendererTask::getInstancePtr());
+    addTask(RendererTask::getInstancePtr());
 
     return success;
 }
@@ -41,9 +36,9 @@ void GameApplication::createSingletons() {
 }
 
 void GameApplication::destroySingletons() {
-    assert(TimerTask::getInstancePtr());
-    delete TimerTask::getInstancePtr();
-
     assert(RendererTask::getInstancePtr());
     delete RendererTask::getInstancePtr();
+
+    assert(TimerTask::getInstancePtr());
+    delete TimerTask::getInstancePtr();
 }

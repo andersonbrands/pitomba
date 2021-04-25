@@ -12,16 +12,14 @@ namespace pitomba {
     class Logger : public Singleton<Logger> {
 
     private:
-        void print(const std::string& message);
-
-    protected:
+        void print(const std::string& message) const;
 
     public:
-        Logger();
-        virtual ~Logger();
+        Logger() = default;
+        virtual ~Logger() = default;
 
-        void debug(const std::string& message);
-        void debug(const boost::format& message);
+        void debug(const std::string& message) const;
+        void debug(const boost::format& message) const;
     };
 
 }

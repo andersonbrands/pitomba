@@ -1,18 +1,14 @@
 
 #include "Kernel.h"
-#include "..\Utils\Logger.h"
+#include "../Utils/Logger.h"
 
 
 namespace pitomba {
 
-    Kernel::Kernel() {}
-
-    Kernel::~Kernel() {}
-
     void Kernel::priorityAdd(Task* pTask) {
         TaskListIterator iter;
         for (iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
-            Task* pCurrentTask = (*iter);
+            const Task* pCurrentTask = (*iter);
             if (pCurrentTask->getPriority() > pTask->getPriority()) {
                 break;
             }

@@ -6,8 +6,8 @@ namespace pitomba {
     class Task {
     private:
         unsigned int priority_;
-        bool running_;
-        bool finished_;
+        bool running_ = false;
+        bool finished_ = false;
 
     protected:
         virtual void onStart();
@@ -18,7 +18,7 @@ namespace pitomba {
 
     public:
         explicit Task(const unsigned int priority);
-        virtual ~Task();
+        virtual ~Task() = default;
 
         void start();
         void pause();
@@ -42,11 +42,9 @@ namespace pitomba {
     inline void Task::onStop() { /* Intentionally unimplemented... */ }
 
     inline Task::Task(const unsigned int priority) :
-        priority_(priority), running_(false), finished_(false) {
+        priority_(priority) {
 
     }
-
-    inline Task::~Task() {}
 
     inline void Task::start() {
         running_ = true;

@@ -7,11 +7,10 @@
 namespace pitomba {
 
     class RendererTask : public Task, public Singleton<RendererTask> {
-    private:
 
     public:
         explicit RendererTask(const unsigned int priority);
-        virtual ~RendererTask();
+        ~RendererTask() final = default;
 
         // task interface
         void onStart() final;

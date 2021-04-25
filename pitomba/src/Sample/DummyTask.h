@@ -16,8 +16,8 @@ protected:
     void onUpdate() final;
 
 public:
-    DummyTask(const unsigned int priority);
-    virtual ~DummyTask();
+    explicit DummyTask(const unsigned int priority);
+    ~DummyTask() final = default;
 
 };
 

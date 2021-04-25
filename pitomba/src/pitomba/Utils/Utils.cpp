@@ -18,7 +18,7 @@ namespace pitomba {
     }
 
     float toSeconds(TimeUnit time) {
-        const float MILLI_TO_SECONDS_MULTIPLIER = 0.001f;
+        const float MILLI_TO_SECONDS_MULTIPLIER = 0.001F;
         return time * MILLI_TO_SECONDS_MULTIPLIER;
     }
 

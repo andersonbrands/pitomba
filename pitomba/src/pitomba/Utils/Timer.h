@@ -10,16 +10,16 @@ namespace pitomba {
     class Timer {
 
     private:
-        int deltaTimeFromLastFrame_;
-        TimeUnit lastFrameTime_;
-        TimeUnit elapsedTime_;
-        bool paused_;
+        TimeUnit deltaTimeFromLastFrame_ = 0;
+        TimeUnit lastFrameTime_ = now();
+        TimeUnit elapsedTime_ = 0;
+        bool paused_ = true;
 
         void reset();
 
     public:
-        Timer();
-        virtual ~Timer();
+        Timer() = default;
+        virtual ~Timer() = default;
 
         void tick();
         void start();
@@ -29,12 +29,10 @@ namespace pitomba {
         float getFPS() const;
         TimeUnit getElapsedTime() const;
 
-    protected:
-
     };
 
     inline float Timer::getFPS() const {
-        return 1000.0f / (float)deltaTimeFromLastFrame_;
+        return 1000.0F / (float)deltaTimeFromLastFrame_;
     }
 
     inline TimeUnit Timer::getElapsedTime() const {

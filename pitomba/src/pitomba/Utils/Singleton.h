@@ -19,7 +19,7 @@ namespace pitomba {
 
         ~Singleton() {
             assert(instance);
-            instance = 0;
+            instance = nullptr;
         }
 
         static T& getInstance() {
