@@ -27,6 +27,7 @@ namespace pitomba {
 
         static const unsigned int MAX_PRIORITY = 0;
         static const unsigned int TIMER_PRIORITY = MAX_PRIORITY;
+        static const unsigned int RENDERER_PRIORITY = 1000;
     };
 
     inline Task::Task(const unsigned int priority) :

@@ -1,6 +1,7 @@
 
 #include "TimerTask.h"
 #include "../Utils/Logger.h"
+#include "RendererTask.h"
 
 namespace pitomba {
 
@@ -30,6 +31,9 @@ namespace pitomba {
         // TODO remove
         if (timer_.getElapsedTime() >= 300) {
             stop();
+
+            // TODO remove when another way to stop Renderer Task is implemented
+            RendererTask::getInstancePtr()->stop();
         }
     }
 

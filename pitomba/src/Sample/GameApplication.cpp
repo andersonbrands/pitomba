@@ -1,5 +1,6 @@
 #include "GameApplication.h"
 #include "../pitomba/Kernel/TimerTask.h"
+#include "../pitomba/Kernel/RendererTask.h"
 
 using namespace pitomba;
 
@@ -27,14 +28,22 @@ bool GameApplication::initialize() {
     assert(TimerTask::getInstancePtr());
     kernel_.addTask(TimerTask::getInstancePtr());
 
+
+    assert(RendererTask::getInstancePtr());
+    kernel_.addTask(RendererTask::getInstancePtr());
+
     return success;
 }
 
 void GameApplication::createSingletons() {
     new TimerTask(Task::TIMER_PRIORITY);
+    new RendererTask(Task::RENDERER_PRIORITY);
 }
 
 void GameApplication::destroySingletons() {
     assert(TimerTask::getInstancePtr());
     delete TimerTask::getInstancePtr();
+
+    assert(RendererTask::getInstancePtr());
+    delete RendererTask::getInstancePtr();
 }
