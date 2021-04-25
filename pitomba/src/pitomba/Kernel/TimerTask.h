@@ -3,10 +3,12 @@
 
 #include "Task.h"
 #include "../Utils/Timer.h"
+#include "../Utils/Singleton.h"
+
 
 namespace pitomba {
 
-    class TimerTask : public Task {
+    class TimerTask : public Task, public Singleton<TimerTask> {
     private:
         Timer timer_;
     public:

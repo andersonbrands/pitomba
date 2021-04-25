@@ -12,9 +12,10 @@ using namespace pitomba;
 class GameApplication : public Application {
 private:
     DummyTask* pDummyTask_;
-    TimerTask* pTimerTask_;
 
 protected:
+    virtual void createSingletons();
+    virtual void destroySingletons();
 
 public:
     explicit GameApplication();
@@ -24,3 +25,4 @@ public:
 };
 
 #endif // GAME_APPLICATION_H_
+

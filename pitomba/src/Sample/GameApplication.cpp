@@ -2,8 +2,9 @@
 
 using namespace pitomba;
 
+
 GameApplication::GameApplication() :
-    Application(), pDummyTask_(nullptr), pTimerTask_(nullptr) {
+    Application(), pDummyTask_(nullptr) {
 
 }
 
@@ -12,20 +13,27 @@ GameApplication::~GameApplication() {
         delete pDummyTask_;
         pDummyTask_ = nullptr;
     }
-    if (pTimerTask_) {
-        delete pTimerTask_;
-        pTimerTask_ = nullptr;
-    }
 }
 
 bool GameApplication::initialize() {
     bool success(true);
 
+    createSingletons();
+
     pDummyTask_ = new DummyTask(10000);
     kernel_.addTask(pDummyTask_);
 
-    pTimerTask_ = new TimerTask(Task::TIMER_PRIORITY);
-    kernel_.addTask(pTimerTask_);
+    assert(TimerTask::getInstancePtr());
+    kernel_.addTask(TimerTask::getInstancePtr());
 
     return success;
+}
+
+void GameApplication::createSingletons() {
+    new TimerTask(Task::TIMER_PRIORITY);
+}
+
+void GameApplication::destroySingletons() {
+    assert(TimerTask::getInstancePtr());
+    delete TimerTask::getInstancePtr();
 }
