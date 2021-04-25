@@ -11,15 +11,18 @@ namespace pitomba {
     class TimerTask : public Task, public Singleton<TimerTask> {
     private:
         Timer timer_;
+
+    protected:
+        void onStart() final;
+        void onPause() final;
+        void onUpdate() final;
+        void onResume() final;
+        void onStop() final;
+
     public:
         TimerTask(const unsigned int priority);
         virtual ~TimerTask();
 
-        virtual void start();
-        virtual void pause();
-        virtual void update();
-        virtual void resume();
-        virtual void stop();
     };
 
 }

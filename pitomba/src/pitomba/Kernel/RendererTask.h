@@ -14,11 +14,8 @@ namespace pitomba {
         virtual ~RendererTask();
 
         // task interface
-        virtual void start();
-        virtual void pause();
-        virtual void update();
-        virtual void resume();
-        virtual void stop();
+        void onStart() final;
+        void onStop() final;
     };
 }
 

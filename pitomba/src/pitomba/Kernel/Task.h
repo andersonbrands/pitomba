@@ -10,16 +10,21 @@ namespace pitomba {
         bool finished_;
 
     protected:
+        virtual void onStart();
+        virtual void onPause();
+        virtual void onUpdate();
+        virtual void onResume();
+        virtual void onStop();
 
     public:
         explicit Task(const unsigned int priority);
         virtual ~Task();
 
-        virtual void start();
-        virtual void pause();
-        virtual void update() = 0;
-        virtual void resume();
-        virtual void stop();
+        void start();
+        void pause();
+        void update();
+        void resume();
+        void stop();
 
         bool isRunning() const;
         bool isFinished() const;
@@ -30,6 +35,12 @@ namespace pitomba {
         static const unsigned int RENDERER_PRIORITY = 1000;
     };
 
+    inline void Task::onStart() { /* Intentionally unimplemented... */ }
+    inline void Task::onPause() { /* Intentionally unimplemented... */ }
+    inline void Task::onUpdate() { /* Intentionally unimplemented... */ }
+    inline void Task::onResume() { /* Intentionally unimplemented... */ }
+    inline void Task::onStop() { /* Intentionally unimplemented... */ }
+
     inline Task::Task(const unsigned int priority) :
         priority_(priority), running_(false), finished_(false) {
 
@@ -39,19 +50,28 @@ namespace pitomba {
 
     inline void Task::start() {
         running_ = true;
+        onStart();
     }
 
     inline void Task::pause() {
         running_ = false;
+        onPause();
     }
+
+    inline void Task::update() {
+        onUpdate();
+    }
+
 
     inline void Task::resume() {
         running_ = true;
+        onResume();
     }
 
     inline void Task::stop() {
         running_ = false;
         finished_ = true;
+        onStop();
     }
 
     inline bool Task::isRunning() const {

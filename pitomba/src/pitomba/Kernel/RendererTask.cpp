@@ -9,25 +9,13 @@ namespace pitomba {
 
     RendererTask::~RendererTask() {}
 
-    void RendererTask::start() {
-        Task::start();
+    void RendererTask::onStart() {
         Logger::getInstancePtr()->debug(
             "RendererTask start!"
         );
     }
 
-    void RendererTask::pause() {
-        Task::pause();
-    }
-
-    void RendererTask::update() {}
-
-    void RendererTask::resume() {
-        Task::resume();
-    }
-
-    void RendererTask::stop() {
-        Task::stop();
+    void RendererTask::onStop() {
         Logger::getInstancePtr()->debug(
             "RendererTask stop!"
         );

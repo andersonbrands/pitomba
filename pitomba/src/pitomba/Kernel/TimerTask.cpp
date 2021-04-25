@@ -9,17 +9,15 @@ namespace pitomba {
 
     TimerTask::~TimerTask() {}
 
-    void TimerTask::start() {
-        Task::start();
+    void TimerTask::onStart() {
         timer_.start();
     }
 
-    void TimerTask::pause() {
-        Task::pause();
+    void TimerTask::onPause() {
         timer_.pause();
     }
 
-    void TimerTask::update() {
+    void TimerTask::onUpdate() {
         timer_.tick();
 
         auto gameTime = toSeconds(timer_.getElapsedTime());
@@ -37,13 +35,11 @@ namespace pitomba {
         }
     }
 
-    void TimerTask::resume() {
-        Task::resume();
+    void TimerTask::onResume() {
         timer_.resume();
     }
 
-    void TimerTask::stop() {
-        Task::stop();
+    void TimerTask::onStop() {
         timer_.pause();
     }
 
