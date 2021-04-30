@@ -17,6 +17,7 @@ namespace pitomba {
         virtual ~Application() = default;
 
         virtual bool initialize() = 0;
+        virtual void terminate() = 0;
         virtual void run() {
             Logger::getInstancePtr()->debug("Application running");
             kernel_.execute();
@@ -25,6 +26,10 @@ namespace pitomba {
         void addTask(Task* pTask) {
             kernel_.addTask(pTask);
         };
+
+        void killAllTasks() {
+            kernel_.killAllTasks();
+        }
     };
 
 }

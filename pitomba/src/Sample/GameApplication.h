@@ -3,12 +3,13 @@
 
 
 #include "../pitomba/Application/Application.h"
+#include "../pitomba/EventManager/EventHandler.h"
 #include "DummyTask.h"
 
 using namespace pitomba;
 
 
-class GameApplication : public Application {
+class GameApplication : public Application, public EventHandler {
 private:
     std::unique_ptr<DummyTask> pDummyTask_ = nullptr;
 
@@ -20,7 +21,9 @@ public:
     ~GameApplication() final;
 
     bool initialize() final;
+    void terminate() final;
+
+    void handleEvent(EventId eventId, void* pData) final;
 };
 
 #endif // GAME_APPLICATION_H_
-

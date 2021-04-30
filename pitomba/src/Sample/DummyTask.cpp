@@ -16,8 +16,4 @@ void DummyTask::onUpdate() {
     Logger::getInstancePtr()->debug(
         boost::format("Dummy task: %1%") % count
     );
-
-    if (count >= 20) {
-        stop();
-    }
 }

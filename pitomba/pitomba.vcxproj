@@ -142,6 +142,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\pitomba\EventManager\Event.cpp" />
+    <ClCompile Include="src\pitomba\EventManager\EventManager.cpp" />
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
     <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
@@ -154,6 +156,10 @@
     <ClCompile Include="src\pitomba\Utils\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\pitomba\EventManager\Event.h" />
+    <ClInclude Include="src\pitomba\EventManager\EventHandler.h" />
+    <ClInclude Include="src\pitomba\EventManager\EventId.h" />
+    <ClInclude Include="src\pitomba\EventManager\EventManager.h" />
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
