@@ -48,6 +48,8 @@ namespace pitomba {
     }
 
     void SDLRenderer::update() {
+        SDL_Event e;
+        while (SDL_PollEvent(&e));
         SDL_UpdateWindowSurface(window);
     }
 
