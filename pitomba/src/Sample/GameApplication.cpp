@@ -2,6 +2,7 @@
 #include "../pitomba/Kernel/TimerTask.h"
 #include "../pitomba/Kernel/RendererTask.h"
 #include "../pitomba/EventManager/EventManager.h"
+#include "../pitomba/Utils/Rng.h"
 
 using namespace pitomba;
 
@@ -48,6 +49,7 @@ void GameApplication::handleEvent(EventId eventId, void* pData) {
 
 void GameApplication::createSingletons() {
     new EventManager();
+    new Rng();
     new TimerTask(Task::TIMER_PRIORITY);
     new RendererTask(Task::RENDERER_PRIORITY);
 }
@@ -58,6 +60,9 @@ void GameApplication::destroySingletons() {
 
     assert(TimerTask::getInstancePtr());
     delete TimerTask::getInstancePtr();
+
+    assert(Rng::getInstancePtr());
+    delete Rng::getInstancePtr();
 
     assert(EventManager::getInstancePtr());
     delete EventManager::getInstancePtr();
