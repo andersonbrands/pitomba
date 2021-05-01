@@ -2,9 +2,9 @@
 
 #include <chrono>
 #include <thread>
+#include "Rng.h"
 
 using namespace std::chrono;
-
 
 namespace pitomba {
 
@@ -20,6 +20,14 @@ namespace pitomba {
     float toSeconds(TimeUnit time) {
         const float MILLI_TO_SECONDS_MULTIPLIER = 0.001F;
         return time * MILLI_TO_SECONDS_MULTIPLIER;
+    }
+
+    int rand_int(int min, int max) {
+        return Rng::getInstancePtr()->rand_int(min, max);
+    }
+
+    float rand_float(float min, float max) {
+        return Rng::getInstancePtr()->rand_float(min, max);
     }
 
 }

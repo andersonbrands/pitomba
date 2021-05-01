@@ -11,6 +11,9 @@ namespace pitomba {
     TimeUnit now();
 
     float toSeconds(TimeUnit);
+
+    int rand_int(int, int);
+    float rand_float(float, float);
 }
 
 #endif // PITOMBA_UTILS_H_
