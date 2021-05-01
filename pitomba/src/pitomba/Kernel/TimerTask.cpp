@@ -19,17 +19,6 @@ namespace pitomba {
 
     void TimerTask::onUpdate() {
         timer_.tick();
-
-        auto gameTime = toSeconds(timer_.getElapsedTime());
-        Logger::getInstancePtr()->debug(
-            boost::format("GameTime (s): %1%\tFPS: %2%") % gameTime % timer_.getFPS()
-        );
-        sleep(1);
-
-        // TODO remove
-        if (timer_.getElapsedTime() >= 300) {
-            EventManager::getInstancePtr()->sendEvent(ev::id::APPLICATION_QUIT);
-        }
     }
 
     void TimerTask::onResume() {

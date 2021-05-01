@@ -1,6 +1,7 @@
 
 #include "SDLRenderer.h"
 #include "../Utils/Logger.h"
+#include "../EventManager/EventManager.h"
 
 
 namespace pitomba {
@@ -49,7 +50,11 @@ namespace pitomba {
 
     void SDLRenderer::update() {
         SDL_Event e;
-        while (SDL_PollEvent(&e));
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) {
+                EventManager::getInstancePtr()->sendEvent(ev::id::APPLICATION_QUIT);
+            }
+        }
         SDL_UpdateWindowSurface(window);
     }
 
