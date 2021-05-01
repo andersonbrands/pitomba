@@ -19,8 +19,11 @@ namespace pitomba {
     void Kernel::execute() {
         Logger::getInstancePtr()->debug("Kernel executing");
 
-        while (tasks_.size()) {
+        for (auto& task : tasks_) {
+            task->start();
+        }
 
+        while (tasks_.size()) {
             TaskListIterator iter;
             for (iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
                 Task* pTask = (*iter);
@@ -34,16 +37,14 @@ namespace pitomba {
                 ++iter;
                 if (pTask->isFinished()) {
                     tasks_.remove(pTask);
-                    pTask = 0;
+                    pTask = nullptr;
                 }
             }
-
         }
-
     }
 
     void Kernel::addTask(Task* pTask) {
-        pTask->start();
+        pTask->initialize();
         priorityAdd(pTask);
     }
 

@@ -10,6 +10,7 @@ namespace pitomba {
         bool finished_ = false;
 
     protected:
+        virtual void onInitialize();
         virtual void onStart();
         virtual void onPause();
         virtual void onUpdate();
@@ -20,6 +21,7 @@ namespace pitomba {
         explicit Task(const unsigned int priority);
         virtual ~Task() = default;
 
+        void initialize();
         void start();
         void pause();
         void update();
@@ -35,6 +37,7 @@ namespace pitomba {
         static const unsigned int RENDERER_PRIORITY = 1000;
     };
 
+    inline void Task::onInitialize() { /* Intentionally unimplemented... */ }
     inline void Task::onStart() { /* Intentionally unimplemented... */ }
     inline void Task::onPause() { /* Intentionally unimplemented... */ }
     inline void Task::onUpdate() { /* Intentionally unimplemented... */ }
@@ -44,6 +47,10 @@ namespace pitomba {
     inline Task::Task(const unsigned int priority) :
         priority_(priority) {
 
+    }
+
+    inline void Task::initialize() {
+        onInitialize();
     }
 
     inline void Task::start() {

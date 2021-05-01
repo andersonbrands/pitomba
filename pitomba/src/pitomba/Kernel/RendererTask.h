@@ -13,6 +13,7 @@ namespace pitomba {
         explicit RendererTask(const unsigned int priority);
         ~RendererTask() final = default;
 
+        void onInitialize() final;
         void onStart() final;
         void onUpdate() final;
         void onStop() final;

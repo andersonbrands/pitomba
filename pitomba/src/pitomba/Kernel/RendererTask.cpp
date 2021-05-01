@@ -1,6 +1,7 @@
 #include "RendererTask.h"
 #include "../Utils/Logger.h"
 #include "../Utils/Utils.h"
+#include "TimerTask.h"
 
 
 namespace pitomba {
@@ -8,11 +9,14 @@ namespace pitomba {
 
     RendererTask::RendererTask(const unsigned int priority) : Task(priority) {}
 
+    void RendererTask::onInitialize() {
+        renderer_.initialize();
+    }
+
     void RendererTask::onStart() {
         Logger::getInstancePtr()->debug(
             "RendererTask start!"
         );
-        renderer.initialize();
     }
 
     void RendererTask::onUpdate() {
