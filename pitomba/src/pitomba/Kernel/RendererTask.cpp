@@ -1,16 +1,24 @@
 #include "RendererTask.h"
 #include "../Utils/Logger.h"
 #include "../Utils/Utils.h"
+#include "../Renderer/SDLRenderer.h"
 #include "TimerTask.h"
 
 
 namespace pitomba {
 
+    RendererTask::RendererTask(const unsigned int priority)
+        : Task(priority), pRenderer_(new SDLRenderer("Pitomba Sample!")) {}
 
-    RendererTask::RendererTask(const unsigned int priority) : Task(priority) {}
+    RendererTask::~RendererTask() {
+        if (pRenderer_) {
+            delete pRenderer_;
+            pRenderer_ = nullptr;
+        }
+    }
 
     void RendererTask::onInitialize() {
-        renderer_.initialize();
+        pRenderer_->initialize();
     }
 
     void RendererTask::onStart() {
@@ -18,7 +26,7 @@ namespace pitomba {
             "RendererTask start!"
         );
         std::function<void()> random_fill = [&]() {
-            renderer_.fillSurface(
+            pRenderer_->fillSurface(
                 rand_int(0, 255),
                 rand_int(0, 255),
                 rand_int(0, 255)
@@ -29,7 +37,7 @@ namespace pitomba {
 
     void RendererTask::onUpdate() {
         scheduler_.tick(TimerTask::getInstancePtr()->getDelta());
-        renderer_.update();
+        pRenderer_->update();
     }
 
     void RendererTask::onStop() {

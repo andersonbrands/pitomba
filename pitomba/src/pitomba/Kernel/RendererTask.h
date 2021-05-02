@@ -3,7 +3,7 @@
 
 #include "Task.h"
 #include "../Utils/Singleton.h"
-#include "../Renderer/SDLRenderer.h"
+#include "../Renderer/iRenderer.h"
 #include "../Utils/Scheduler.h"
 
 namespace pitomba {
@@ -12,7 +12,7 @@ namespace pitomba {
 
     public:
         explicit RendererTask(const unsigned int priority);
-        ~RendererTask() final = default;
+        ~RendererTask() final;
 
         void onInitialize() final;
         void onStart() final;
@@ -21,7 +21,7 @@ namespace pitomba {
 
     private:
         Scheduler scheduler_;
-        SDLRenderer renderer_ = SDLRenderer("Pitomba Sample!");
+        iRenderer* pRenderer_ = nullptr;
     };
 
 }

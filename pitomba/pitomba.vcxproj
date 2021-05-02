@@ -167,6 +167,7 @@
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
     <ClInclude Include="src\pitomba\Kernel\TimerTask.h" />
+    <ClInclude Include="src\pitomba\Renderer\iRenderer.h" />
     <ClInclude Include="src\pitomba\Renderer\SDLRenderer.h" />
     <ClInclude Include="src\pitomba\Utils\Rng.h" />
     <ClInclude Include="src\pitomba\Utils\Scheduler.h" />

@@ -3,19 +3,20 @@
 
 #include <SDL.h>
 #include <string>
+#include "iRenderer.h"
 
 
 namespace pitomba {
 
-    class SDLRenderer {
+    class SDLRenderer : public iRenderer {
 
     public:
         explicit SDLRenderer(const std::string&, int = 640, int = 480);
-        virtual ~SDLRenderer() final;
+        ~SDLRenderer() final;
 
-        bool initialize();
-        void fillSurface(int, int, int);
-        void update();
+        bool initialize() final;
+        void fillSurface(int, int, int) final;
+        void update() final;
 
     private:
         const std::string WINDOW_TITLE;
