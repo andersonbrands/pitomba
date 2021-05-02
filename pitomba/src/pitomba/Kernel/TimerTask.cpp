@@ -1,13 +1,14 @@
 
 #include "TimerTask.h"
-#include "../Utils/Logger.h"
-#include "RendererTask.h"
-#include "../EventManager/EventManager.h"
 
 
 namespace pitomba {
 
     TimerTask::TimerTask(const unsigned int priority) : Task(priority) {}
+
+    TimeUnit TimerTask::getDelta() const {
+        return timer_.getDeltaTimeFromLastFrame();
+    }
 
     void TimerTask::onStart() {
         timer_.start();

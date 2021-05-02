@@ -4,6 +4,7 @@
 #include "Task.h"
 #include "../Utils/Timer.h"
 #include "../Utils/Singleton.h"
+#include <functional>
 
 
 namespace pitomba {
@@ -23,6 +24,7 @@ namespace pitomba {
         explicit TimerTask(const unsigned int priority);
         ~TimerTask() final = default;
 
+        TimeUnit getDelta() const;
     };
 
 }

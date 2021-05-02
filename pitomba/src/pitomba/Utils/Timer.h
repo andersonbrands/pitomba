@@ -28,7 +28,7 @@ namespace pitomba {
 
         float getFPS() const;
         TimeUnit getElapsedTime() const;
-
+        TimeUnit getDeltaTimeFromLastFrame() const;
     };
 
     inline float Timer::getFPS() const {
@@ -37,6 +37,10 @@ namespace pitomba {
 
     inline TimeUnit Timer::getElapsedTime() const {
         return elapsedTime_;
+    }
+
+    inline TimeUnit Timer::getDeltaTimeFromLastFrame() const {
+        return deltaTimeFromLastFrame_;
     }
 
 }
