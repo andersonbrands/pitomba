@@ -4,6 +4,7 @@
 #include "Task.h"
 #include "../Utils/Singleton.h"
 #include "../Renderer/SDLRenderer.h"
+#include "../Utils/Scheduler.h"
 
 namespace pitomba {
 
@@ -19,7 +20,8 @@ namespace pitomba {
         void onStop() final;
 
     private:
-        SDLRenderer renderer = SDLRenderer("Pitomba Sample!");
+        Scheduler scheduler_;
+        SDLRenderer renderer_ = SDLRenderer("Pitomba Sample!");
     };
 
 }

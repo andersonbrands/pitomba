@@ -149,6 +149,7 @@
     <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
     <ClCompile Include="src\pitomba\Renderer\SDLRenderer.cpp" />
     <ClCompile Include="src\pitomba\Utils\Rng.cpp" />
+    <ClCompile Include="src\pitomba\Utils\Scheduler.cpp" />
     <ClCompile Include="src\pitomba\Utils\Timer.cpp" />
     <ClCompile Include="src\pitomba\Utils\Utils.cpp" />
     <ClCompile Include="src\Sample\DummyTask.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="src\pitomba\Kernel\TimerTask.h" />
     <ClInclude Include="src\pitomba\Renderer\SDLRenderer.h" />
     <ClInclude Include="src\pitomba\Utils\Rng.h" />
+    <ClInclude Include="src\pitomba\Utils\Scheduler.h" />
     <ClInclude Include="src\pitomba\Utils\Singleton.h" />
     <ClInclude Include="src\pitomba\Utils\Timer.h" />
     <ClInclude Include="src\pitomba\Utils\Utils.h" />

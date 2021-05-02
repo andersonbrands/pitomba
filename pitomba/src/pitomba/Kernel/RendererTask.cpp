@@ -17,22 +17,19 @@ namespace pitomba {
         Logger::getInstancePtr()->debug(
             "RendererTask start!"
         );
+        std::function<void()> random_fill = [&]() {
+            renderer_.fillSurface(
+                rand_int(0, 255),
+                rand_int(0, 255),
+                rand_int(0, 255)
+            );
+        };
+        scheduler_.setTimeout(5000, random_fill);
     }
 
     void RendererTask::onUpdate() {
-        // TODO remove blocking update, this will block other tasks
-        renderer.fillSurface(0xff, 0x00, 0x00);
-        renderer.update();
-        sleep(500);
-        renderer.fillSurface(0x00, 0xff, 0x00);
-        renderer.update();
-        sleep(500);
-        renderer.fillSurface(0x00, 0x00, 0xff);
-        renderer.update();
-        sleep(500);
-        renderer.fillSurface(0x00, 0xff, 0xff);
-        renderer.update();
-        sleep(500);
+        scheduler_.tick(TimerTask::getInstancePtr()->getDelta());
+        renderer_.update();
     }
 
     void RendererTask::onStop() {
