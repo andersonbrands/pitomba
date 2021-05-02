@@ -30,4 +30,23 @@ namespace pitomba {
         return Rng::getInstancePtr()->rand_float(min, max);
     }
 
+    ColorRGB rand_color_RGB() {
+        auto color = ColorRGB{
+            rand_int(0, 255),
+            rand_int(0, 255),
+            rand_int(0, 255)
+        };
+        return color;
+    }
+
+    ColorRGBA rand_color_RGBA() {
+        auto color = ColorRGBA{
+            rand_int(0, 255),
+            rand_int(0, 255),
+            rand_int(0, 255),
+            rand_int(0, 255)
+        };
+        return color;
+    }
+
 }

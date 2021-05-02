@@ -113,6 +113,9 @@
     <ClInclude Include="src\pitomba\Utils\Scheduler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pitomba\Utils\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\pitomba\Renderer\iRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>

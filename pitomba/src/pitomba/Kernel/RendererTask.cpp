@@ -26,11 +26,7 @@ namespace pitomba {
             "RendererTask start!"
         );
         std::function<void()> random_fill = [&]() {
-            pRenderer_->fillSurface(
-                rand_int(0, 255),
-                rand_int(0, 255),
-                rand_int(0, 255)
-            );
+            pRenderer_->fillSurface(rand_color_RGB());
         };
         scheduler_.setInterval(1000, random_fill);
     }

@@ -16,6 +16,7 @@ namespace pitomba {
 
         bool initialize() final;
         void fillSurface(int, int, int) final;
+        void fillSurface(ColorRGB) final;
         void update() final;
 
     private:

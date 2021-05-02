@@ -2,6 +2,8 @@
 #ifndef I_RENDERER_H_
 #define I_RENDERER_H_
 
+#include "../Utils/Color.h"
+
 
 namespace pitomba {
 
@@ -12,6 +14,7 @@ namespace pitomba {
 
         virtual bool initialize() = 0;
         virtual void fillSurface(int, int, int) = 0;
+        virtual void fillSurface(ColorRGB) = 0;
         virtual void update() = 0;
 
     };

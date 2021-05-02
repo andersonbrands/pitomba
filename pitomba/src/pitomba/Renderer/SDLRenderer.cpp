@@ -48,6 +48,10 @@ namespace pitomba {
         SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, red, green, blue));
     }
 
+    void SDLRenderer::fillSurface(ColorRGB color) {
+        fillSurface(color.r, color.g, color.b);
+    }
+
     void SDLRenderer::update() {
         SDL_Event e;
         while (SDL_PollEvent(&e)) {
