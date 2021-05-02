@@ -24,7 +24,7 @@ namespace pitomba {
                 rand_int(0, 255)
             );
         };
-        scheduler_.setTimeout(5000, random_fill);
+        scheduler_.setInterval(1000, random_fill);
     }
 
     void RendererTask::onUpdate() {
