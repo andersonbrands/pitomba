@@ -13,7 +13,7 @@ namespace pitomba {
         virtual ~iRenderer() = default;
 
         virtual bool initialize() = 0;
-        virtual void fillSurface(int, int, int) = 0;
+        virtual void fillSurface(float, float, float) = 0;
         virtual void fillSurface(ColorRGB) = 0;
         virtual void update() = 0;
 

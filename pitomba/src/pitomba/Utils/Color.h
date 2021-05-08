@@ -5,16 +5,16 @@
 namespace pitomba {
 
     using ColorRGB = struct ColorRGB {
-        int r;
-        int g;
-        int b;
+        float r;
+        float g;
+        float b;
     };
 
     using ColorRGBA = struct ColorRGBA {
-        int r;
-        int g;
-        int b;
-        int a;
+        float r;
+        float g;
+        float b;
+        float a;
     };
 
 }

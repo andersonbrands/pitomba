@@ -32,19 +32,19 @@ namespace pitomba {
 
     ColorRGB rand_color_RGB() {
         auto color = ColorRGB{
-            rand_int(0, 255),
-            rand_int(0, 255),
-            rand_int(0, 255)
+            rand_float(0.0F, 1.0F),
+            rand_float(0.0F, 1.0F),
+            rand_float(0.0F, 1.0F)
         };
         return color;
     }
 
     ColorRGBA rand_color_RGBA() {
         auto color = ColorRGBA{
-            rand_int(0, 255),
-            rand_int(0, 255),
-            rand_int(0, 255),
-            rand_int(0, 255)
+            rand_float(0.0F, 1.0F),
+            rand_float(0.0F, 1.0F),
+            rand_float(0.0F, 1.0F),
+            rand_float(0.0F, 1.0F)
         };
         return color;
     }

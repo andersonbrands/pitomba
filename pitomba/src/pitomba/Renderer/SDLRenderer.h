@@ -15,7 +15,7 @@ namespace pitomba {
         ~SDLRenderer() final;
 
         bool initialize() final;
-        void fillSurface(int, int, int) final;
+        void fillSurface(float, float, float) final;
         void fillSurface(ColorRGB) final;
         void update() final;
 
