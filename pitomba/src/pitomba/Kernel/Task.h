@@ -9,6 +9,7 @@ namespace pitomba {
         bool running_ = false;
         bool finished_ = false;
 
+        static const unsigned int TASK_MAX_PRIORITY = 0;
     protected:
         virtual void onInitialize();
         virtual void onStart();
@@ -32,8 +33,7 @@ namespace pitomba {
         bool isFinished() const;
         unsigned int getPriority() const;
 
-        static const unsigned int MAX_PRIORITY = 0;
-        static const unsigned int TIMER_PRIORITY = MAX_PRIORITY;
+        static const unsigned int TIMER_PRIORITY = TASK_MAX_PRIORITY;
         static const unsigned int RENDERER_PRIORITY = 1000;
     };
 
