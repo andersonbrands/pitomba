@@ -14,9 +14,10 @@ namespace pitomba {
 
         virtual bool initialize() = 0;
         virtual void start() = 0;
-        virtual void fillSurface(float, float, float) = 0;
         virtual void fillSurface(ColorRGB) = 0;
-        virtual void update() = 0;
+        virtual bool preRender() = 0;
+        virtual void render() = 0;
+        virtual void postRender() = 0;
 
     };
 }

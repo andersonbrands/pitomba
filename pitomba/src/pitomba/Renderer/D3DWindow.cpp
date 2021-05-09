@@ -39,14 +39,17 @@ namespace pitomba {
         // Show the window
         ShowWindow(Window(), SW_SHOWDEFAULT);
         UpdateWindow(Window());
+        g_pd3dDevice->SetRenderState(D3DRS_NORMALIZENORMALS, TRUE);
     }
 
-    void D3DWindow::update() {
+    void D3DWindow::fillSurface(ColorRGB color) {
+        clearColor = color;
+    }
+
+    bool D3DWindow::preRender() {
         // Run the message loop.
         MSG msg = { };
         ZeroMemory(&msg, sizeof(msg));
-
-        //GetMessage(&msg, nullptr, 0, 0);
 
         if (PeekMessage(&msg, nullptr, 0U, 0U, PM_REMOVE)) {
             TranslateMessage(&msg);
@@ -54,6 +57,22 @@ namespace pitomba {
         }
 
         isDeviceLost();
+
+        auto d3dColor = D3DCOLOR_XRGB((int)(clearColor.r * 255), (int)(clearColor.g * 255), (int)(clearColor.b * 255));
+        g_pd3dDevice->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, d3dColor, 1.0f, 0);
+
+        return SUCCEEDED(g_pd3dDevice->BeginScene());
+    }
+
+    void D3DWindow::render() {
+        // nothing to do here
+    }
+
+    void D3DWindow::postRender() {
+        g_pd3dDevice->EndScene();
+
+        // Present the backbuffer to the display.
+        g_pd3dDevice->Present(nullptr, nullptr, nullptr, nullptr);
     }
 
     HRESULT D3DWindow::setupD3D() {

@@ -33,8 +33,17 @@ namespace pitomba {
     }
 
     void RendererTask::onUpdate() {
-        scheduler_.tick(TimerTask::getInstancePtr()->getDelta());
-        pRenderer_->update();
+        if (pRenderer_->preRender()) {
+            // event pre render
+
+            pRenderer_->render();
+            // event render
+            scheduler_.tick(TimerTask::getInstancePtr()->getDelta());
+
+            pRenderer_->postRender();
+            // event post render
+        }
+
     }
 
     void RendererTask::onStop() {

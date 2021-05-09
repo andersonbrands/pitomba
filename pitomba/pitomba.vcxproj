@@ -174,7 +174,6 @@
     <ClInclude Include="src\pitomba\Renderer\D3DWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\MainWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\iRenderer.h" />
-    <ClInclude Include="src\pitomba\Renderer\SimpleRenderer.h" />
     <ClInclude Include="src\pitomba\Utils\Color.h" />
     <ClInclude Include="src\pitomba\Utils\Rng.h" />
     <ClInclude Include="src\pitomba\Utils\Scheduler.h" />
