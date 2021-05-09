@@ -18,20 +18,6 @@ namespace pitomba {
     private:
         std::wstring windowTitle_;
     };
-
-    LRESULT MainWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) {
-        switch (uMsg) {
-            case WM_DESTROY:
-                PostQuitMessage(0);
-                EventManager::getInstancePtr()->sendEvent(ev::id::APPLICATION_QUIT);
-                return 0;
-            case WM_SHOWWINDOW:
-                return 0;
-            default:
-                return DefWindowProc(Window(), uMsg, wParam, lParam);
-        }
-        return TRUE;
-    }
 }
 
 #endif // MAIN_WINDOW_H_
