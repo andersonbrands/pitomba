@@ -3,10 +3,10 @@
 #define SIMPLE_RENDERER_H_
 
 #include "iRenderer.h"
-#include <d3dx9.h>
 #include <string>
 #include "MainWindow.h"
 #include "../Utils/Color.h"
+#include <memory>
 
 namespace pitomba {
 
@@ -58,10 +58,13 @@ namespace pitomba {
     inline void SimpleRenderer::update() {
         // Run the message loop.
         MSG msg = { };
-        GetMessage(&msg, nullptr, 0, 0);
+        ZeroMemory(&msg, sizeof(msg));
 
-        TranslateMessage(&msg);
-        DispatchMessage(&msg);
+        if (PeekMessage(&msg, nullptr, 0U, 0U, PM_REMOVE)) {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+        }
+
 
     }
 }
