@@ -1,14 +1,14 @@
 #include "RendererTask.h"
 #include "../Utils/Logger.h"
 #include "../Utils/Utils.h"
-#include "../Renderer/SDLRenderer.h"
 #include "TimerTask.h"
+#include "../Renderer/SimpleRenderer.h"
 
 
 namespace pitomba {
 
     RendererTask::RendererTask(const unsigned int priority)
-        : Task(priority), pRenderer_(new SDLRenderer("Pitomba Sample!")) {}
+        : Task(priority), pRenderer_(new SimpleRenderer(L"Simple Renderer!!!")) {}
 
     RendererTask::~RendererTask() {
         if (pRenderer_) {
@@ -25,6 +25,7 @@ namespace pitomba {
         Logger::getInstancePtr()->debug(
             "RendererTask start!"
         );
+        pRenderer_->start();
         std::function<void()> random_fill = [&]() {
             pRenderer_->fillSurface(rand_color_RGB());
         };

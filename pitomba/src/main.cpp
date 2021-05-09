@@ -1,19 +1,21 @@
 // main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+#include <Windows.h>
 #include "Sample/GameApplication.h"
-#include "pitomba/Utils/Logger.h"
 
 using namespace pitomba;
 
 
-int main(int argc, char* argv[]) {
+int WINAPI wWinMain(HINSTANCE, HINSTANCE, PWSTR, int) {
+
     GameApplication game;
 
     if (game.initialize()) {
         game.run();
     }
 
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
