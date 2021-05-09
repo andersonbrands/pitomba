@@ -2,13 +2,13 @@
 #include "../Utils/Logger.h"
 #include "../Utils/Utils.h"
 #include "TimerTask.h"
-#include "../Renderer/SimpleRenderer.h"
+#include "../Renderer/D3DRenderer.h"
 
 
 namespace pitomba {
 
     RendererTask::RendererTask(const unsigned int priority)
-        : Task(priority), pRenderer_(new SimpleRenderer(L"Simple Renderer!!!")) {}
+        : Task(priority), pRenderer_(new D3DRenderer(L"D3D Renderer!!!")) {}
 
     RendererTask::~RendererTask() {
         if (pRenderer_) {

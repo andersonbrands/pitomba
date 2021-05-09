@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_0.1.0-dev-win-x86</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -90,12 +90,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)deps\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)Include;$(SolutionDir)deps\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3dx9d.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,6 +148,9 @@
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
     <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
+    <ClCompile Include="src\pitomba\Renderer\D3DRenderer.cpp" />
+    <ClCompile Include="src\pitomba\Renderer\D3DWindow.cpp" />
+    <ClCompile Include="src\pitomba\Renderer\MainWindow.cpp" />
     <ClCompile Include="src\pitomba\Utils\Rng.cpp" />
     <ClCompile Include="src\pitomba\Utils\Scheduler.cpp" />
     <ClCompile Include="src\pitomba\Utils\Timer.cpp" />
@@ -167,6 +170,8 @@
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
     <ClInclude Include="src\pitomba\Kernel\TimerTask.h" />
     <ClInclude Include="src\pitomba\Renderer\BaseWindow.h" />
+    <ClInclude Include="src\pitomba\Renderer\D3DRenderer.h" />
+    <ClInclude Include="src\pitomba\Renderer\D3DWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\MainWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\iRenderer.h" />
     <ClInclude Include="src\pitomba\Renderer\SimpleRenderer.h" />
