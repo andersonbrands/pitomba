@@ -148,6 +148,7 @@
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
     <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
+    <ClCompile Include="src\pitomba\Math\Vector3.cpp" />
     <ClCompile Include="src\pitomba\Renderer\D3DRenderer.cpp" />
     <ClCompile Include="src\pitomba\Renderer\D3DWindow.cpp" />
     <ClCompile Include="src\pitomba\Renderer\MainWindow.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
     <ClInclude Include="src\pitomba\Kernel\TimerTask.h" />
+    <ClInclude Include="src\pitomba\Math\Vector3.h" />
     <ClInclude Include="src\pitomba\Renderer\BaseWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\D3DRenderer.h" />
     <ClInclude Include="src\pitomba\Renderer\D3DWindow.h" />

@@ -63,6 +63,9 @@
     <ClCompile Include="src\pitomba\Renderer\D3DWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\pitomba\Math\Vector3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pitomba\Utils\Logger.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pitomba\Renderer\D3DWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Math\Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
