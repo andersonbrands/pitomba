@@ -4,8 +4,6 @@
 #include <Windows.h>
 #include "Sample/GameApplication.h"
 
-using namespace pitomba;
-
 
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, PWSTR, int) {
 
