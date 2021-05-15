@@ -3,9 +3,15 @@
 #define PITOMBA_UTILS_H_
 
 #include "Color.h"
+#include <string>
 
 
 namespace pitomba {
+
+    using IdAndName = struct {
+        unsigned int id;
+        std::wstring name;
+    };
 
     using TimeUnit = long long;
 
