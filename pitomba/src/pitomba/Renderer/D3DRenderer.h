@@ -17,11 +17,9 @@ namespace pitomba {
         // delete copy assignment
         D3DRenderer& operator=(const D3DRenderer&) = delete;
 
-        explicit D3DRenderer(const std::wstring& windowTitle) : D3DWindow(windowTitle) {};
+        using D3DWindow::D3DWindow;
         ~D3DRenderer() final = default;
 
-    private:
-        //std::wstring windowTitle_;
     };
 }
 

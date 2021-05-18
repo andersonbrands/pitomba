@@ -11,8 +11,7 @@ namespace pitomba {
     class Kernel {
 
     private:
-        typedef std::list<Task*> TaskList;
-        typedef std::list<Task*>::iterator TaskListIterator;
+        using TaskList = std::list<Task*>;
 
         TaskList tasks_;
         TaskList pausedTasks_;

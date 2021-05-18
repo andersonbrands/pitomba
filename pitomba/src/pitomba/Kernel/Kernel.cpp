@@ -6,7 +6,7 @@
 namespace pitomba {
 
     void Kernel::priorityAdd(Task* pTask) {
-        TaskListIterator iter;
+        TaskList::iterator iter;
         for (iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
             const Task* pCurrentTask = (*iter);
             if (pCurrentTask->getPriority() > pTask->getPriority()) {
@@ -24,7 +24,7 @@ namespace pitomba {
         }
 
         while (tasks_.size()) {
-            TaskListIterator iter;
+            TaskList::iterator iter;
             for (iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
                 Task* pTask = (*iter);
                 if (!pTask->isFinished()) {
@@ -72,7 +72,7 @@ namespace pitomba {
     }
 
     void Kernel::killAllTasks() {
-        for (TaskListIterator iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
+        for (auto iter = tasks_.begin(); iter != tasks_.end(); ++iter) {
             (*iter)->stop();
         }
     }
