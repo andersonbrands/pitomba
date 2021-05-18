@@ -11,6 +11,9 @@ namespace pitomba {
 
             static const EventId DUMMY_EVENT = 0;
             static const EventId APPLICATION_QUIT = 1;
+            static const EventId PRE_RENDER = 2;
+            static const EventId RENDER = 3;
+            static const EventId POST_RENDER = 4;
 
         }
     }

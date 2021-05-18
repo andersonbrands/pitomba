@@ -21,6 +21,9 @@ bool GameApplication::initialize() {
     createSingletons();
 
     EventManager::getInstancePtr()->registerEvent(ev::id::APPLICATION_QUIT);
+    EventManager::getInstancePtr()->registerEvent(ev::id::PRE_RENDER);
+    EventManager::getInstancePtr()->registerEvent(ev::id::RENDER);
+    EventManager::getInstancePtr()->registerEvent(ev::id::POST_RENDER);
 
     EventManager::getInstancePtr()->attachEvent(ev::id::APPLICATION_QUIT, *this);
 
@@ -38,6 +41,9 @@ bool GameApplication::initialize() {
 
 void GameApplication::terminate() {
     EventManager::getInstancePtr()->unregisterEvent(ev::id::APPLICATION_QUIT);
+    EventManager::getInstancePtr()->unregisterEvent(ev::id::PRE_RENDER);
+    EventManager::getInstancePtr()->unregisterEvent(ev::id::RENDER);
+    EventManager::getInstancePtr()->unregisterEvent(ev::id::POST_RENDER);
     destroySingletons();
 }
 
