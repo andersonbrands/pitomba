@@ -66,6 +66,12 @@
     <ClCompile Include="src\pitomba\Math\Vector3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\pitomba\Renderer\Sprite\D3DSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pitomba\Renderer\Sprite\Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pitomba\Utils\Logger.h">
@@ -146,7 +152,13 @@
     <ClInclude Include="src\Sample\Ids\TextureIds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pitomba\Renderer\Sprite\D3DSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\pitomba\Math\Vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Renderer\Sprite\Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pitomba\EventManager\EventData.h">
