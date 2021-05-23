@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pitomba\EventManager\Event.h" />
+    <ClInclude Include="src\pitomba\EventManager\EventData.h" />
     <ClInclude Include="src\pitomba\EventManager\EventHandler.h" />
     <ClInclude Include="src\pitomba\EventManager\EventId.h" />
     <ClInclude Include="src\pitomba\EventManager\EventManager.h" />

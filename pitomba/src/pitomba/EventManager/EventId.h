@@ -14,6 +14,11 @@ namespace pitomba {
             static const EventId PRE_RENDER = 2;
             static const EventId RENDER = 3;
             static const EventId POST_RENDER = 4;
+            static const EventId CREATE_D3D_VERTEX_BUFFER = 5;
+            static const EventId CREATE_D3D_TEXTURE = 6;
+            static const EventId RENDER_TEXTURE = 7;
+            static const EventId SETUP_VIEW_MATRIX = 8;
+            static const EventId SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX = 9;
 
         }
     }

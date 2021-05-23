@@ -143,6 +143,9 @@
     <ClInclude Include="src\pitomba\Math\Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pitomba\EventManager\EventData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="data\textures\sample.png">
