@@ -137,8 +137,16 @@
     <ClInclude Include="src\pitomba\Renderer\D3DWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Sample\Ids\TextureIds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\pitomba\Math\Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\textures\sample.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

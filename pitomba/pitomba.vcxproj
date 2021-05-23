@@ -186,6 +186,10 @@
     <ClInclude Include="src\Sample\GameApplication.h" />
     <ClInclude Include="src\pitomba\Application\Application.h" />
     <ClInclude Include="src\pitomba\Utils\Logger.h" />
+    <ClInclude Include="src\Sample\Ids\TextureIds.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\textures\sample.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
