@@ -5,6 +5,7 @@
 #include "BaseWindow.h"
 #include "iRenderer.h"
 #include "../EventManager/EventManager.h"
+#include "../Math/Vector3.h"
 #include <string>
 #include <d3dx9.h>
 
@@ -37,6 +38,11 @@ namespace pitomba {
         ColorRGB clearColor = { 0.2F,0.2F,0.2F };
         HRESULT setupD3D();
         bool isDeviceLost();
+
+        void renderTexture(LPDIRECT3DTEXTURE9 texture, LPDIRECT3DVERTEXBUFFER9 vertexBuffer, std::size_t vertexStructSize, DWORD fvf);
+        void setupViewMatrix(float aspectRatio, const Vector3& camPos, const Vector3& camTarget, const Vector3& upVector = Vector3(0.0f, 0.1f, 0.0f));
+        void setTransform(const Vector3& pos, const Vector3& scale, const Vector3& rotation);
+        void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar);
     };
 }
 
