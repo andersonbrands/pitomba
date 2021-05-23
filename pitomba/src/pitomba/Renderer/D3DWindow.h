@@ -5,13 +5,14 @@
 #include "BaseWindow.h"
 #include "iRenderer.h"
 #include "../EventManager/EventManager.h"
+#include "../EventManager/EventHandler.h"
 #include "../Math/Vector3.h"
 #include <string>
 #include <d3dx9.h>
 
 
 namespace pitomba {
-    class D3DWindow : public BaseWindow<D3DWindow>, public iRenderer {
+    class D3DWindow : public BaseWindow<D3DWindow>, public iRenderer, public EventHandler {
     public:
         explicit D3DWindow(std::wstring const& windowTitle) : windowTitle_(windowTitle) {};
         virtual ~D3DWindow();
@@ -26,6 +27,9 @@ namespace pitomba {
         bool preRender() final;
         void render() final;
         void postRender() final;
+
+        // event handler interface
+        void handleEvent(EventId eventId, void* pData) final;
 
     private:
         std::wstring windowTitle_;
@@ -44,6 +48,7 @@ namespace pitomba {
         void setTransform(const Vector3& pos, const Vector3& scale, const Vector3& rotation);
         void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar);
     };
+
 }
 
 #endif // D3D_WINDOW_H_

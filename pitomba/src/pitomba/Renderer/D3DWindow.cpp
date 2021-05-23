@@ -1,5 +1,7 @@
 
 #include "D3DWindow.h"
+#include "../EventManager/EventData.h"
+#include "Texture/TextureManager.h"
 
 
 namespace pitomba {
@@ -7,6 +9,13 @@ namespace pitomba {
     D3DWindow::~D3DWindow() {
         if (g_pd3dDevice) g_pd3dDevice->Release();
         if (g_pD3D) g_pD3D->Release();
+
+        // TODO detach events, maybe, on a stop or pause method
+        EventManager::getInstancePtr()->detachEvent(ev::id::CREATE_D3D_TEXTURE, *this);
+        EventManager::getInstancePtr()->detachEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, *this);
+        EventManager::getInstancePtr()->detachEvent(ev::id::RENDER_TEXTURE, *this);
+        EventManager::getInstancePtr()->detachEvent(ev::id::SETUP_VIEW_MATRIX, *this);
+        EventManager::getInstancePtr()->detachEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, *this);
     }
 
     LRESULT D3DWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) {
@@ -40,6 +49,13 @@ namespace pitomba {
         ShowWindow(Window(), SW_SHOWDEFAULT);
         UpdateWindow(Window());
         g_pd3dDevice->SetRenderState(D3DRS_NORMALIZENORMALS, TRUE);
+
+        // listen to events
+        EventManager::getInstancePtr()->attachEvent(ev::id::CREATE_D3D_TEXTURE, *this);
+        EventManager::getInstancePtr()->attachEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, *this);
+        EventManager::getInstancePtr()->attachEvent(ev::id::RENDER_TEXTURE, *this);
+        EventManager::getInstancePtr()->attachEvent(ev::id::SETUP_VIEW_MATRIX, *this);
+        EventManager::getInstancePtr()->attachEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, *this);
     }
 
     void D3DWindow::fillSurface(ColorRGB color) {
@@ -73,6 +89,58 @@ namespace pitomba {
 
         // Present the backbuffer to the display.
         g_pd3dDevice->Present(nullptr, nullptr, nullptr, nullptr);
+    }
+
+    void D3DWindow::handleEvent(EventId eventId, void* pData) {
+
+        switch (eventId) {
+            case ev::id::SETUP_VIEW_MATRIX:
+            {
+                auto data(static_cast<ev::data::SetupViewMatrix*>(pData));
+                setupViewMatrix(data->aspectRatio, data->camPos, data->camTarget, data->upVector);
+                break;
+            }
+            case ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX:
+            {
+                auto data(static_cast<ev::data::setupLHOrthogonalProjectionMatrix*>(pData));
+                setupLHOrthogonalProjectionMatrix(data->w, data->h, data->zNear, data->zFar);
+                break;
+            }
+            case ev::id::CREATE_D3D_TEXTURE:
+            {
+                auto data(static_cast<ev::data::CreateD3DTexture*>(pData));
+                auto createTextureResult = D3DXCreateTextureFromFile(
+                    g_pd3dDevice,
+                    data->fullPath.c_str(),
+                    TextureManager::getInstancePtr()->get(data->textureId)
+                );
+                assert(!FAILED(createTextureResult));
+                break;
+            }
+            case ev::id::CREATE_D3D_VERTEX_BUFFER:
+            {
+                auto data(static_cast<ev::data::CreateD3DVertexBuffer*>(pData));
+                auto createVertexBufferResult = g_pd3dDevice->CreateVertexBuffer(data->bufferSize, 0, data->fvf, D3DPOOL_DEFAULT, data->vertexBuffer, nullptr);
+                assert(!FAILED(createVertexBufferResult));
+                break;
+            }
+            case ev::id::RENDER_TEXTURE:
+            {
+                auto data(static_cast<ev::data::RenderTexture*>(pData));
+
+                Vector3 pos(0.0F, 0.0F, 0.001f);
+                Vector3 scale(1.0f);
+                Vector3 rotation(0.0f);
+
+                setTransform(pos, scale, rotation);
+
+                renderTexture(*TextureManager::getInstancePtr()->get(data->textureId), data->vertexBuffer, data->vertexStructSize, data->fvf);
+                break;
+            }
+
+            default:
+                break;
+        }
     }
 
     HRESULT D3DWindow::setupD3D() {
