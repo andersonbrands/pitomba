@@ -137,6 +137,12 @@
     <ClInclude Include="src\pitomba\Renderer\D3DWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pitomba\Utils\UnorderedMapContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Renderer\Texture\TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Sample\Ids\TextureIds.h">
       <Filter>Header Files</Filter>
     </ClInclude>

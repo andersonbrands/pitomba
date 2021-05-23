@@ -177,11 +177,13 @@
     <ClInclude Include="src\pitomba\Renderer\D3DWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\MainWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\iRenderer.h" />
+    <ClInclude Include="src\pitomba\Renderer\Texture\TextureManager.h" />
     <ClInclude Include="src\pitomba\Utils\Color.h" />
     <ClInclude Include="src\pitomba\Utils\Rng.h" />
     <ClInclude Include="src\pitomba\Utils\Scheduler.h" />
     <ClInclude Include="src\pitomba\Utils\Singleton.h" />
     <ClInclude Include="src\pitomba\Utils\Timer.h" />
+    <ClInclude Include="src\pitomba\Utils\UnorderedMapContainer.h" />
     <ClInclude Include="src\pitomba\Utils\Utils.h" />
     <ClInclude Include="src\Sample\DummyTask.h" />
     <ClInclude Include="src\Sample\GameApplication.h" />

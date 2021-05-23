@@ -2,6 +2,7 @@
 #include "../pitomba/Kernel/TimerTask.h"
 #include "../pitomba/Kernel/RendererTask.h"
 #include "../pitomba/EventManager/EventManager.h"
+#include "../pitomba/Renderer/Texture/TextureManager.h"
 #include "../pitomba/Utils/Rng.h"
 
 using namespace pitomba;
@@ -70,9 +71,13 @@ void GameApplication::createSingletons() {
     new Rng();
     new TimerTask(Task::TIMER_PRIORITY);
     new RendererTask(Task::RENDERER_PRIORITY);
+    new TextureManager(L"data/textures/");
 }
 
 void GameApplication::destroySingletons() {
+    assert(TextureManager::getInstancePtr());
+    delete TextureManager::getInstancePtr();
+
     assert(RendererTask::getInstancePtr());
     delete RendererTask::getInstancePtr();
 
