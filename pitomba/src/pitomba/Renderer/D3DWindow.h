@@ -34,7 +34,7 @@ namespace pitomba {
 
     private:
 
-        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
+        iEventManager* pEventManager_ = ServiceLocator::getEventManager();
         std::wstring windowTitle_;
 
         LPDIRECT3D9 g_pD3D;

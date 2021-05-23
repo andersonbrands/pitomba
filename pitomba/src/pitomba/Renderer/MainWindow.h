@@ -5,7 +5,6 @@
 #include "BaseWindow.h"
 #include "../EventManager/iEventManager.h"
 #include <string>
-#include <memory>
 #include "../Utils/ServiceLocator.h"
 
 
@@ -19,7 +18,7 @@ namespace pitomba {
 
     private:
         std::wstring windowTitle_;
-        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
+        iEventManager* pEventManager_ = ServiceLocator::getEventManager();
     };
 }
 

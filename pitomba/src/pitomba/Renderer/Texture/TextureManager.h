@@ -11,7 +11,6 @@
 #include "../../EventManager/iEventManager.h"
 #include "../../EventManager/EventData.h"
 #include "../../EventManager/EventId.h"
-#include <memory>
 
 
 using namespace std;
@@ -21,7 +20,7 @@ namespace pitomba {
     class TextureManager : public UnorderedMapContainer<unsigned int, LPDIRECT3DTEXTURE9>, public Singleton<TextureManager> {
     private:
         const wstring TEXTURE_DIR;
-        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
+        iEventManager* pEventManager_ = ServiceLocator::getEventManager();
     public:
         explicit TextureManager(const wstring& textureDir) : UnorderedMapContainer(), TEXTURE_DIR(textureDir) {};
         ~TextureManager() final = default;

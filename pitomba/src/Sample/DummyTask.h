@@ -19,7 +19,7 @@ public:
 
 private:
 
-    std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
+    iEventManager* pEventManager_ = ServiceLocator::getEventManager();
     void onUpdate() final;
     void onStart() final;
 

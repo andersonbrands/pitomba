@@ -70,10 +70,10 @@ void GameApplication::handleEvent(EventId eventId, void* pData) {
 
 void GameApplication::createServices() {
     pEventManager_ = std::make_shared<EventManager>();
-    ServiceLocator::provide(pEventManager_);
+    ServiceLocator::provide(pEventManager_.get());
 
     pRng_ = std::make_shared<Rng>();
-    ServiceLocator::provide(pRng_);
+    ServiceLocator::provide(pRng_.get());
 }
 
 void GameApplication::createSingletons() {

@@ -4,32 +4,31 @@
 
 #include "../EventManager/iEventManager.h"
 #include "../Utils/iRng.h"
-#include <memory>
 
 namespace pitomba {
 
     class ServiceLocator {
     public:
 
-        static std::shared_ptr<iEventManager> getEventManager() {
+        static iEventManager* getEventManager() {
             return eventManager_;
         }
 
-        static std::shared_ptr<iRng> getRng() {
+        static iRng* getRng() {
             return rng_;
         }
 
-        static void provide(std::shared_ptr<iEventManager> eventManager) {
+        static void provide(iEventManager* eventManager) {
             eventManager_ = eventManager;
         }
 
-        static void provide(std::shared_ptr<iRng> rng) {
+        static void provide(iRng* rng) {
             rng_ = rng;
         }
 
     private:
-        static std::shared_ptr<iEventManager> eventManager_;
-        static std::shared_ptr<iRng> rng_;
+        static iEventManager* eventManager_;
+        static iRng* rng_;
 
     };
 }

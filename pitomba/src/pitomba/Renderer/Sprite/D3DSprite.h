@@ -7,7 +7,6 @@
 #include <d3dx9.h>
 #include "../../EventManager/iEventManager.h"
 #include "../../Utils/ServiceLocator.h"
-#include <memory>
 
 namespace pitomba {
 
@@ -15,7 +14,7 @@ namespace pitomba {
     class D3DSprite : public Sprite {
     private:
 
-        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
+        iEventManager* pEventManager_ = ServiceLocator::getEventManager();
 
         struct SPRITE_VERTEX {
             D3DXVECTOR3 position;
