@@ -2,7 +2,7 @@
 
 #include <chrono>
 #include <thread>
-#include "Rng.h"
+
 
 using namespace std::chrono;
 
@@ -22,29 +22,21 @@ namespace pitomba {
         return time * MILLI_TO_SECONDS_MULTIPLIER;
     }
 
-    int rand_int(int min, int max) {
-        return Rng::getInstancePtr()->rand_int(min, max);
-    }
-
-    float rand_float(float min, float max) {
-        return Rng::getInstancePtr()->rand_float(min, max);
-    }
-
-    ColorRGB rand_color_RGB() {
+    ColorRGB rand_color_RGB(iRng& rng) {
         auto color = ColorRGB{
-            rand_float(0.0F, 1.0F),
-            rand_float(0.0F, 1.0F),
-            rand_float(0.0F, 1.0F)
+            rng.rand_float(0.0F, 1.0F),
+            rng.rand_float(0.0F, 1.0F),
+            rng.rand_float(0.0F, 1.0F)
         };
         return color;
     }
 
-    ColorRGBA rand_color_RGBA() {
+    ColorRGBA rand_color_RGBA(iRng& rng) {
         auto color = ColorRGBA{
-            rand_float(0.0F, 1.0F),
-            rand_float(0.0F, 1.0F),
-            rand_float(0.0F, 1.0F),
-            rand_float(0.0F, 1.0F)
+            rng.rand_float(0.0F, 1.0F),
+            rng.rand_float(0.0F, 1.0F),
+            rng.rand_float(0.0F, 1.0F),
+            rng.rand_float(0.0F, 1.0F)
         };
         return color;
     }

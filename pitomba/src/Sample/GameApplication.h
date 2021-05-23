@@ -6,6 +6,7 @@
 #include "../pitomba/Application/Application.h"
 #include "../pitomba/EventManager/EventHandler.h"
 #include "../pitomba/EventManager/iEventManager.h"
+#include "../pitomba/Utils/iRng.h"
 #include "DummyTask.h"
 
 using namespace pitomba;
@@ -16,6 +17,7 @@ private:
     std::unique_ptr<DummyTask> pDummyTask_ = nullptr;
 
     std::shared_ptr<iEventManager> pEventManager_ = nullptr;
+    std::shared_ptr<iRng> pRng_ = nullptr;
 
     void createServices();
     void createSingletons();

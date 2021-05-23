@@ -27,7 +27,7 @@ namespace pitomba {
         );
         pRenderer_->start();
         std::function<void()> random_fill = [&]() {
-            pRenderer_->fillSurface(rand_color_RGB());
+            pRenderer_->fillSurface(rand_color_RGB(*pRng_));
         };
         scheduler_.setInterval(1000, random_fill);
     }

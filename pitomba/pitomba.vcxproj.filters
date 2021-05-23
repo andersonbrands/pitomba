@@ -173,6 +173,9 @@
     <ClInclude Include="src\pitomba\EventManager\iEventManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pitomba\Utils\iRng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="data\textures\sample.png">

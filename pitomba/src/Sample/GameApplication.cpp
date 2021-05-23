@@ -71,10 +71,12 @@ void GameApplication::handleEvent(EventId eventId, void* pData) {
 void GameApplication::createServices() {
     pEventManager_ = std::make_shared<EventManager>();
     ServiceLocator::provide(pEventManager_);
+
+    pRng_ = std::make_shared<Rng>();
+    ServiceLocator::provide(pRng_);
 }
 
 void GameApplication::createSingletons() {
-    new Rng();
     new TimerTask(Task::TIMER_PRIORITY);
     new RendererTask(Task::RENDERER_PRIORITY);
     new TextureManager(L"data/textures/");
@@ -89,7 +91,4 @@ void GameApplication::destroySingletons() {
 
     assert(TimerTask::getInstancePtr());
     delete TimerTask::getInstancePtr();
-
-    assert(Rng::getInstancePtr());
-    delete Rng::getInstancePtr();
 }

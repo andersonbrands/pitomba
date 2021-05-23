@@ -2,19 +2,18 @@
 #define RNG_H_
 
 #include <random>
-#include "Singleton.h"
-
+#include "iRng.h"
 
 namespace pitomba {
 
-    class Rng : public Singleton<Rng> {
+    class Rng : public iRng {
 
     public:
         Rng() = default;
-        virtual ~Rng() = default;
+        ~Rng() final = default;
 
-        int rand_int(int, int);
-        float rand_float(float, float);
+        int rand_int(int, int) final;
+        float rand_float(float, float) final;
     private:
         std::random_device rd;
         std::mt19937 gen = std::mt19937(rd());
