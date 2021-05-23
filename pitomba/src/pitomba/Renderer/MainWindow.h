@@ -3,8 +3,10 @@
 #define MAIN_WINDOW_H_
 
 #include "BaseWindow.h"
-#include "../EventManager/EventManager.h"
+#include "../EventManager/iEventManager.h"
 #include <string>
+#include <memory>
+#include "../Utils/ServiceLocator.h"
 
 
 namespace pitomba {
@@ -17,6 +19,7 @@ namespace pitomba {
 
     private:
         std::wstring windowTitle_;
+        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
     };
 }
 

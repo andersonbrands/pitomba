@@ -4,8 +4,9 @@
 
 #include "BaseWindow.h"
 #include "iRenderer.h"
-#include "../EventManager/EventManager.h"
+#include "../EventManager/iEventManager.h"
 #include "../EventManager/EventHandler.h"
+#include "../Utils/ServiceLocator.h"
 #include "../Math/Vector3.h"
 #include <string>
 #include <d3dx9.h>
@@ -32,6 +33,8 @@ namespace pitomba {
         void handleEvent(EventId eventId, void* pData) final;
 
     private:
+
+        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
         std::wstring windowTitle_;
 
         LPDIRECT3D9 g_pD3D;

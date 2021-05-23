@@ -34,15 +34,15 @@ namespace pitomba {
 
     void RendererTask::onUpdate() {
         if (pRenderer_->preRender()) {
-            EventManager::getInstancePtr()->sendEvent(ev::id::PRE_RENDER);
+            pEventManager_->sendEvent(ev::id::PRE_RENDER);
 
             pRenderer_->render();
 
-            EventManager::getInstancePtr()->sendEvent(ev::id::RENDER);
+            pEventManager_->sendEvent(ev::id::RENDER);
             scheduler_.tick(TimerTask::getInstancePtr()->getDelta()); // TODO handle Render event
 
             pRenderer_->postRender();
-            EventManager::getInstancePtr()->sendEvent(ev::id::POST_RENDER);
+            pEventManager_->sendEvent(ev::id::POST_RENDER);
         }
 
     }

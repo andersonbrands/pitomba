@@ -156,6 +156,7 @@
     <ClCompile Include="src\pitomba\Renderer\Sprite\Sprite.cpp" />
     <ClCompile Include="src\pitomba\Utils\Rng.cpp" />
     <ClCompile Include="src\pitomba\Utils\Scheduler.cpp" />
+    <ClCompile Include="src\pitomba\Utils\ServiceLocator.cpp" />
     <ClCompile Include="src\pitomba\Utils\Timer.cpp" />
     <ClCompile Include="src\pitomba\Utils\Utils.cpp" />
     <ClCompile Include="src\Sample\DummyTask.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="src\pitomba\EventManager\EventHandler.h" />
     <ClInclude Include="src\pitomba\EventManager\EventId.h" />
     <ClInclude Include="src\pitomba\EventManager\EventManager.h" />
+    <ClInclude Include="src\pitomba\EventManager\iEventManager.h" />
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
@@ -185,6 +187,7 @@
     <ClInclude Include="src\pitomba\Utils\Color.h" />
     <ClInclude Include="src\pitomba\Utils\Rng.h" />
     <ClInclude Include="src\pitomba\Utils\Scheduler.h" />
+    <ClInclude Include="src\pitomba\Utils\ServiceLocator.h" />
     <ClInclude Include="src\pitomba\Utils\Singleton.h" />
     <ClInclude Include="src\pitomba\Utils\Timer.h" />
     <ClInclude Include="src\pitomba\Utils\UnorderedMapContainer.h" />

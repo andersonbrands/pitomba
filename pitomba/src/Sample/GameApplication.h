@@ -2,8 +2,10 @@
 #define GAME_APPLICATION_H_
 
 
+#include <memory>
 #include "../pitomba/Application/Application.h"
 #include "../pitomba/EventManager/EventHandler.h"
+#include "../pitomba/EventManager/iEventManager.h"
 #include "DummyTask.h"
 
 using namespace pitomba;
@@ -13,6 +15,9 @@ class GameApplication : public Application, public EventHandler {
 private:
     std::unique_ptr<DummyTask> pDummyTask_ = nullptr;
 
+    std::shared_ptr<iEventManager> pEventManager_ = nullptr;
+
+    void createServices();
     void createSingletons();
     void destroySingletons();
 

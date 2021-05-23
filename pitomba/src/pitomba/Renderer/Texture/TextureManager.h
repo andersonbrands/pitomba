@@ -5,11 +5,14 @@
 #include "../../Utils/UnorderedMapContainer.h"
 #include "../../Utils/Singleton.h"
 #include "../../Utils/Utils.h"
+#include "../../Utils/ServiceLocator.h"
 #include <string>
 #include <d3dx9.h>
-#include "../../EventManager/EventManager.h"
+#include "../../EventManager/iEventManager.h"
 #include "../../EventManager/EventData.h"
 #include "../../EventManager/EventId.h"
+#include <memory>
+
 
 using namespace std;
 
@@ -18,6 +21,7 @@ namespace pitomba {
     class TextureManager : public UnorderedMapContainer<unsigned int, LPDIRECT3DTEXTURE9>, public Singleton<TextureManager> {
     private:
         const wstring TEXTURE_DIR;
+        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
     public:
         explicit TextureManager(const wstring& textureDir) : UnorderedMapContainer(), TEXTURE_DIR(textureDir) {};
         ~TextureManager() final = default;
@@ -34,7 +38,7 @@ namespace pitomba {
                 (TEXTURE_DIR + idAndName.name),
                 idAndName.id
             };
-            EventManager::getInstancePtr()->sendEvent(ev::id::CREATE_D3D_TEXTURE, &data);
+            pEventManager_->sendEvent(ev::id::CREATE_D3D_TEXTURE, &data);
         }
         return result;
     }

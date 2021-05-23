@@ -24,7 +24,7 @@ namespace pitomba {
             sizeof(SPRITE_VERTEX),
             FVF_SPRITE_VERTEX
         };
-        EventManager::getInstancePtr()->sendEvent(ev::id::RENDER_TEXTURE, &data);
+        pEventManager_->sendEvent(ev::id::RENDER_TEXTURE, &data);
     }
 
     void D3DSprite::createVertexBuffer() {
@@ -37,7 +37,7 @@ namespace pitomba {
             &pVertexBuffer_
         };
 
-        EventManager::getInstancePtr()->sendEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, &data);
+        pEventManager_->sendEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, &data);
 
         SPRITE_VERTEX* pVertices(nullptr);
 

@@ -2,9 +2,12 @@
 #define DUMMY_TASK_H_
 
 
+#include <memory>
 #include "../pitomba/Kernel/Task.h"
 #include "../pitomba/Renderer/Sprite/D3DSprite.h"
+#include "../pitomba/EventManager/iEventManager.h"
 #include "../pitomba/EventManager/EventHandler.h"
+#include "../pitomba/Utils/ServiceLocator.h"
 
 
 using namespace pitomba;
@@ -15,13 +18,15 @@ public:
     ~DummyTask() final = default;
 
 private:
+
+    std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
     void onUpdate() final;
     void onStart() final;
 
     D3DSprite sprite;
 
     // EventHandler interface
-    virtual void handleEvent(EventId eventId, void* pData) override;
+    void handleEvent(EventId eventId, void* pData) override;
 };
 
 #endif // DUMMY_TASK_H_ 

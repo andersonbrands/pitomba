@@ -11,17 +11,17 @@ namespace pitomba {
         if (g_pD3D) g_pD3D->Release();
 
         // TODO detach events, maybe, on a stop or pause method
-        EventManager::getInstancePtr()->detachEvent(ev::id::CREATE_D3D_TEXTURE, *this);
-        EventManager::getInstancePtr()->detachEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, *this);
-        EventManager::getInstancePtr()->detachEvent(ev::id::RENDER_TEXTURE, *this);
-        EventManager::getInstancePtr()->detachEvent(ev::id::SETUP_VIEW_MATRIX, *this);
-        EventManager::getInstancePtr()->detachEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, *this);
+        pEventManager_->detachEvent(ev::id::CREATE_D3D_TEXTURE, *this);
+        pEventManager_->detachEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, *this);
+        pEventManager_->detachEvent(ev::id::RENDER_TEXTURE, *this);
+        pEventManager_->detachEvent(ev::id::SETUP_VIEW_MATRIX, *this);
+        pEventManager_->detachEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, *this);
     }
 
     LRESULT D3DWindow::HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) {
         switch (uMsg) {
             case WM_DESTROY:
-                EventManager::getInstancePtr()->sendEvent(ev::id::APPLICATION_QUIT);
+                pEventManager_->sendEvent(ev::id::APPLICATION_QUIT);
                 PostQuitMessage(0);
                 return 0;
             case WM_SHOWWINDOW:
@@ -51,11 +51,11 @@ namespace pitomba {
         g_pd3dDevice->SetRenderState(D3DRS_NORMALIZENORMALS, TRUE);
 
         // listen to events
-        EventManager::getInstancePtr()->attachEvent(ev::id::CREATE_D3D_TEXTURE, *this);
-        EventManager::getInstancePtr()->attachEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, *this);
-        EventManager::getInstancePtr()->attachEvent(ev::id::RENDER_TEXTURE, *this);
-        EventManager::getInstancePtr()->attachEvent(ev::id::SETUP_VIEW_MATRIX, *this);
-        EventManager::getInstancePtr()->attachEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, *this);
+        pEventManager_->attachEvent(ev::id::CREATE_D3D_TEXTURE, *this);
+        pEventManager_->attachEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, *this);
+        pEventManager_->attachEvent(ev::id::RENDER_TEXTURE, *this);
+        pEventManager_->attachEvent(ev::id::SETUP_VIEW_MATRIX, *this);
+        pEventManager_->attachEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, *this);
     }
 
     void D3DWindow::fillSurface(ColorRGB color) {

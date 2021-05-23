@@ -2,18 +2,16 @@
 #ifndef EVENT_MANAGER_H_
 #define EVENT_MANAGER_H_
 
-#include "../Utils/Singleton.h"
-#include <unordered_map>
-#include "EventHandler.h"
-#include "EventId.h"
-#include "Event.h"
 
-#include <cassert>
+#include "iEventManager.h"
+#include "Event.h"
+#include "EventId.h"
+#include <unordered_map>
 
 
 namespace pitomba {
 
-    class EventManager : public Singleton<EventManager> {
+    class EventManager : public iEventManager {
 
     private:
         using EventMap = std::unordered_map<EventId, Event*>;

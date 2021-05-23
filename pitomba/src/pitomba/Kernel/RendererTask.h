@@ -4,7 +4,10 @@
 #include "Task.h"
 #include "../Utils/Singleton.h"
 #include "../Renderer/iRenderer.h"
+#include "../EventManager/iEventManager.h"
 #include "../Utils/Scheduler.h"
+#include "../Utils/ServiceLocator.h"
+#include <memory>
 
 namespace pitomba {
 
@@ -22,6 +25,7 @@ namespace pitomba {
     private:
         Scheduler scheduler_;
         iRenderer* pRenderer_ = nullptr;
+        std::shared_ptr<iEventManager> pEventManager_ = ServiceLocator::getEventManager();
     };
 
 }

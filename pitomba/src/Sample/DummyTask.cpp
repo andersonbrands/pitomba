@@ -1,11 +1,8 @@
 
 #include "DummyTask.h"
-#include "../pitomba/Utils/Logger.h"
-#include "../pitomba/Utils/Utils.h"
 #include "../pitomba/Renderer/Texture/TextureManager.h"
 #include "../pitomba/EventManager/EventId.h"
 #include "../pitomba/EventManager/EventData.h"
-#include "../pitomba/EventManager/EventManager.h"
 #include "Ids/TextureIds.h"
 
 
@@ -27,8 +24,8 @@ void DummyTask::onStart() {
         pitomba::Sprite::SpriteAlign::CENTER
     );
 
-    EventManager::getInstancePtr()->attachEvent(ev::id::RENDER, *this);
-    EventManager::getInstancePtr()->attachEvent(ev::id::PRE_RENDER, *this);
+    pEventManager_->attachEvent(ev::id::RENDER, *this);
+    pEventManager_->attachEvent(ev::id::PRE_RENDER, *this);
 }
 
 void DummyTask::handleEvent(EventId eventId, void* pData) {
@@ -49,7 +46,7 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
                 upVector
             };
 
-            EventManager::getInstancePtr()->sendEvent(ev::id::SETUP_VIEW_MATRIX, &setupViewMatrixData);
+            pEventManager_->sendEvent(ev::id::SETUP_VIEW_MATRIX, &setupViewMatrixData);
 
             float zNear = -1.0F;
             float zFar = 4.0F;
@@ -61,7 +58,7 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
                 zFar
             };
 
-            EventManager::getInstancePtr()->sendEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, &setupLHOrthogonalProjectionMatrixData);
+            pEventManager_->sendEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, &setupLHOrthogonalProjectionMatrixData);
             break;
         }
         case ev::id::RENDER:
