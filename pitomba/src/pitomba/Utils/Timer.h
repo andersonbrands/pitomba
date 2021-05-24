@@ -2,12 +2,13 @@
 #ifndef TIMER_H_
 #define TIMER_H_
 
-#include "Utils.h"
+#include "iTimer.h"
+#include "iManagedTimer.h"
 
 
 namespace pitomba {
 
-    class Timer {
+    class Timer : public iTimer, public iManagedTimer {
 
     private:
         TimeUnit deltaTimeFromLastFrame_ = 0;
@@ -15,33 +16,22 @@ namespace pitomba {
         TimeUnit elapsedTime_ = 0;
         bool paused_ = true;
 
-        void reset();
-
     public:
         Timer() = default;
-        virtual ~Timer() = default;
+        ~Timer() final = default;
 
-        void tick();
-        void start();
-        void pause();
-        void resume();
+        // Inherited via iTimer
+        float fps() const override;
+        TimeUnit elapsedTime() const override;
+        TimeUnit delta() const override;
 
-        float getFPS() const;
-        TimeUnit getElapsedTime() const;
-        TimeUnit getDeltaTimeFromLastFrame() const;
+        // Inherited via iManagedTimer
+        void reset() override;
+        void tick() override;
+        void start() override;
+        void pause() override;
+        void resume() override;
     };
-
-    inline float Timer::getFPS() const {
-        return 1000.0F / (float)deltaTimeFromLastFrame_;
-    }
-
-    inline TimeUnit Timer::getElapsedTime() const {
-        return elapsedTime_;
-    }
-
-    inline TimeUnit Timer::getDeltaTimeFromLastFrame() const {
-        return deltaTimeFromLastFrame_;
-    }
 
 }
 

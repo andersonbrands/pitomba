@@ -4,6 +4,7 @@
 
 #include "../EventManager/iEventManager.h"
 #include "../Utils/iRng.h"
+#include "../Utils/iTimer.h"
 
 namespace pitomba {
 
@@ -18,6 +19,10 @@ namespace pitomba {
             return rng_;
         }
 
+        static iTimer* getTimer() {
+            return timer_;
+        }
+
         static void provide(iEventManager* eventManager) {
             eventManager_ = eventManager;
         }
@@ -26,9 +31,14 @@ namespace pitomba {
             rng_ = rng;
         }
 
+        static void provide(iTimer* timer) {
+            timer_ = timer;
+        }
+
     private:
         static iEventManager* eventManager_;
         static iRng* rng_;
+        static iTimer* timer_;
 
     };
 }

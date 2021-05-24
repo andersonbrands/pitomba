@@ -2,16 +2,20 @@
 #define TIMER_TASK_H_
 
 #include "Task.h"
+#include "../Utils/iTimer.h"
+#include "../Utils/iManagedTimer.h"
 #include "../Utils/Timer.h"
-#include "../Utils/Singleton.h"
-#include <functional>
+#include <memory>
 
 
 namespace pitomba {
 
-    class TimerTask : public Task, public Singleton<TimerTask> {
-    private:
-        Timer timer_;
+    class TimerTask : public Task {
+    public:
+        explicit TimerTask(const unsigned int priority);
+        ~TimerTask() final = default;
+
+        iTimer* getTimer() const;
 
     protected:
         void onStart() final;
@@ -20,11 +24,10 @@ namespace pitomba {
         void onResume() final;
         void onStop() final;
 
-    public:
-        explicit TimerTask(const unsigned int priority);
-        ~TimerTask() final = default;
-
-        TimeUnit getDelta() const;
+    private:
+        std::unique_ptr<Timer> pConcreteTimer_ = std::make_unique<Timer>();
+        iTimer* pTimer_ = pConcreteTimer_.get();
+        iManagedTimer* pManagedTimer_ = pConcreteTimer_.get();
     };
 
 }

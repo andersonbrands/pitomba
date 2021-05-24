@@ -39,7 +39,7 @@ namespace pitomba {
             pRenderer_->render();
 
             pEventManager_->sendEvent(ev::id::RENDER);
-            scheduler_.tick(TimerTask::getInstancePtr()->getDelta()); // TODO handle Render event
+            scheduler_.tick(pTimer_->delta()); // TODO handle Render event
 
             pRenderer_->postRender();
             pEventManager_->sendEvent(ev::id::POST_RENDER);

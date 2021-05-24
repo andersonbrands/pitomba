@@ -6,6 +6,7 @@
 #include "../Renderer/iRenderer.h"
 #include "../EventManager/iEventManager.h"
 #include "../Utils/iRng.h"
+#include "../Utils/iTimer.h"
 #include "../Utils/Scheduler.h"
 #include "../Utils/ServiceLocator.h"
 
@@ -27,6 +28,7 @@ namespace pitomba {
         iRenderer* pRenderer_ = nullptr;
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
         iRng* pRng_ = ServiceLocator::getRng();
+        iTimer* pTimer_ = ServiceLocator::getTimer();
     };
 
 }

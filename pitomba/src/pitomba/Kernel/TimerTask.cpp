@@ -1,33 +1,33 @@
 
 #include "TimerTask.h"
-
+#include "../Utils/Timer.h"
 
 namespace pitomba {
 
     TimerTask::TimerTask(const unsigned int priority) : Task(priority) {}
 
-    TimeUnit TimerTask::getDelta() const {
-        return timer_.getDeltaTimeFromLastFrame();
+    iTimer* TimerTask::getTimer() const {
+        return pTimer_;
     }
 
     void TimerTask::onStart() {
-        timer_.start();
+        pManagedTimer_->start();
     }
 
     void TimerTask::onPause() {
-        timer_.pause();
+        pManagedTimer_->pause();
     }
 
     void TimerTask::onUpdate() {
-        timer_.tick();
+        pManagedTimer_->tick();
     }
 
     void TimerTask::onResume() {
-        timer_.resume();
+        pManagedTimer_->resume();
     }
 
     void TimerTask::onStop() {
-        timer_.pause();
+        pManagedTimer_->pause();
     }
 
 }

@@ -40,8 +40,7 @@ bool GameApplication::initialize() {
     pDummyTask_ = std::make_unique<DummyTask>(10000);
     addTask(pDummyTask_.get());
 
-    assert(TimerTask::getInstancePtr());
-    addTask(TimerTask::getInstancePtr());
+    addTask(pTimerTask_.get());
 
     assert(RendererTask::getInstancePtr());
     addTask(RendererTask::getInstancePtr());
@@ -74,10 +73,12 @@ void GameApplication::createServices() {
 
     pRng_ = std::make_shared<Rng>();
     ServiceLocator::provide(pRng_.get());
+
+    pTimerTask_ = std::make_unique<TimerTask>(Task::TIMER_PRIORITY);
+    ServiceLocator::provide(pTimerTask_->getTimer());
 }
 
 void GameApplication::createSingletons() {
-    new TimerTask(Task::TIMER_PRIORITY);
     new RendererTask(Task::RENDERER_PRIORITY);
     new TextureManager(L"data/textures/");
 }
@@ -88,7 +89,4 @@ void GameApplication::destroySingletons() {
 
     assert(RendererTask::getInstancePtr());
     delete RendererTask::getInstancePtr();
-
-    assert(TimerTask::getInstancePtr());
-    delete TimerTask::getInstancePtr();
 }

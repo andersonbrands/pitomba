@@ -35,4 +35,17 @@ namespace pitomba {
         lastFrameTime_ = now();
         elapsedTime_ = 0;
     }
+
+    float Timer::fps() const {
+        return 1000.0F / (float)deltaTimeFromLastFrame_;
+    }
+
+    TimeUnit Timer::elapsedTime() const {
+        return elapsedTime_;
+    }
+
+    TimeUnit Timer::delta() const {
+        return deltaTimeFromLastFrame_;
+    }
+
 }
