@@ -15,7 +15,7 @@
 
 namespace pitomba {
 
-    class RendererTask : public Task, public Singleton<RendererTask> {
+    class RendererTask : public Task {
 
     public:
         explicit RendererTask(const unsigned int priority);

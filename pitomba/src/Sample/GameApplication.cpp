@@ -1,6 +1,4 @@
 #include "GameApplication.h"
-#include "../pitomba/Kernel/TimerTask.h"
-#include "../pitomba/Kernel/RendererTask.h"
 #include "../pitomba/EventManager/EventManager.h"
 #include "../pitomba/Renderer/Texture/TextureManager.h"
 #include "../pitomba/Utils/Rng.h"
@@ -42,8 +40,7 @@ bool GameApplication::initialize() {
 
     addTask(pTimerTask_.get());
 
-    assert(RendererTask::getInstancePtr());
-    addTask(RendererTask::getInstancePtr());
+    addTask(pRendererTask_.get());
 
     return success;
 }
@@ -68,25 +65,23 @@ void GameApplication::handleEvent(EventId eventId, void* pData) {
 }
 
 void GameApplication::createServices() {
-    pEventManager_ = std::make_shared<EventManager>();
+    pEventManager_ = std::make_unique<EventManager>();
     ServiceLocator::provide(pEventManager_.get());
 
-    pRng_ = std::make_shared<Rng>();
+    pRng_ = std::make_unique<Rng>();
     ServiceLocator::provide(pRng_.get());
 
     pTimerTask_ = std::make_unique<TimerTask>(Task::TIMER_PRIORITY);
     ServiceLocator::provide(pTimerTask_->getTimer());
+
+    pRendererTask_ = std::make_unique<RendererTask>(Task::RENDERER_PRIORITY);
 }
 
 void GameApplication::createSingletons() {
-    new RendererTask(Task::RENDERER_PRIORITY);
     new TextureManager(L"data/textures/");
 }
 
 void GameApplication::destroySingletons() {
     assert(TextureManager::getInstancePtr());
     delete TextureManager::getInstancePtr();
-
-    assert(RendererTask::getInstancePtr());
-    delete RendererTask::getInstancePtr();
 }
