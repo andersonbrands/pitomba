@@ -9,6 +9,9 @@
 #include "../Utils/iTimer.h"
 #include "../Utils/Scheduler.h"
 #include "../Utils/ServiceLocator.h"
+#include "../Renderer/D3DRenderer.h"
+#include <memory>
+
 
 namespace pitomba {
 
@@ -16,7 +19,7 @@ namespace pitomba {
 
     public:
         explicit RendererTask(const unsigned int priority);
-        ~RendererTask() final;
+        ~RendererTask() final = default;
 
         void onInitialize() final;
         void onStart() final;
@@ -25,7 +28,7 @@ namespace pitomba {
 
     private:
         Scheduler scheduler_;
-        iRenderer* pRenderer_ = nullptr;
+        std::unique_ptr<iRenderer> pRenderer_ = std::make_unique<D3DRenderer>(L"D3D Renderer!!!");
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
         iRng* pRng_ = ServiceLocator::getRng();
         iTimer* pTimer_ = ServiceLocator::getTimer();

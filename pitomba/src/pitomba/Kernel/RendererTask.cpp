@@ -2,20 +2,12 @@
 #include "../Utils/Logger.h"
 #include "../Utils/Utils.h"
 #include "TimerTask.h"
-#include "../Renderer/D3DRenderer.h"
 
 
 namespace pitomba {
 
     RendererTask::RendererTask(const unsigned int priority)
-        : Task(priority), pRenderer_(new D3DRenderer(L"D3D Renderer!!!")) {}
-
-    RendererTask::~RendererTask() {
-        if (pRenderer_) {
-            delete pRenderer_;
-            pRenderer_ = nullptr;
-        }
-    }
+        : Task(priority) {}
 
     void RendererTask::onInitialize() {
         pRenderer_->initialize();
