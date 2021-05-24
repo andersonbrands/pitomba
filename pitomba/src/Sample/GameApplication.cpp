@@ -22,16 +22,10 @@ bool GameApplication::initialize() {
     createSingletons();
 
     pEventManager_->registerEvent(ev::id::APPLICATION_QUIT);
-    pEventManager_->registerEvent(ev::id::CREATE_D3D_VERTEX_BUFFER);
-    pEventManager_->registerEvent(ev::id::CREATE_D3D_TEXTURE);
-    pEventManager_->registerEvent(ev::id::RENDER_TEXTURE);
 
     pEventManager_->registerEvent(ev::id::PRE_RENDER);
     pEventManager_->registerEvent(ev::id::RENDER);
     pEventManager_->registerEvent(ev::id::POST_RENDER);
-
-    pEventManager_->registerEvent(ev::id::SETUP_VIEW_MATRIX);
-    pEventManager_->registerEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX);
 
     pEventManager_->attachEvent(ev::id::APPLICATION_QUIT, *this);
 
@@ -47,14 +41,9 @@ bool GameApplication::initialize() {
 
 void GameApplication::terminate() {
     pEventManager_->unregisterEvent(ev::id::APPLICATION_QUIT);
-    pEventManager_->unregisterEvent(ev::id::CREATE_D3D_VERTEX_BUFFER);
-    pEventManager_->unregisterEvent(ev::id::CREATE_D3D_TEXTURE);
-    pEventManager_->unregisterEvent(ev::id::RENDER_TEXTURE);
     pEventManager_->unregisterEvent(ev::id::PRE_RENDER);
     pEventManager_->unregisterEvent(ev::id::RENDER);
     pEventManager_->unregisterEvent(ev::id::POST_RENDER);
-    pEventManager_->unregisterEvent(ev::id::SETUP_VIEW_MATRIX);
-    pEventManager_->unregisterEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX);
     destroySingletons();
 }
 
@@ -75,6 +64,7 @@ void GameApplication::createServices() {
     ServiceLocator::provide(pTimerTask_->getTimer());
 
     pRendererTask_ = std::make_unique<RendererTask>(Task::RENDERER_PRIORITY);
+    ServiceLocator::provide(pRendererTask_->getRenderer());
 }
 
 void GameApplication::createSingletons() {

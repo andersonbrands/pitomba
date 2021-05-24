@@ -11,6 +11,7 @@
 #include "../Utils/ServiceLocator.h"
 #include "../Renderer/D3DRenderer.h"
 #include <memory>
+#include "../Renderer/MainWindow.h"
 
 
 namespace pitomba {
@@ -26,9 +27,13 @@ namespace pitomba {
         void onUpdate() final;
         void onStop() final;
 
+        iRenderer* getRenderer() const;
+
     private:
         Scheduler scheduler_;
-        std::unique_ptr<iRenderer> pRenderer_ = std::make_unique<D3DRenderer>(L"D3D Renderer!!!");
+        std::unique_ptr<MainWindow> pWindow_ = std::make_unique<MainWindow>(L"D3D Renderer!!!");
+        std::unique_ptr<iRenderer> pRenderer_ = std::make_unique<D3DRenderer>(pWindow_.get());
+
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
         iRng* pRng_ = ServiceLocator::getRng();
         iTimer* pTimer_ = ServiceLocator::getTimer();

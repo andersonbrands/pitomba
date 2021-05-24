@@ -18,26 +18,23 @@ namespace pitomba {
     }
 
     void D3DSprite::render() {
-        ev::data::RenderTexture data = {
-            getTextureId(),
+        pRenderer_->renderTexture(
+            *TextureManager::getInstancePtr()->get(getTextureId()),
             pVertexBuffer_,
             sizeof(SPRITE_VERTEX),
             FVF_SPRITE_VERTEX
-        };
-        pEventManager_->sendEvent(ev::id::RENDER_TEXTURE, &data);
+        );
     }
 
     void D3DSprite::createVertexBuffer() {
         const int numVertices(6);
         const int bufferSize(numVertices * sizeof(SPRITE_VERTEX));
 
-        ev::data::CreateD3DVertexBuffer data = {
+        pRenderer_->createD3DVertexBuffer(
             bufferSize,
             FVF_SPRITE_VERTEX,
             &pVertexBuffer_
-        };
-
-        pEventManager_->sendEvent(ev::id::CREATE_D3D_VERTEX_BUFFER, &data);
+        );
 
         SPRITE_VERTEX* pVertices(nullptr);
 

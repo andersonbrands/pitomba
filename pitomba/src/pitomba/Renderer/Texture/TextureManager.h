@@ -11,6 +11,7 @@
 #include "../../EventManager/iEventManager.h"
 #include "../../EventManager/EventData.h"
 #include "../../EventManager/EventId.h"
+#include "../../Renderer/iRenderer.h"
 
 
 using namespace std;
@@ -21,6 +22,8 @@ namespace pitomba {
     private:
         const wstring TEXTURE_DIR;
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
+        iRenderer* pRenderer_ = ServiceLocator::getRenderer();
+
     public:
         explicit TextureManager(const wstring& textureDir) : UnorderedMapContainer(), TEXTURE_DIR(textureDir) {};
         ~TextureManager() final = default;
@@ -32,13 +35,12 @@ namespace pitomba {
 
     inline LPDIRECT3DTEXTURE9* TextureManager::loadTexture(const IdAndName& idAndName) {
         LPDIRECT3DTEXTURE9* result = add(idAndName.id);
-        if (result) {
-            ev::data::CreateD3DTexture data = {
-                (TEXTURE_DIR + idAndName.name),
-                idAndName.id
-            };
-            pEventManager_->sendEvent(ev::id::CREATE_D3D_TEXTURE, &data);
-        }
+
+        pRenderer_->createD3DTexture(
+            (TEXTURE_DIR + idAndName.name),
+            idAndName.id
+        );
+
         return result;
     }
 

@@ -10,6 +10,7 @@ namespace pitomba {
         : Task(priority) {}
 
     void RendererTask::onInitialize() {
+        pWindow_->initialize();
         pRenderer_->initialize();
     }
 
@@ -17,6 +18,7 @@ namespace pitomba {
         Logger::getInstancePtr()->debug(
             "RendererTask start!"
         );
+        pWindow_->start();
         pRenderer_->start();
         std::function<void()> random_fill = [&]() {
             pRenderer_->fillSurface(rand_color_RGB(*pRng_));
@@ -25,6 +27,7 @@ namespace pitomba {
     }
 
     void RendererTask::onUpdate() {
+        pWindow_->update();
         if (pRenderer_->preRender()) {
             pEventManager_->sendEvent(ev::id::PRE_RENDER);
 
@@ -43,6 +46,10 @@ namespace pitomba {
         Logger::getInstancePtr()->debug(
             "RendererTask stop!"
         );
+    }
+
+    iRenderer* RendererTask::getRenderer() const {
+        return pRenderer_.get();
     }
 
 }

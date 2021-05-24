@@ -8,6 +8,7 @@
 #include "../pitomba/EventManager/iEventManager.h"
 #include "../pitomba/EventManager/EventHandler.h"
 #include "../pitomba/Utils/ServiceLocator.h"
+#include "../pitomba/Renderer/iRenderer.h"
 
 
 using namespace pitomba;
@@ -20,6 +21,8 @@ public:
 private:
 
     iEventManager* pEventManager_ = ServiceLocator::getEventManager();
+    iRenderer* pRenderer_ = ServiceLocator::getRenderer();
+
     void onUpdate() final;
     void onStart() final;
 

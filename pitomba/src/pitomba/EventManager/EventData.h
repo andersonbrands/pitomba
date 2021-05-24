@@ -13,37 +13,6 @@ namespace pitomba {
 
         namespace data {
 
-            struct CreateD3DTexture {
-                std::wstring fullPath;
-                unsigned int textureId;
-            };
-
-            struct SetupViewMatrix {
-                float aspectRatio;
-                Vector3 camPos;
-                Vector3 camTarget;
-                Vector3 upVector;
-            };
-
-            struct setupLHOrthogonalProjectionMatrix {
-                float w;
-                float h;
-                float zNear;
-                float zFar;
-            };
-
-            struct CreateD3DVertexBuffer {
-                int bufferSize;
-                DWORD fvf;
-                LPDIRECT3DVERTEXBUFFER9* vertexBuffer;
-            };
-
-            struct RenderTexture {
-                unsigned int textureId;
-                LPDIRECT3DVERTEXBUFFER9 vertexBuffer;
-                std::size_t vertexStructSize;
-                DWORD fvf;
-            };
         }
     }
 }

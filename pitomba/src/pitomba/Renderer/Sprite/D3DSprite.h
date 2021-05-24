@@ -15,6 +15,7 @@ namespace pitomba {
     private:
 
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
+        iRenderer* pRenderer_ = ServiceLocator::getRenderer();
 
         struct SPRITE_VERTEX {
             D3DXVECTOR3 position;

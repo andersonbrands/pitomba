@@ -3,22 +3,30 @@
 #define MAIN_WINDOW_H_
 
 #include "BaseWindow.h"
+#include "iWindowProvider.h"
 #include "../EventManager/iEventManager.h"
 #include <string>
 #include "../Utils/ServiceLocator.h"
 
 
 namespace pitomba {
-    class MainWindow : public BaseWindow<MainWindow> {
+    class MainWindow : public BaseWindow<MainWindow>, public iWindowProvider {
     public:
         explicit MainWindow(std::wstring const& windowTitle) : windowTitle_(windowTitle) {};
         PCWSTR  ClassName() const final { return L"Main Window Class"; }
         PCWSTR  WindowTitle() const final { return windowTitle_.c_str(); }
         LRESULT HandleMessage(UINT uMsg, WPARAM wParam, LPARAM lParam) final;
 
+        bool initialize();
+        void start();
+        bool update();
+
     private:
         std::wstring windowTitle_;
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
+
+        // Inherited via iWindowProvider
+        HWND getWindow() const override;
     };
 }
 

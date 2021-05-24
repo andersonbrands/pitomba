@@ -39,26 +39,11 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
             float w = 160.0F;
             float h = 90.0F;
             auto aspectRatio = w / h;
-            auto setupViewMatrixData = ev::data::SetupViewMatrix{
-                aspectRatio,
-                camPos,
-                camTarget,
-                upVector
-            };
-
-            pEventManager_->sendEvent(ev::id::SETUP_VIEW_MATRIX, &setupViewMatrixData);
-
             float zNear = -1.0F;
             float zFar = 4.0F;
 
-            auto setupLHOrthogonalProjectionMatrixData = ev::data::setupLHOrthogonalProjectionMatrix{
-                w,
-                h,
-                zNear,
-                zFar
-            };
-
-            pEventManager_->sendEvent(ev::id::SETUP_LH_ORTHOGONAL_PROJECTION_MATRIX, &setupLHOrthogonalProjectionMatrixData);
+            pRenderer_->setupViewMatrix(aspectRatio, camPos, camTarget, upVector);
+            pRenderer_->setupLHOrthogonalProjectionMatrix(w, h, zNear, zFar);
             break;
         }
         case ev::id::RENDER:
