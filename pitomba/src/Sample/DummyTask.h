@@ -22,6 +22,7 @@ private:
 
     iEventManager* pEventManager_ = ServiceLocator::getEventManager();
     iRenderer* pRenderer_ = ServiceLocator::getRenderer();
+    iRng* pRng_ = ServiceLocator::getRng();
 
     void onUpdate() final;
     void onStart() final;

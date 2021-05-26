@@ -18,8 +18,8 @@ void DummyTask::onStart() {
     TextureManager::getInstancePtr()->loadTexture(texture::SAMPLE_TEXTURE);
 
     sprite.setup(
-        Vector3(0.1875F, 0.8125F, 155.0F),
-        Vector3(0.3046F, 0.6953F, 85.0F),
+        Vector3(0.0F, 0.0937525F, 24.0F),
+        Vector3(0.0F, 0.09375F, 24.0F),
         texture::SAMPLE_TEXTURE.id,
         pitomba::Sprite::SpriteAlign::CENTER
     );
@@ -39,16 +39,27 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
             float w = 160.0F;
             float h = 90.0F;
             auto aspectRatio = w / h;
-            float zNear = -1.0F;
-            float zFar = 4.0F;
+            float zNear = -10.0F;
+            float zFar = 10.0F;
 
             pRenderer_->setupViewMatrix(aspectRatio, camPos, camTarget, upVector);
             pRenderer_->setupLHOrthogonalProjectionMatrix(w, h, zNear, zFar);
             break;
         }
         case ev::id::RENDER:
+        {
+            auto pos = Vector3(
+                pRng_->rand_float(-40.0F, 40.0F),
+                pRng_->rand_float(-40.0F, 40.0F),
+                0.0F
+            );
+            auto scale = Vector3(1.0F);
+            auto rotation = Vector3(0.0F);
+            pRenderer_->setTransform(pos, scale, rotation);
             sprite.render();
+
             break;
+        }
         default:
             break;
     }
