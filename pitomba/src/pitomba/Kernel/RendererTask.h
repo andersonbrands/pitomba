@@ -37,6 +37,7 @@ namespace pitomba {
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
         iRng* pRng_ = ServiceLocator::getRng();
         iTimer* pTimer_ = ServiceLocator::getTimer();
+        iLogger* pLogger_ = ServiceLocator::getLogger();
     };
 
 }

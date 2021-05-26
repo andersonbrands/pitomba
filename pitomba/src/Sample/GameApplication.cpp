@@ -2,6 +2,7 @@
 #include "../pitomba/EventManager/EventManager.h"
 #include "../pitomba/Renderer/Texture/TextureManager.h"
 #include "../pitomba/Utils/Rng.h"
+#include "../pitomba/Utils/Logger.h"
 #include "../pitomba/Utils/ServiceLocator.h"
 
 using namespace pitomba;
@@ -54,6 +55,9 @@ void GameApplication::handleEvent(EventId eventId, void* pData) {
 }
 
 void GameApplication::createServices() {
+    pLogger_ = std::make_unique<Logger>();
+    ServiceLocator::provide(pLogger_.get());
+
     pEventManager_ = std::make_unique<EventManager>();
     ServiceLocator::provide(pEventManager_.get());
 

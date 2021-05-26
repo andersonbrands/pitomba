@@ -2,24 +2,26 @@
 #ifndef LOGGER_H_
 #define LOGGER_H_
 
-#include "Singleton.h"
-#include <string>
-#include <boost/format.hpp>
+
+#include "iLogger.h"
 
 
 namespace pitomba {
 
-    class Logger : public Singleton<Logger> {
+    class Logger : public iLogger {
 
     private:
         void print(const std::string& message) const;
 
     public:
         Logger() = default;
-        virtual ~Logger() = default;
+        ~Logger() final = default;
 
-        void debug(const std::string& message) const;
-        void debug(const boost::format& message) const;
+
+        // Inherited via iLogger
+        void debug(const std::string& message) const override;
+        void debug(const boost::format& message) const override;
+
     };
 
 }

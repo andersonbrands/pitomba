@@ -4,6 +4,7 @@
 
 #include "../EventManager/iEventManager.h"
 #include "../Utils/iRng.h"
+#include "../Utils/iLogger.h"
 #include "../Utils/iTimer.h"
 #include "../Renderer/iRenderer.h"
 
@@ -28,6 +29,10 @@ namespace pitomba {
             return renderer_;
         }
 
+        static iLogger* getLogger() {
+            return logger_;
+        }
+
         static void provide(iEventManager* eventManager) {
             eventManager_ = eventManager;
         }
@@ -44,12 +49,17 @@ namespace pitomba {
             renderer_ = renderer;
         }
 
+        static void provide(iLogger* logger) {
+            logger_ = logger;
+        }
+
 
     private:
         static iEventManager* eventManager_;
         static iRng* rng_;
         static iTimer* timer_;
         static iRenderer* renderer_;
+        static iLogger* logger_;
 
     };
 }

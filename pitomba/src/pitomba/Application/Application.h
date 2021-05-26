@@ -1,7 +1,7 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
-#include "../Utils/Logger.h"
+
 #include "../Kernel/Kernel.h"
 
 
@@ -19,7 +19,6 @@ namespace pitomba {
         virtual bool initialize() = 0;
         virtual void terminate() = 0;
         virtual void run() {
-            Logger::getInstancePtr()->debug("Application running");
             kernel_.execute();
         }
 

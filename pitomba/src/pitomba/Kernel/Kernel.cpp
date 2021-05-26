@@ -1,6 +1,5 @@
 
 #include "Kernel.h"
-#include "../Utils/Logger.h"
 
 
 namespace pitomba {
@@ -17,8 +16,6 @@ namespace pitomba {
     }
 
     void Kernel::execute() {
-        Logger::getInstancePtr()->debug("Kernel executing");
-
         for (auto& task : tasks_) {
             task->start();
         }

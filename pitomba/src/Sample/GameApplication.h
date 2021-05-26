@@ -7,6 +7,7 @@
 #include "../pitomba/EventManager/EventHandler.h"
 #include "../pitomba/EventManager/iEventManager.h"
 #include "../pitomba/Utils/iRng.h"
+#include "../pitomba/Utils/iLogger.h"
 #include "../pitomba/Kernel/TimerTask.h"
 #include "../pitomba/Kernel/RendererTask.h"
 #include "DummyTask.h"
@@ -16,6 +17,8 @@ using namespace pitomba;
 
 class GameApplication : public Application, public EventHandler {
 private:
+    std::unique_ptr<iLogger> pLogger_ = nullptr;
+
     std::unique_ptr<iEventManager> pEventManager_ = nullptr;
 
     std::unique_ptr<DummyTask> pDummyTask_ = nullptr;

@@ -15,7 +15,7 @@ namespace pitomba {
     }
 
     void RendererTask::onStart() {
-        Logger::getInstancePtr()->debug(
+        pLogger_->debug(
             "RendererTask start!"
         );
         pWindow_->start();
@@ -43,7 +43,7 @@ namespace pitomba {
     }
 
     void RendererTask::onStop() {
-        Logger::getInstancePtr()->debug(
+        pLogger_->debug(
             "RendererTask stop!"
         );
     }
