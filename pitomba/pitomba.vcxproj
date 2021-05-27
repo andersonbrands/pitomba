@@ -193,7 +193,6 @@
     <ClInclude Include="src\pitomba\Utils\Rng.h" />
     <ClInclude Include="src\pitomba\Utils\Scheduler.h" />
     <ClInclude Include="src\pitomba\Utils\ServiceLocator.h" />
-    <ClInclude Include="src\pitomba\Utils\Singleton.h" />
     <ClInclude Include="src\pitomba\Utils\Timer.h" />
     <ClInclude Include="src\pitomba\Utils\UnorderedMapContainer.h" />
     <ClInclude Include="src\pitomba\Utils\Utils.h" />

@@ -2,7 +2,6 @@
 #define RENDERER_H_
 
 #include "Task.h"
-#include "../Utils/Singleton.h"
 #include "../Renderer/iRenderer.h"
 #include "../EventManager/iEventManager.h"
 #include "../Utils/iRng.h"
