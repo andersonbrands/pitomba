@@ -8,5 +8,6 @@ namespace pitomba {
     iTimer* ServiceLocator::timer_ = nullptr;
     iRenderer* ServiceLocator::renderer_ = nullptr;
     iLogger* ServiceLocator::logger_ = nullptr;
+    iTextureManager* ServiceLocator::textureManager_ = nullptr;
 
 }

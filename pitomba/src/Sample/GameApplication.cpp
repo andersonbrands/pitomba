@@ -69,13 +69,15 @@ void GameApplication::createServices() {
 
     pRendererTask_ = std::make_unique<RendererTask>(Task::RENDERER_PRIORITY);
     ServiceLocator::provide(pRendererTask_->getRenderer());
+
+    pTextureManager_ = std::make_unique<TextureManager>(L"data/textures/");
+    ServiceLocator::provide(pTextureManager_.get());
 }
 
 void GameApplication::createSingletons() {
-    new TextureManager(L"data/textures/");
+
 }
 
 void GameApplication::destroySingletons() {
-    assert(TextureManager::getInstancePtr());
-    delete TextureManager::getInstancePtr();
+
 }

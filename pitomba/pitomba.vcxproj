@@ -153,6 +153,7 @@
     <ClCompile Include="src\pitomba\Renderer\MainWindow.cpp" />
     <ClCompile Include="src\pitomba\Renderer\Sprite\D3DSprite.cpp" />
     <ClCompile Include="src\pitomba\Renderer\Sprite\Sprite.cpp" />
+    <ClCompile Include="src\pitomba\Renderer\Texture\TextureManager.cpp" />
     <ClCompile Include="src\pitomba\Utils\Rng.cpp" />
     <ClCompile Include="src\pitomba\Utils\Scheduler.cpp" />
     <ClCompile Include="src\pitomba\Utils\ServiceLocator.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="src\pitomba\Renderer\iRenderer.h" />
     <ClInclude Include="src\pitomba\Renderer\Sprite\D3DSprite.h" />
     <ClInclude Include="src\pitomba\Renderer\Sprite\Sprite.h" />
+    <ClInclude Include="src\pitomba\Renderer\Texture\iTextureManager.h" />
     <ClInclude Include="src\pitomba\Renderer\Texture\TextureManager.h" />
     <ClInclude Include="src\pitomba\Utils\Color.h" />
     <ClInclude Include="src\pitomba\Utils\iLogger.h" />

@@ -7,6 +7,7 @@
 #include "../Utils/iLogger.h"
 #include "../Utils/iTimer.h"
 #include "../Renderer/iRenderer.h"
+#include "../Renderer/Texture/iTextureManager.h"
 
 namespace pitomba {
 
@@ -33,6 +34,10 @@ namespace pitomba {
             return logger_;
         }
 
+        static iTextureManager* getTextureManager() {
+            return textureManager_;
+        }
+
         static void provide(iEventManager* eventManager) {
             eventManager_ = eventManager;
         }
@@ -53,6 +58,10 @@ namespace pitomba {
             logger_ = logger;
         }
 
+        static void provide(iTextureManager* textureManager) {
+            textureManager_ = textureManager;
+        }
+
 
     private:
         static iEventManager* eventManager_;
@@ -60,6 +69,7 @@ namespace pitomba {
         static iTimer* timer_;
         static iRenderer* renderer_;
         static iLogger* logger_;
+        static iTextureManager* textureManager_;
 
     };
 }

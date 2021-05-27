@@ -26,6 +26,7 @@ private:
     std::unique_ptr<RendererTask> pRendererTask_ = nullptr;
 
     std::unique_ptr<iRng> pRng_ = nullptr;
+    std::unique_ptr<iTextureManager> pTextureManager_ = nullptr;
 
     void createServices();
     void createSingletons();

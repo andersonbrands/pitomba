@@ -111,11 +111,11 @@ namespace pitomba {
             return false;
     }
 
-    void D3DRenderer::createD3DTexture(std::wstring fullPath, unsigned int textureId) {
+    void D3DRenderer::createD3DTexture(std::wstring fullPath, LPDIRECT3DTEXTURE9* texture) {
         auto createTextureResult = D3DXCreateTextureFromFile(
             g_pd3dDevice,
             fullPath.c_str(),
-            TextureManager::getInstancePtr()->get(textureId)
+            texture
         );
         assert(!FAILED(createTextureResult));
     }

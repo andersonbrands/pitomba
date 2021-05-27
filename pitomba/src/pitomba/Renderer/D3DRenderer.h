@@ -32,7 +32,7 @@ namespace pitomba {
         bool preRender() override;
         void render() override;
         void postRender() override;
-        void createD3DTexture(std::wstring fullPath, unsigned int textureId) override;
+        void createD3DTexture(std::wstring fullPath, LPDIRECT3DTEXTURE9* texture) override;
         void createD3DVertexBuffer(int bufferSize, DWORD fvf, LPDIRECT3DVERTEXBUFFER9* vertexBuffer) override;
         void renderTexture(LPDIRECT3DTEXTURE9 texture, LPDIRECT3DVERTEXBUFFER9 vertexBuffer, std::size_t vertexStructSize, DWORD fvf) override;
         void setupViewMatrix(float aspectRatio, const Vector3& camPos, const Vector3& camTarget, const Vector3& upVector) override;

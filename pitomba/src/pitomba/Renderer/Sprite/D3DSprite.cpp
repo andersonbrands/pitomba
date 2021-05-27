@@ -19,7 +19,7 @@ namespace pitomba {
 
     void D3DSprite::render() {
         pRenderer_->renderTexture(
-            *TextureManager::getInstancePtr()->get(getTextureId()),
+            *pTextureManager_->getTexture(getTextureId()),
             pVertexBuffer_,
             sizeof(SPRITE_VERTEX),
             FVF_SPRITE_VERTEX

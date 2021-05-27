@@ -15,7 +15,11 @@ void DummyTask::onUpdate() {
 }
 
 void DummyTask::onStart() {
-    TextureManager::getInstancePtr()->loadTexture(texture::SAMPLE_TEXTURE);
+    pTextureManager_->loadTexture(texture::SAMPLE_TEXTURE);
+    pRenderer_->createD3DTexture(
+        (pTextureManager_->getTextureDir() + texture::SAMPLE_TEXTURE.name),
+        pTextureManager_->getTexture(texture::SAMPLE_TEXTURE.id)
+    );
 
     sprite.setup(
         Vector3(0.0F, 0.0937525F, 24.0F),

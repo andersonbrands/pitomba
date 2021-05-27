@@ -21,6 +21,7 @@ public:
 private:
 
     iEventManager* pEventManager_ = ServiceLocator::getEventManager();
+    iTextureManager* pTextureManager_ = ServiceLocator::getTextureManager();
     iRenderer* pRenderer_ = ServiceLocator::getRenderer();
     iRng* pRng_ = ServiceLocator::getRng();
 

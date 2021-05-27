@@ -15,6 +15,7 @@ namespace pitomba {
     private:
 
         iEventManager* pEventManager_ = ServiceLocator::getEventManager();
+        iTextureManager* pTextureManager_ = ServiceLocator::getTextureManager();
         iRenderer* pRenderer_ = ServiceLocator::getRenderer();
 
         struct SPRITE_VERTEX {
