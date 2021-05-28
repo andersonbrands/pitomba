@@ -18,7 +18,11 @@ namespace pitomba {
     class RendererTask : public Task {
 
     public:
-        explicit RendererTask(const unsigned int priority);
+        explicit RendererTask(const unsigned int priority,
+                              iLocator<iEventManager>* pEventManagerLocator,
+                              iLocator<iTimer>* pTimerLocator,
+                              iLocator<iRng>* pRngLocator,
+                              iLocator<iLogger>* pLoggerLocator);
         ~RendererTask() final = default;
 
         void onInitialize() final;
@@ -29,14 +33,14 @@ namespace pitomba {
         iRenderer* getRenderer() const;
 
     private:
-        Scheduler scheduler_;
-        std::unique_ptr<MainWindow> pWindow_ = std::make_unique<MainWindow>(L"D3D Renderer!!!");
-        std::unique_ptr<iRenderer> pRenderer_ = std::make_unique<D3DRenderer>(pWindow_.get());
+        iLocator<iEventManager>* pEventManagerLocator_;
+        iLocator<iTimer>* pTimerLocator_;
+        iLocator<iRng>* pRngLocator_;
+        iLocator<iLogger>* pLoggerLocator_;
 
-        iEventManager* pEventManager_ = ServiceLocator::getEventManager();
-        iRng* pRng_ = ServiceLocator::getRng();
-        iTimer* pTimer_ = ServiceLocator::getTimer();
-        iLogger* pLogger_ = ServiceLocator::getLogger();
+        Scheduler scheduler_;
+        std::unique_ptr<MainWindow> pWindow_ = std::make_unique<MainWindow>(L"D3D Renderer!!!", pEventManagerLocator_);
+        std::unique_ptr<iRenderer> pRenderer_ = std::make_unique<D3DRenderer>(pWindow_.get());
     };
 
 }

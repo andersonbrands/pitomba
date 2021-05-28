@@ -6,8 +6,16 @@
 
 namespace pitomba {
 
-    RendererTask::RendererTask(const unsigned int priority)
-        : Task(priority) {}
+    RendererTask::RendererTask(const unsigned int priority,
+                               iLocator<iEventManager>* pEventManagerLocator,
+                               iLocator<iTimer>* pTimerLocator,
+                               iLocator<iRng>* pRngLocator,
+                               iLocator<iLogger>* pLoggerLocator)
+        : Task(priority),
+        pEventManagerLocator_(pEventManagerLocator),
+        pTimerLocator_(pTimerLocator),
+        pRngLocator_(pRngLocator),
+        pLoggerLocator_(pLoggerLocator) {}
 
     void RendererTask::onInitialize() {
         pWindow_->initialize();
@@ -15,13 +23,13 @@ namespace pitomba {
     }
 
     void RendererTask::onStart() {
-        pLogger_->debug(
+        pLoggerLocator_->get()->debug(
             "RendererTask start!"
         );
         pWindow_->start();
         pRenderer_->start();
         std::function<void()> random_fill = [&]() {
-            pRenderer_->fillSurface(rand_color_RGB(*pRng_));
+            pRenderer_->fillSurface(rand_color_RGB(*pRngLocator_->get()));
         };
         scheduler_.setInterval(1000, random_fill);
     }
@@ -29,21 +37,21 @@ namespace pitomba {
     void RendererTask::onUpdate() {
         pWindow_->update();
         if (pRenderer_->preRender()) {
-            pEventManager_->sendEvent(ev::id::PRE_RENDER);
+            pEventManagerLocator_->get()->sendEvent(ev::id::PRE_RENDER);
 
             pRenderer_->render();
 
-            pEventManager_->sendEvent(ev::id::RENDER);
-            scheduler_.tick(pTimer_->delta()); // TODO handle Render event
+            pEventManagerLocator_->get()->sendEvent(ev::id::RENDER);
+            scheduler_.tick(pTimerLocator_->get()->delta()); // TODO handle Render event
 
             pRenderer_->postRender();
-            pEventManager_->sendEvent(ev::id::POST_RENDER);
+            pEventManagerLocator_->get()->sendEvent(ev::id::POST_RENDER);
         }
 
     }
 
     void RendererTask::onStop() {
-        pLogger_->debug(
+        pLoggerLocator_->get()->debug(
             "RendererTask stop!"
         );
     }

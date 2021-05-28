@@ -13,10 +13,8 @@ namespace pitomba {
 
     class D3DSprite : public Sprite {
     private:
-
-        iEventManager* pEventManager_ = ServiceLocator::getEventManager();
-        iTextureManager* pTextureManager_ = ServiceLocator::getTextureManager();
-        iRenderer* pRenderer_ = ServiceLocator::getRenderer();
+        iLocator<iTextureManager>* pTextureManagerLocator_;
+        iLocator<iRenderer>* pRendererLocator_;
 
         struct SPRITE_VERTEX {
             D3DXVECTOR3 position;
@@ -36,7 +34,7 @@ namespace pitomba {
         void setUVCoords(float minU, float maxU, float minV, float maxV) final;
 
     public:
-        D3DSprite() = default;
+        explicit D3DSprite(iLocator<iRenderer>* pRendererLocator, iLocator<iTextureManager>* pTextureManagerLocator);
         ~D3DSprite() final;
 
         void render();

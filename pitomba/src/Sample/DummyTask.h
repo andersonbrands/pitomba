@@ -15,15 +15,21 @@ using namespace pitomba;
 
 class DummyTask : public Task, public EventHandler {
 public:
-    explicit DummyTask(const unsigned int priority);
+    explicit DummyTask(
+        const unsigned int priority,
+        iLocator<iEventManager>* pEventManagerLocator,
+        iLocator<iRenderer>* pRendererLocator,
+        iLocator<iRng>* pRngLocator,
+        iLocator<iTextureManager>* pTextureManagerLocator);
     ~DummyTask() final = default;
 
 private:
 
-    iEventManager* pEventManager_ = ServiceLocator::getEventManager();
-    iTextureManager* pTextureManager_ = ServiceLocator::getTextureManager();
-    iRenderer* pRenderer_ = ServiceLocator::getRenderer();
-    iRng* pRng_ = ServiceLocator::getRng();
+    iLocator<iEventManager>* pEventManagerLocator_;
+    iLocator<iRenderer>* pRendererLocator_;
+    iLocator<iRng>* pRngLocator_;
+    iLocator<iTextureManager>* pTextureManagerLocator_;
+
 
     void onUpdate() final;
     void onStart() final;

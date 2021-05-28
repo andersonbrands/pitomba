@@ -4,7 +4,6 @@
 
 #include "iTextureManager.h"
 #include "../../Utils/UnorderedMapContainer.h"
-#include "../../Utils/ServiceLocator.h"
 #include <string>
 
 
@@ -15,7 +14,6 @@ namespace pitomba {
     class TextureManager : public UnorderedMapContainer<unsigned int, LPDIRECT3DTEXTURE9>, public iTextureManager {
     private:
         const wstring TEXTURE_DIR;
-        iEventManager* pEventManager_ = ServiceLocator::getEventManager();
 
     public:
         explicit TextureManager(const wstring& textureDir) : UnorderedMapContainer(), TEXTURE_DIR(textureDir) {};

@@ -156,7 +156,6 @@
     <ClCompile Include="src\pitomba\Renderer\Texture\TextureManager.cpp" />
     <ClCompile Include="src\pitomba\Utils\Rng.cpp" />
     <ClCompile Include="src\pitomba\Utils\Scheduler.cpp" />
-    <ClCompile Include="src\pitomba\Utils\ServiceLocator.cpp" />
     <ClCompile Include="src\pitomba\Utils\Timer.cpp" />
     <ClCompile Include="src\pitomba\Utils\Utils.cpp" />
     <ClCompile Include="src\Sample\DummyTask.cpp" />
@@ -186,6 +185,7 @@
     <ClInclude Include="src\pitomba\Renderer\Texture\iTextureManager.h" />
     <ClInclude Include="src\pitomba\Renderer\Texture\TextureManager.h" />
     <ClInclude Include="src\pitomba\Utils\Color.h" />
+    <ClInclude Include="src\pitomba\Utils\iLocator.h" />
     <ClInclude Include="src\pitomba\Utils\iLogger.h" />
     <ClInclude Include="src\pitomba\Utils\iManagedTimer.h" />
     <ClInclude Include="src\pitomba\Utils\iRng.h" />

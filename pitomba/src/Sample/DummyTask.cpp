@@ -6,7 +6,17 @@
 #include "Ids/TextureIds.h"
 
 
-DummyTask::DummyTask(const unsigned int priority) : Task(priority) {
+DummyTask::DummyTask(const unsigned int priority,
+                     iLocator<iEventManager>* pEventManagerLocator,
+                     iLocator<iRenderer>* pRendererLocator,
+                     iLocator<iRng>* pRngLocator,
+                     iLocator<iTextureManager>* pTextureManagerLocator) :
+    Task(priority),
+    pEventManagerLocator_(pEventManagerLocator),
+    pRendererLocator_(pRendererLocator),
+    pRngLocator_(pRngLocator),
+    pTextureManagerLocator_(pTextureManagerLocator),
+    sprite(pRendererLocator, pTextureManagerLocator_) {
 
 }
 
@@ -15,10 +25,10 @@ void DummyTask::onUpdate() {
 }
 
 void DummyTask::onStart() {
-    pTextureManager_->loadTexture(texture::SAMPLE_TEXTURE);
-    pRenderer_->createD3DTexture(
-        (pTextureManager_->getTextureDir() + texture::SAMPLE_TEXTURE.name),
-        pTextureManager_->getTexture(texture::SAMPLE_TEXTURE.id)
+    pTextureManagerLocator_->get()->loadTexture(texture::SAMPLE_TEXTURE);
+    pRendererLocator_->get()->createD3DTexture(
+        (pTextureManagerLocator_->get()->getTextureDir() + texture::SAMPLE_TEXTURE.name),
+        pTextureManagerLocator_->get()->getTexture(texture::SAMPLE_TEXTURE.id)
     );
 
     sprite.setup(
@@ -28,8 +38,8 @@ void DummyTask::onStart() {
         pitomba::Sprite::SpriteAlign::CENTER
     );
 
-    pEventManager_->attachEvent(ev::id::RENDER, *this);
-    pEventManager_->attachEvent(ev::id::PRE_RENDER, *this);
+    pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *this);
+    pEventManagerLocator_->get()->attachEvent(ev::id::PRE_RENDER, *this);
 }
 
 void DummyTask::handleEvent(EventId eventId, void* pData) {
@@ -46,20 +56,20 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
             float zNear = -10.0F;
             float zFar = 10.0F;
 
-            pRenderer_->setupViewMatrix(aspectRatio, camPos, camTarget, upVector);
-            pRenderer_->setupLHOrthogonalProjectionMatrix(w, h, zNear, zFar);
+            pRendererLocator_->get()->setupViewMatrix(aspectRatio, camPos, camTarget, upVector);
+            pRendererLocator_->get()->setupLHOrthogonalProjectionMatrix(w, h, zNear, zFar);
             break;
         }
         case ev::id::RENDER:
         {
             auto pos = Vector3(
-                pRng_->rand_float(-40.0F, 40.0F),
-                pRng_->rand_float(-40.0F, 40.0F),
+                pRngLocator_->get()->rand_float(-40.0F, 40.0F),
+                pRngLocator_->get()->rand_float(-40.0F, 40.0F),
                 0.0F
             );
             auto scale = Vector3(1.0F);
             auto rotation = Vector3(0.0F);
-            pRenderer_->setTransform(pos, scale, rotation);
+            pRendererLocator_->get()->setTransform(pos, scale, rotation);
             sprite.render();
 
             break;
