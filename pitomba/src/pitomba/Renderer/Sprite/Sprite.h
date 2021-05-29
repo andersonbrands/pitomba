@@ -3,22 +3,13 @@
 #define SPRITE_H_
 
 #include "../../Math/Vector3.h"
+#include "SpriteId.h"
+#include "SpriteAlign.h"
 
 namespace pitomba {
 
     class Sprite {
     public:
-        enum class SpriteAlign {
-            TOP_LEFT,
-            TOP_RIGHT,
-            BOTTOM_RIGHT,
-            BOTTOM_LEFT,
-            CENTER,
-            CENTER_LEFT,
-            CENTER_TOP,
-            CENTER_RIGHT,
-            CENTER_BOTTOM
-        };
 
         Sprite() = default;
         virtual ~Sprite() = default;
@@ -27,6 +18,7 @@ namespace pitomba {
         virtual void applySettings() = 0;
 
         void setup(const Vector3& uuWidth, const Vector3& vvHeight, unsigned int textureId, SpriteAlign align);
+        void setup(const SpriteInfo& spriteInfo);
 
     protected:
         float getHeight() const {

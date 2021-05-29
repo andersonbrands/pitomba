@@ -16,4 +16,13 @@ namespace pitomba {
         applySettings();
     }
 
+    void Sprite::setup(const SpriteInfo& spriteInfo) {
+        setup(
+            spriteInfo.uuWidth,
+            spriteInfo.vvHeight,
+            spriteInfo.textureId,
+            spriteInfo.align
+        );
+    }
+
 }

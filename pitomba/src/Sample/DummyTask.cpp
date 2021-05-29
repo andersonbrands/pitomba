@@ -1,6 +1,7 @@
 
 #include "DummyTask.h"
 #include "Ids/TextureIds.h"
+#include "Ids/SpriteIds.h"
 
 
 DummyTask::DummyTask(const unsigned int priority,
@@ -28,12 +29,7 @@ void DummyTask::onStart() {
         pTextureManagerLocator_->get()->getTexture(texture::SAMPLE_TEXTURE.id)
     );
 
-    sprite.setup(
-        Vector3(0.0F, 0.0937525F, 24.0F),
-        Vector3(0.0F, 0.09375F, 24.0F),
-        texture::SAMPLE_TEXTURE.id,
-        pitomba::Sprite::SpriteAlign::CENTER
-    );
+    sprite.setup(spr::STAR);
 
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::PRE_RENDER, *this);

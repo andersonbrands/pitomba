@@ -185,6 +185,15 @@
     <ClInclude Include="src\pitomba\Utils\iLocator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Sample\Ids\SpriteIds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteId.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteAlign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="data\textures\sample.png">
