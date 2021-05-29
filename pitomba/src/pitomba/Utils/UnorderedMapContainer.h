@@ -2,6 +2,8 @@
 #ifndef UNORDERED_MAP_CONTAINER_H_
 #define UNORDERED_MAP_CONTAINER_H_
 
+
+#include "iContainer.h"
 #include <cassert>
 #include <unordered_map>
 
@@ -10,7 +12,7 @@ using namespace std;
 namespace pitomba {
 
     template <typename ObjectId, typename Object>
-    class UnorderedMapContainer {
+    class UnorderedMapContainer : public iContainer<ObjectId, Object> {
     private:
         using ObjectMap = unordered_map<ObjectId, Object*>;
 
@@ -33,7 +35,7 @@ namespace pitomba {
             release();
         };
 
-        Object* add(const ObjectId id) {
+        Object* add(const ObjectId id) override {
             Object* pNewObject(nullptr);
 
             bool added(false);
@@ -58,7 +60,7 @@ namespace pitomba {
             }
         }
 
-        Object* get(const ObjectId id) {
+        Object* get(const ObjectId id) override {
             Object* pNewObject(nullptr);
 
             auto iter = objects_.find(id);
@@ -70,7 +72,7 @@ namespace pitomba {
             return pNewObject;
         }
 
-        void remove(const ObjectId id) {
+        void remove(const ObjectId id) override {
             auto iter = objects_.find(id);
 
             assert(iter != objects_.end());
@@ -82,7 +84,7 @@ namespace pitomba {
             objects_.erase(iter);
         }
 
-        void clear() {
+        void clear() override {
             release();
             objects_.clear();
         }

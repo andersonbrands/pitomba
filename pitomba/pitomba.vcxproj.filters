@@ -194,6 +194,9 @@
     <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteAlign.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pitomba\Utils\iContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="data\textures\sample.png">

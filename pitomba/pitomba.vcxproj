@@ -187,6 +187,7 @@
     <ClInclude Include="src\pitomba\Renderer\Texture\iTextureManager.h" />
     <ClInclude Include="src\pitomba\Renderer\Texture\TextureManager.h" />
     <ClInclude Include="src\pitomba\Utils\Color.h" />
+    <ClInclude Include="src\pitomba\Utils\iContainer.h" />
     <ClInclude Include="src\pitomba\Utils\iLocator.h" />
     <ClInclude Include="src\pitomba\Utils\iLogger.h" />
     <ClInclude Include="src\pitomba\Utils\iManagedTimer.h" />
