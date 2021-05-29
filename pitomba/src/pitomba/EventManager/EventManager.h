@@ -5,7 +5,6 @@
 
 #include "iEventManager.h"
 #include "Event.h"
-#include "EventId.h"
 #include <unordered_map>
 
 
@@ -20,15 +19,15 @@ namespace pitomba {
         EventMap eventMap_;
     public:
         EventManager() = default;
-        ~EventManager();
+        ~EventManager() final;
 
-        void registerEvent(EventId eventId);
-        void unregisterEvent(EventId eventId);
+        void registerEvent(EventId eventId) override;
+        void unregisterEvent(EventId eventId) override;
 
-        void attachEvent(EventId eventId, EventHandler& eventHandler);
-        void detachEvent(EventId eventId, const EventHandler& eventHandler);
+        void attachEvent(EventId eventId, EventHandler& eventHandler) override;
+        void detachEvent(EventId eventId, const EventHandler& eventHandler) override;
 
-        void sendEvent(EventId eventId, void* pData = nullptr);
+        void sendEvent(EventId eventId, void* pData = nullptr) override;
     };
 }
 

@@ -8,7 +8,7 @@ namespace pitomba {
 
     class Sprite {
     public:
-        enum SpriteAlign {
+        enum class SpriteAlign {
             TOP_LEFT,
             TOP_RIGHT,
             BOTTOM_RIGHT,

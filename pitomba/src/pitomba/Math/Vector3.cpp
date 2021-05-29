@@ -9,13 +9,6 @@ namespace pitomba {
     Vector3::Vector3(const float value) :
         x_(value), y_(value), z_(value) {}
 
-    Vector3& Vector3::operator=(const Vector3& in) {
-        x_ = in.getX();
-        y_ = in.getY();
-        z_ = in.getZ();
-        return *this;
-    }
-
     // getters
     float Vector3::getX() const {
         return x_;

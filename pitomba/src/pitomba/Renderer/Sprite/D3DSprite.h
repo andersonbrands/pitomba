@@ -3,10 +3,11 @@
 #define D3D_SPRITE_H_
 
 #include "Sprite.h"
-#include "../../Math/Vector3.h"
 #include <d3dx9.h>
 #include "../../EventManager/iEventManager.h"
-#include "../../Utils/ServiceLocator.h"
+#include "../../Renderer/iRenderer.h"
+#include "../../Renderer/Texture/iTextureManager.h"
+#include "../../Utils/iLocator.h"
 
 namespace pitomba {
 

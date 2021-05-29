@@ -4,7 +4,6 @@
 #include "Task.h"
 #include "../Utils/iTimer.h"
 #include "../Utils/iManagedTimer.h"
-#include "../Utils/Timer.h"
 #include <memory>
 
 
@@ -12,7 +11,7 @@ namespace pitomba {
 
     class TimerTask : public Task {
     public:
-        explicit TimerTask(const unsigned int priority);
+        explicit TimerTask(const unsigned int priority, iTimer* pTimer, iManagedTimer* pManagedTimer);
         ~TimerTask() final = default;
 
         iTimer* getTimer() const;
@@ -25,9 +24,8 @@ namespace pitomba {
         void onStop() final;
 
     private:
-        std::unique_ptr<Timer> pConcreteTimer_ = std::make_unique<Timer>();
-        iTimer* pTimer_ = pConcreteTimer_.get();
-        iManagedTimer* pManagedTimer_ = pConcreteTimer_.get();
+        iTimer* pTimer_;
+        iManagedTimer* pManagedTimer_;
     };
 
 }

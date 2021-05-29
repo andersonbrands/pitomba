@@ -19,8 +19,6 @@ namespace pitomba {
 
         virtual ~Vector3() = default;
 
-        Vector3& operator=(const Vector3& in);
-
         // getters
         float getX() const;
         float getY() const;

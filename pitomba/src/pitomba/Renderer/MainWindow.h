@@ -3,10 +3,12 @@
 #define MAIN_WINDOW_H_
 
 #include "BaseWindow.h"
+
 #include "iWindowProvider.h"
 #include "../EventManager/iEventManager.h"
+#include "../Utils/iLocator.h"
+
 #include <string>
-#include "../Utils/ServiceLocator.h"
 
 
 namespace pitomba {

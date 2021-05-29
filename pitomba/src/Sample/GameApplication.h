@@ -5,10 +5,8 @@
 #include <memory>
 #include "../pitomba/Application/Application.h"
 #include "../pitomba/EventManager/EventHandler.h"
-#include "../pitomba/EventManager/iEventManager.h"
 #include "../pitomba/Utils/ServiceLocator.h"
-#include "../pitomba/Utils/iRng.h"
-#include "../pitomba/Utils/iLogger.h"
+#include "../pitomba/Utils/Timer.h"
 #include "../pitomba/Kernel/TimerTask.h"
 #include "../pitomba/Kernel/RendererTask.h"
 #include "DummyTask.h"
@@ -31,6 +29,10 @@ private:
     std::unique_ptr<iLogger> pLogger_ = nullptr;
     std::unique_ptr<iEventManager> pEventManager_ = nullptr;
     std::unique_ptr<iTextureManager> pTextureManager_ = nullptr;
+
+    std::unique_ptr<Timer> pConcreteTimer_ = std::make_unique<Timer>();
+    iTimer* pTimer_ = pConcreteTimer_.get();
+    iManagedTimer* pManagedTimer_ = pConcreteTimer_.get();
 
     std::unique_ptr<DummyTask> pDummyTask_ = nullptr;
     std::unique_ptr<TimerTask> pTimerTask_ = nullptr;

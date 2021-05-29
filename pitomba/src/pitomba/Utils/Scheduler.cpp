@@ -20,7 +20,7 @@ namespace pitomba {
 
     }
 
-    void Scheduler::setInterval(int interval, std::function<void()> func, int timeout, int times) {
+    void Scheduler::setInterval(int interval, std::function<void()> const& func, int timeout, int times) {
         interval_ = interval;
         func_ = func;
         timeout_ = timeout;
@@ -29,7 +29,7 @@ namespace pitomba {
         timesCounter_ = 0;
     }
 
-    void Scheduler::setTimeout(int timeout, std::function<void()> func) {
+    void Scheduler::setTimeout(int timeout, std::function<void()> const& func) {
         setInterval(0, func, timeout, 1);
     }
 

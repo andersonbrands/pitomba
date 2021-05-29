@@ -1,6 +1,7 @@
 
 #include "D3DSprite.h"
-#include "../Texture/TextureManager.h"
+
+#include <cassert>
 
 
 namespace pitomba {

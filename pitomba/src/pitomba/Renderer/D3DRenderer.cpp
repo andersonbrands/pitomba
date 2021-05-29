@@ -1,6 +1,5 @@
 
 #include "D3DRenderer.h"
-#include "Texture/TextureManager.h"
 #include <cassert>
 
 namespace pitomba {
@@ -51,7 +50,7 @@ namespace pitomba {
 
     HRESULT D3DRenderer::setupD3D() {
         // Create the D3D object, return failure if this can't be done.
-        if (NULL == (g_pD3D = Direct3DCreate9(D3D_SDK_VERSION))) return E_FAIL;
+        if (!(g_pD3D = Direct3DCreate9(D3D_SDK_VERSION))) return E_FAIL;
 
         // Set up the structure used to create the D3DDevice
         ZeroMemory(&d3dParams_, sizeof(d3dParams_));
@@ -111,7 +110,7 @@ namespace pitomba {
             return false;
     }
 
-    void D3DRenderer::createD3DTexture(std::wstring fullPath, LPDIRECT3DTEXTURE9* texture) {
+    void D3DRenderer::createD3DTexture(std::wstring const& fullPath, LPDIRECT3DTEXTURE9* texture) {
         auto createTextureResult = D3DXCreateTextureFromFile(
             g_pd3dDevice,
             fullPath.c_str(),
@@ -164,7 +163,10 @@ namespace pitomba {
 
     void D3DRenderer::setTransform(const Vector3& pos, const Vector3& scale, const Vector3& rotation) {
         // Set up matrices to control transformations and transform
-        D3DXMATRIX WorldMat, TranslateMat, ScaleMat, RotateMat;
+        D3DXMATRIX WorldMat;
+        D3DXMATRIX TranslateMat;
+        D3DXMATRIX ScaleMat;
+        D3DXMATRIX RotateMat;
         D3DXMatrixTranslation(&TranslateMat, pos.getX(), pos.getY(), pos.getZ());
         D3DXMatrixScaling(&ScaleMat, scale.getX(), scale.getY(), scale.getZ());
         D3DXMatrixIdentity(&WorldMat);

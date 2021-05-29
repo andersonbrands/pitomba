@@ -1,8 +1,5 @@
 
 #include "DummyTask.h"
-#include "../pitomba/Renderer/Texture/TextureManager.h"
-#include "../pitomba/EventManager/EventId.h"
-#include "../pitomba/EventManager/EventData.h"
 #include "Ids/TextureIds.h"
 
 

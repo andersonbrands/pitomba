@@ -1,6 +1,5 @@
 
 #include "Event.h"
-#include "EventHandler.h"
 #include <cassert>
 
 namespace pitomba {

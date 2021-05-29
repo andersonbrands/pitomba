@@ -6,8 +6,9 @@
 #include "../EventManager/iEventManager.h"
 #include "../Utils/iRng.h"
 #include "../Utils/iTimer.h"
+#include "../Utils/iLogger.h"
 #include "../Utils/Scheduler.h"
-#include "../Utils/ServiceLocator.h"
+#include "../Utils/iLocator.h"
 #include "../Renderer/D3DRenderer.h"
 #include <memory>
 #include "../Renderer/MainWindow.h"

@@ -4,7 +4,6 @@
 
 #include "iTextureManager.h"
 #include "../../Utils/UnorderedMapContainer.h"
-#include <string>
 
 
 using namespace std;

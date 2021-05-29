@@ -4,7 +4,8 @@
 
 namespace pitomba {
 
-    TimerTask::TimerTask(const unsigned int priority) : Task(priority) {}
+    TimerTask::TimerTask(const unsigned int priority, iTimer* pTimer, iManagedTimer* pManagedTimer) :
+        Task(priority), pTimer_(pTimer), pManagedTimer_(pManagedTimer) {}
 
     iTimer* TimerTask::getTimer() const {
         return pTimer_;

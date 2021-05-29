@@ -5,10 +5,8 @@
 #include <memory>
 #include "../pitomba/Kernel/Task.h"
 #include "../pitomba/Renderer/Sprite/D3DSprite.h"
-#include "../pitomba/EventManager/iEventManager.h"
+#include "../pitomba/Utils/iLocator.h"
 #include "../pitomba/EventManager/EventHandler.h"
-#include "../pitomba/Utils/ServiceLocator.h"
-#include "../pitomba/Renderer/iRenderer.h"
 
 
 using namespace pitomba;

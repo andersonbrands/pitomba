@@ -21,7 +21,7 @@ namespace pitomba {
         virtual bool preRender() = 0;
         virtual void render() = 0;
         virtual void postRender() = 0;
-        virtual void createD3DTexture(std::wstring fullPath, LPDIRECT3DTEXTURE9* texture) = 0;
+        virtual void createD3DTexture(std::wstring const& fullPath, LPDIRECT3DTEXTURE9* texture) = 0;
         virtual void createD3DVertexBuffer(int bufferSize, DWORD fvf, LPDIRECT3DVERTEXBUFFER9* vertexBuffer) = 0;
         virtual void renderTexture(LPDIRECT3DTEXTURE9 texture, LPDIRECT3DVERTEXBUFFER9 vertexBuffer, std::size_t vertexStructSize, DWORD fvf) = 0;
         virtual void setupViewMatrix(float aspectRatio, const Vector3& camPos, const Vector3& camTarget, const Vector3& upVector) = 0;

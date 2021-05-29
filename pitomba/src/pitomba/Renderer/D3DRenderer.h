@@ -5,7 +5,6 @@
 #include "iRenderer.h"
 #include "iWindowProvider.h"
 #include <d3dx9.h>
-#include <memory>
 #include <string>
 
 
@@ -32,7 +31,7 @@ namespace pitomba {
         bool preRender() override;
         void render() override;
         void postRender() override;
-        void createD3DTexture(std::wstring fullPath, LPDIRECT3DTEXTURE9* texture) override;
+        void createD3DTexture(std::wstring const& fullPath, LPDIRECT3DTEXTURE9* texture) override;
         void createD3DVertexBuffer(int bufferSize, DWORD fvf, LPDIRECT3DVERTEXBUFFER9* vertexBuffer) override;
         void renderTexture(LPDIRECT3DTEXTURE9 texture, LPDIRECT3DVERTEXBUFFER9 vertexBuffer, std::size_t vertexStructSize, DWORD fvf) override;
         void setupViewMatrix(float aspectRatio, const Vector3& camPos, const Vector3& camTarget, const Vector3& upVector) override;
@@ -40,15 +39,16 @@ namespace pitomba {
         void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar) override;
 
     private:
-        LPDIRECT3D9 g_pD3D;
-        LPDIRECT3DDEVICE9 g_pd3dDevice;
+        LPDIRECT3D9 g_pD3D = nullptr;
+        LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
 
-        D3DPRESENT_PARAMETERS d3dParams_; //everything we need to setup D3D
+        D3DPRESENT_PARAMETERS d3dParams_ = {}; //everything we need to setup D3D
 
         ColorRGB clearColor = { 0.2F,0.2F,0.2F };
 
         iWindowProvider* pWindowProvider_;
     };
+
 }
 
 #endif // D3D_RENDERER_H_
