@@ -6,7 +6,7 @@
 #include <d3dx9.h>
 #include "../../EventManager/iEventManager.h"
 #include "../../Renderer/iRenderer.h"
-#include "../../Renderer/Texture/iTextureManager.h"
+#include "../../Renderer/Texture/iTextureContainer.h"
 #include "../../Utils/iLocator.h"
 
 namespace pitomba {
@@ -14,7 +14,7 @@ namespace pitomba {
 
     class D3DSprite : public Sprite {
     private:
-        iLocator<iTextureManager>* pTextureManagerLocator_;
+        iLocator<iTextureContainer>* pTextureContainerLocator_;
         iLocator<iRenderer>* pRendererLocator_;
 
         struct SPRITE_VERTEX {
@@ -35,7 +35,7 @@ namespace pitomba {
         void setUVCoords(float minU, float maxU, float minV, float maxV) final;
 
     public:
-        explicit D3DSprite(iLocator<iRenderer>* pRendererLocator, iLocator<iTextureManager>* pTextureManagerLocator);
+        explicit D3DSprite(iLocator<iRenderer>* pRendererLocator, iLocator<iTextureContainer>* pTextureContainerLocator);
         ~D3DSprite() final;
 
         void render();

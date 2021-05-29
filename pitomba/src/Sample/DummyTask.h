@@ -6,7 +6,11 @@
 #include "../pitomba/Kernel/Task.h"
 #include "../pitomba/Renderer/Sprite/D3DSprite.h"
 #include "../pitomba/Utils/iLocator.h"
+#include "../pitomba/Utils/iRng.h"
 #include "../pitomba/EventManager/EventHandler.h"
+#include "../pitomba/Utils/iContainer.h"
+#include "../pitomba/Renderer/Texture/iTextureDirProvider.h"
+#include "../pitomba/Renderer/Texture/iTextureContainer.h"
 
 
 using namespace pitomba;
@@ -18,7 +22,8 @@ public:
         iLocator<iEventManager>* pEventManagerLocator,
         iLocator<iRenderer>* pRendererLocator,
         iLocator<iRng>* pRngLocator,
-        iLocator<iTextureManager>* pTextureManagerLocator);
+        iLocator<iTextureContainer>* pTextureContainerLocator,
+        iTextureDirProvider* pTextureDirProvider);
     ~DummyTask() final = default;
 
 private:
@@ -26,8 +31,8 @@ private:
     iLocator<iEventManager>* pEventManagerLocator_;
     iLocator<iRenderer>* pRendererLocator_;
     iLocator<iRng>* pRngLocator_;
-    iLocator<iTextureManager>* pTextureManagerLocator_;
-
+    iLocator<iTextureContainer>* pTextureContainerLocator_;
+    iTextureDirProvider* pTextureDirProvider_;
 
     void onUpdate() final;
     void onStart() final;

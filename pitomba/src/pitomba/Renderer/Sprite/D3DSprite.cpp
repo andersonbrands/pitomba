@@ -7,8 +7,8 @@
 namespace pitomba {
     D3DSprite::D3DSprite(
         iLocator<iRenderer>* pRendererLocator,
-        iLocator<iTextureManager>* pTextureManagerLocator) :
-        pTextureManagerLocator_(pTextureManagerLocator),
+        iLocator<iTextureContainer>* pTextureContainerLocator) :
+        pTextureContainerLocator_(pTextureContainerLocator),
         pRendererLocator_(pRendererLocator) {}
 
     D3DSprite::~D3DSprite() {
@@ -25,7 +25,7 @@ namespace pitomba {
 
     void D3DSprite::render() {
         pRendererLocator_->get()->renderTexture(
-            *pTextureManagerLocator_->get()->getTexture(getTextureId()),
+            *pTextureContainerLocator_->get()->get(getTextureId()),
             pVertexBuffer_,
             sizeof(SPRITE_VERTEX),
             FVF_SPRITE_VERTEX

@@ -153,7 +153,7 @@
     <ClCompile Include="src\pitomba\Renderer\MainWindow.cpp" />
     <ClCompile Include="src\pitomba\Renderer\Sprite\D3DSprite.cpp" />
     <ClCompile Include="src\pitomba\Renderer\Sprite\Sprite.cpp" />
-    <ClCompile Include="src\pitomba\Renderer\Texture\TextureManager.cpp" />
+    <ClCompile Include="src\pitomba\Renderer\Texture\TextureContainer.cpp" />
     <ClCompile Include="src\pitomba\Utils\Rng.cpp" />
     <ClCompile Include="src\pitomba\Utils\Scheduler.cpp" />
     <ClCompile Include="src\pitomba\Utils\Timer.cpp" />
@@ -184,8 +184,9 @@
     <ClInclude Include="src\pitomba\Renderer\Sprite\Sprite.h" />
     <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteAlign.h" />
     <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteId.h" />
-    <ClInclude Include="src\pitomba\Renderer\Texture\iTextureManager.h" />
-    <ClInclude Include="src\pitomba\Renderer\Texture\TextureManager.h" />
+    <ClInclude Include="src\pitomba\Renderer\Texture\iTextureContainer.h" />
+    <ClInclude Include="src\pitomba\Renderer\Texture\iTextureDirProvider.h" />
+    <ClInclude Include="src\pitomba\Renderer\Texture\TextureContainer.h" />
     <ClInclude Include="src\pitomba\Utils\Color.h" />
     <ClInclude Include="src\pitomba\Utils\iContainer.h" />
     <ClInclude Include="src\pitomba\Utils\iLocator.h" />

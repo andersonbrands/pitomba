@@ -8,7 +8,7 @@
 #include "../Utils/iTimer.h"
 #include "../Utils/iLogger.h"
 #include "../Renderer/iRenderer.h"
-#include "../Renderer/Texture/iTextureManager.h"
+#include "../Renderer/Texture/iTextureContainer.h"
 #include "../EventManager/iEventManager.h"
 
 namespace pitomba {
@@ -18,7 +18,7 @@ namespace pitomba {
         public iLocator<iTimer>,
         public iLocator<iLogger>,
         public iLocator<iRenderer>,
-        public iLocator<iTextureManager>,
+        public iLocator<iTextureContainer>,
         public iLocator<iEventManager> {
 
     };

@@ -8,13 +8,15 @@ DummyTask::DummyTask(const unsigned int priority,
                      iLocator<iEventManager>* pEventManagerLocator,
                      iLocator<iRenderer>* pRendererLocator,
                      iLocator<iRng>* pRngLocator,
-                     iLocator<iTextureManager>* pTextureManagerLocator) :
+                     iLocator<iTextureContainer>* pTextureContainerLocator,
+                     iTextureDirProvider* pTextureDirProvider) :
     Task(priority),
     pEventManagerLocator_(pEventManagerLocator),
     pRendererLocator_(pRendererLocator),
     pRngLocator_(pRngLocator),
-    pTextureManagerLocator_(pTextureManagerLocator),
-    sprite(pRendererLocator, pTextureManagerLocator_) {
+    pTextureContainerLocator_(pTextureContainerLocator),
+    pTextureDirProvider_(pTextureDirProvider),
+    sprite(pRendererLocator, pTextureContainerLocator_) {
 
 }
 
@@ -23,10 +25,10 @@ void DummyTask::onUpdate() {
 }
 
 void DummyTask::onStart() {
-    pTextureManagerLocator_->get()->loadTexture(texture::SAMPLE_TEXTURE);
+    pTextureContainerLocator_->get()->add(texture::SAMPLE_TEXTURE.id);
     pRendererLocator_->get()->createD3DTexture(
-        (pTextureManagerLocator_->get()->getTextureDir() + texture::SAMPLE_TEXTURE.name),
-        pTextureManagerLocator_->get()->getTexture(texture::SAMPLE_TEXTURE.id)
+        (pTextureDirProvider_->getTextureDir() + texture::SAMPLE_TEXTURE.name),
+        pTextureContainerLocator_->get()->get(texture::SAMPLE_TEXTURE.id)
     );
 
     sprite.setup(spr::STAR);

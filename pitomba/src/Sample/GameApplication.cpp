@@ -2,7 +2,7 @@
 #include "../pitomba/Utils/Logger.h"
 #include "../pitomba/Utils/Rng.h"
 #include "../pitomba/EventManager/EventManager.h"
-#include "../pitomba/Renderer/Texture/TextureManager.h"
+
 
 using namespace pitomba;
 using namespace std;
@@ -14,8 +14,7 @@ GameApplication::GameApplication() : Application() {
     pRng_ = make_unique<Rng>();
     pTimerTask_ = make_unique<TimerTask>(Task::TIMER_PRIORITY, pTimer_, pManagedTimer_);
     pRendererTask_ = make_unique<RendererTask>(Task::RENDERER_PRIORITY, pEventManagerLocator_, pTimerLocator_, pRngLocator_, pLoggerLocator_);
-    pTextureManager_ = make_unique<TextureManager>(L"data/textures/");
-    pDummyTask_ = make_unique<DummyTask>(10000, pEventManagerLocator_, pRendererLocator_, pRngLocator_, pTextureManagerLocator_);
+    pDummyTask_ = make_unique<DummyTask>(10000, pEventManagerLocator_, pRendererLocator_, pRngLocator_, pTextureContainerLocator_, pTextureDirProvider_);
 }
 
 GameApplication::~GameApplication() {
@@ -60,5 +59,5 @@ void GameApplication::createServices() {
     pRngLocator_->provide(pRng_.get());
     pTimerLocator_->provide(pTimerTask_->getTimer());
     pRendererLocator_->provide(pRendererTask_->getRenderer());
-    pTextureManagerLocator_->provide(pTextureManager_.get());
+    pTextureContainerLocator_->provide(pTextureContainer_);
 }

@@ -9,6 +9,8 @@
 #include "../pitomba/Utils/Timer.h"
 #include "../pitomba/Kernel/TimerTask.h"
 #include "../pitomba/Kernel/RendererTask.h"
+#include "../pitomba/Renderer/Texture/iTextureContainer.h"
+#include "../pitomba/Renderer/Texture/TextureContainer.h"
 #include "DummyTask.h"
 
 using namespace pitomba;
@@ -23,12 +25,15 @@ private:
     iLocator<iRenderer>* pRendererLocator_ = pLocator_.get();
     iLocator<iEventManager>* pEventManagerLocator_ = pLocator_.get();
     iLocator<iLogger>* pLoggerLocator_ = pLocator_.get();
-    iLocator<iTextureManager>* pTextureManagerLocator_ = pLocator_.get();
+    iLocator<iTextureContainer>* pTextureContainerLocator_ = pLocator_.get();
+
+    std::unique_ptr<TextureContainer> pConcreteTextureContainer_ = std::make_unique<TextureContainer>(L"data/textures/");
+    iTextureDirProvider* pTextureDirProvider_ = pConcreteTextureContainer_.get();
+    iTextureContainer* pTextureContainer_ = pConcreteTextureContainer_.get();
 
     std::unique_ptr<iRng> pRng_ = nullptr;
     std::unique_ptr<iLogger> pLogger_ = nullptr;
     std::unique_ptr<iEventManager> pEventManager_ = nullptr;
-    std::unique_ptr<iTextureManager> pTextureManager_ = nullptr;
 
     std::unique_ptr<Timer> pConcreteTimer_ = std::make_unique<Timer>();
     iTimer* pTimer_ = pConcreteTimer_.get();
