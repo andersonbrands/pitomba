@@ -11,6 +11,7 @@
 #include "../pitomba/Utils/iContainer.h"
 #include "../pitomba/Renderer/Texture/iTextureDirProvider.h"
 #include "../pitomba/Renderer/Texture/iTextureContainer.h"
+#include "../pitomba/GameObjects/GameObject.h"
 
 
 using namespace pitomba;
@@ -38,6 +39,7 @@ private:
     void onStart() final;
 
     D3DSprite sprite;
+    GameObject star_;
 
     // EventHandler interface
     void handleEvent(EventId eventId, void* pData) override;

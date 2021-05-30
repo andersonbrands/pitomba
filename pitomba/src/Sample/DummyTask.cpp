@@ -2,6 +2,7 @@
 #include "DummyTask.h"
 #include "Ids/TextureIds.h"
 #include "Ids/SpriteIds.h"
+#include "../pitomba/GameObjects/Components/SpriteComponent.h"
 
 
 DummyTask::DummyTask(const unsigned int priority,
@@ -33,8 +34,15 @@ void DummyTask::onStart() {
 
     sprite.setup(spr::STAR);
 
-    pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *this);
+    star_.setActive(true);
+    star_.add<SpriteComponent>();
+
+    star_.get<SpriteComponent>()->setSprite(&sprite);
+
+
     pEventManagerLocator_->get()->attachEvent(ev::id::PRE_RENDER, *this);
+    pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *this);
+    pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *star_.get<SpriteComponent>());
 }
 
 void DummyTask::handleEvent(EventId eventId, void* pData) {
@@ -65,7 +73,6 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
             auto scale = Vector3(1.0F);
             auto rotation = Vector3(0.0F);
             pRendererLocator_->get()->setTransform(pos, scale, rotation);
-            sprite.render();
 
             break;
         }

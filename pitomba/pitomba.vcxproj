@@ -145,6 +145,8 @@
   <ItemGroup>
     <ClCompile Include="src\pitomba\EventManager\Event.cpp" />
     <ClCompile Include="src\pitomba\EventManager\EventManager.cpp" />
+    <ClCompile Include="src\pitomba\GameObjects\Components\SpriteComponent.cpp" />
+    <ClCompile Include="src\pitomba\GameObjects\GameObject.cpp" />
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
     <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
@@ -170,6 +172,10 @@
     <ClInclude Include="src\pitomba\EventManager\EventId.h" />
     <ClInclude Include="src\pitomba\EventManager\EventManager.h" />
     <ClInclude Include="src\pitomba\EventManager\iEventManager.h" />
+    <ClInclude Include="src\pitomba\GameObjects\Component.h" />
+    <ClInclude Include="src\pitomba\GameObjects\ComponentId.h" />
+    <ClInclude Include="src\pitomba\GameObjects\Components\SpriteComponent.h" />
+    <ClInclude Include="src\pitomba\GameObjects\GameObject.h" />
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
