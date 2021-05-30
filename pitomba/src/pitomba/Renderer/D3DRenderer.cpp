@@ -194,4 +194,31 @@ namespace pitomba {
         g_pd3dDevice->SetTransform(D3DTS_PROJECTION, &matProj);
     }
 
+    void D3DRenderer::setTransform(const Matrix4& matrix) {
+        D3DMATRIX worldMat;
+
+        worldMat._11 = matrix.get(0);
+        worldMat._12 = matrix.get(1);
+        worldMat._13 = matrix.get(2);
+        worldMat._14 = matrix.get(12);// X
+        worldMat._21 = matrix.get(4);
+        worldMat._22 = matrix.get(5);
+        worldMat._23 = matrix.get(6);
+        worldMat._24 = matrix.get(13);// Y
+        worldMat._31 = matrix.get(8);
+        worldMat._32 = matrix.get(9);
+        worldMat._33 = matrix.get(10);
+        worldMat._34 = matrix.get(14);// Z
+        worldMat._41 = matrix.get(3);// x'
+        worldMat._42 = matrix.get(7);// y'
+        worldMat._43 = matrix.get(11);// z'
+        worldMat._44 = matrix.get(15);
+
+        g_pd3dDevice->SetTransform(D3DTS_WORLD, &worldMat);
+    }
+
+    void D3DRenderer::setTransform(const Transform& transform) {
+        setTransform(transform.getTranslation(), transform.getScale(), transform.getRotation());
+    }
+
 }

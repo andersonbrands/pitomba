@@ -35,6 +35,8 @@ namespace pitomba {
         void createD3DVertexBuffer(int bufferSize, DWORD fvf, LPDIRECT3DVERTEXBUFFER9* vertexBuffer) override;
         void renderTexture(LPDIRECT3DTEXTURE9 texture, LPDIRECT3DVERTEXBUFFER9 vertexBuffer, std::size_t vertexStructSize, DWORD fvf) override;
         void setupViewMatrix(float aspectRatio, const Vector3& camPos, const Vector3& camTarget, const Vector3& upVector) override;
+        void setTransform(const Matrix4& matrix) override;
+        void setTransform(const Transform& transform) override;
         void setTransform(const Vector3& pos, const Vector3& scale, const Vector3& rotation) override;
         void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar) override;
 
@@ -47,6 +49,9 @@ namespace pitomba {
         ColorRGB clearColor = { 0.2F,0.2F,0.2F };
 
         iWindowProvider* pWindowProvider_;
+
+
+
     };
 
 }

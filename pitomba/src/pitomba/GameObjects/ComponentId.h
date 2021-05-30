@@ -8,6 +8,7 @@ namespace pitomba {
     namespace component {
         //static const ComponentId COMPONENT_ID_COMPONENT_NAME = value;
         static const ComponentId SPRITE = 0;
+        static const ComponentId TRANSFORM = 1;
     }
 
 }

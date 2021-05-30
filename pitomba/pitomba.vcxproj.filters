@@ -78,6 +78,12 @@
     <ClCompile Include="src\pitomba\GameObjects\Components\SpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\pitomba\Math\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pitomba\Math\Matrix4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pitomba\Utils\Logger.h">
@@ -215,7 +221,16 @@
     <ClInclude Include="src\pitomba\GameObjects\ComponentId.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pitomba\GameObjects\Components\TransformComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\pitomba\GameObjects\Components\SpriteComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Math\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Math\Matrix4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

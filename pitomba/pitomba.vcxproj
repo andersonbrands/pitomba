@@ -150,6 +150,8 @@
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
     <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
+    <ClCompile Include="src\pitomba\Math\Matrix4.cpp" />
+    <ClCompile Include="src\pitomba\Math\Transform.cpp" />
     <ClCompile Include="src\pitomba\Math\Vector3.cpp" />
     <ClCompile Include="src\pitomba\Renderer\D3DRenderer.cpp" />
     <ClCompile Include="src\pitomba\Renderer\MainWindow.cpp" />
@@ -175,11 +177,14 @@
     <ClInclude Include="src\pitomba\GameObjects\Component.h" />
     <ClInclude Include="src\pitomba\GameObjects\ComponentId.h" />
     <ClInclude Include="src\pitomba\GameObjects\Components\SpriteComponent.h" />
+    <ClInclude Include="src\pitomba\GameObjects\Components\TransformComponent.h" />
     <ClInclude Include="src\pitomba\GameObjects\GameObject.h" />
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />
     <ClInclude Include="src\pitomba\Kernel\TimerTask.h" />
+    <ClInclude Include="src\pitomba\Math\Matrix4.h" />
+    <ClInclude Include="src\pitomba\Math\Transform.h" />
     <ClInclude Include="src\pitomba\Math\Vector3.h" />
     <ClInclude Include="src\pitomba\Renderer\BaseWindow.h" />
     <ClInclude Include="src\pitomba\Renderer\D3DRenderer.h" />

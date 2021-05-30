@@ -3,6 +3,7 @@
 #include "Ids/TextureIds.h"
 #include "Ids/SpriteIds.h"
 #include "../pitomba/GameObjects/Components/SpriteComponent.h"
+#include "../pitomba/GameObjects/Components/TransformComponent.h"
 
 
 DummyTask::DummyTask(const unsigned int priority,
@@ -23,6 +24,15 @@ DummyTask::DummyTask(const unsigned int priority,
 
 void DummyTask::onUpdate() {
     if (!isRunning()) return;
+
+    auto pos = Vector3(
+        pRngLocator_->get()->rand_float(-40.0F, 40.0F),
+        pRngLocator_->get()->rand_float(-40.0F, 40.0F),
+        0.0F
+    );
+
+    star_.get<TransformComponent>()->setTranslation(pos);
+
 }
 
 void DummyTask::onStart() {
@@ -36,6 +46,7 @@ void DummyTask::onStart() {
 
     star_.setActive(true);
     star_.add<SpriteComponent>();
+    star_.add<TransformComponent>();
 
     star_.get<SpriteComponent>()->setSprite(&sprite);
 
@@ -65,15 +76,7 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
         }
         case ev::id::RENDER:
         {
-            auto pos = Vector3(
-                pRngLocator_->get()->rand_float(-40.0F, 40.0F),
-                pRngLocator_->get()->rand_float(-40.0F, 40.0F),
-                0.0F
-            );
-            auto scale = Vector3(1.0F);
-            auto rotation = Vector3(0.0F);
-            pRendererLocator_->get()->setTransform(pos, scale, rotation);
-
+            pRendererLocator_->get()->setTransform(star_.get<TransformComponent>()->getMatrix());
             break;
         }
         default:
