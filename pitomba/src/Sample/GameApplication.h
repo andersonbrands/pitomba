@@ -44,7 +44,7 @@ private:
     std::unique_ptr<RendererTask> pRendererTask_ = nullptr;
 
 
-    void createServices();
+    void provideServices();
 
 public:
     explicit GameApplication();

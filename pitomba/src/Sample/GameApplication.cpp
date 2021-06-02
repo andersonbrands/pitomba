@@ -24,7 +24,7 @@ GameApplication::~GameApplication() {
 bool GameApplication::initialize() {
     bool success(true);
 
-    createServices();
+    provideServices();
 
     pEventManager_->registerEvent(ev::id::APPLICATION_QUIT);
     pEventManager_->registerEvent(ev::id::PRE_RENDER);
@@ -53,7 +53,7 @@ void GameApplication::handleEvent(EventId eventId, void* pData) {
     }
 }
 
-void GameApplication::createServices() {
+void GameApplication::provideServices() {
     pLoggerLocator_->provide(pLogger_.get());
     pEventManagerLocator_->provide(pEventManager_.get());
     pRngLocator_->provide(pRng_.get());
