@@ -84,6 +84,9 @@
     <ClCompile Include="src\pitomba\Math\Matrix4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\pitomba\Renderer\Sprite\SpriteAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pitomba\Utils\Logger.h">
@@ -231,6 +234,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pitomba\Math\Matrix4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteAnimation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

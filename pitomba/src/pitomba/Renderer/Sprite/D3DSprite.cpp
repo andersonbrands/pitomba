@@ -84,8 +84,6 @@ namespace pitomba {
         switch (getAlign()) {
             case SpriteAlign::BOTTOM_LEFT:
                 // no offset needed
-                //createVertexBuffer();
-                //return;
                 break;
             case SpriteAlign::TOP_LEFT:
                 offset = vertices_[0].position;
