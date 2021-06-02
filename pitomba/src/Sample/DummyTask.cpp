@@ -3,6 +3,7 @@
 #include "Ids/TextureIds.h"
 #include "Ids/SpriteIds.h"
 #include "../pitomba/GameObjects/Components/SpriteComponent.h"
+#include "../pitomba/GameObjects/Components/SpriteAnimationComponent.h"
 #include "../pitomba/GameObjects/Components/TransformComponent.h"
 
 
@@ -66,6 +67,11 @@ void DummyTask::onStart() {
     starSprite_4.setup(spr::STAR_04);
     starSprite_5.setup(spr::STAR_05);
 
+    animatedStar_.setActive(true);
+    animatedStar_.add<TransformComponent>();
+    animatedStar_.add<SpriteAnimationComponent>();
+
+
     starAnimation_.addFrame(&starSprite_0);
     starAnimation_.addFrame(&starSprite_1);
     starAnimation_.addFrame(&starSprite_2);
@@ -79,9 +85,12 @@ void DummyTask::onStart() {
 
     starAnimation_.play();
 
+    animatedStar_.get<SpriteAnimationComponent>()->setAnimation(&starAnimation_);
+
     pEventManagerLocator_->get()->attachEvent(ev::id::PRE_RENDER, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *star_.get<SpriteComponent>());
+    pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *animatedStar_.get<SpriteAnimationComponent>());
 }
 
 void DummyTask::handleEvent(EventId eventId, void* pData) {

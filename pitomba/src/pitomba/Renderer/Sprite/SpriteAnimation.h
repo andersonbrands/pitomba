@@ -23,7 +23,6 @@ namespace pitomba {
 
         vector<iRenderableTexture*> spriteV_;
     public:
-        SpriteAnimation() = default;
         SpriteAnimation(unsigned int totalFrames, float fps);
         SpriteAnimation(unsigned int totalFrames, float fps, bool loop);
         virtual ~SpriteAnimation();

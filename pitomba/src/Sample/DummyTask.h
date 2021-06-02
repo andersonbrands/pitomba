@@ -44,6 +44,7 @@ private:
 
     D3DSprite sprite;
     GameObject star_;
+    GameObject animatedStar_;
 
     D3DSprite starSprite_0;
     D3DSprite starSprite_1;
