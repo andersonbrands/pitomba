@@ -7,12 +7,14 @@
 #include "../../EventManager/iEventManager.h"
 #include "../../Renderer/iRenderer.h"
 #include "../../Renderer/Texture/iTextureContainer.h"
+#include "../../Renderer/Texture/iRenderableTexture.h"
 #include "../../Utils/iLocator.h"
+
 
 namespace pitomba {
 
 
-    class D3DSprite : public Sprite {
+    class D3DSprite : public Sprite, public iRenderableTexture {
     private:
         iLocator<iTextureContainer>* pTextureContainerLocator_;
         iLocator<iRenderer>* pRendererLocator_;
@@ -38,7 +40,11 @@ namespace pitomba {
         explicit D3DSprite(iLocator<iRenderer>* pRendererLocator, iLocator<iTextureContainer>* pTextureContainerLocator);
         ~D3DSprite() final;
 
-        void render();
+        // Inherited via iRenderableTexture
+        LPDIRECT3DTEXTURE9 getTexture() override;
+        LPDIRECT3DVERTEXBUFFER9 getVertexBuffer() override;
+        std::size_t getVertexStructSize() override;
+        DWORD getFVF() override;
     };
 }
 

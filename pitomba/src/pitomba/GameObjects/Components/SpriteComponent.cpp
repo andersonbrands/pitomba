@@ -1,6 +1,8 @@
 
 #include "SpriteComponent.h"
 #include "../GameObject.h"
+#include "TransformComponent.h"
+#include "../../EventManager/EventData.h"
 
 
 namespace pitomba {
@@ -11,7 +13,11 @@ namespace pitomba {
         }
 
         if (eventId == ev::id::RENDER) {
-            pSprite_->render();
+            auto pRenderer(static_cast<ev::data::Render*>(pData)->PRenderer);
+            const auto& matrix = getOwner()->get<TransformComponent>()->getMatrix();
+
+            pRenderer->setTransform(matrix);
+            pRenderer->render(pSprite_);
         }
     }
 

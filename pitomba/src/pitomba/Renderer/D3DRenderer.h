@@ -30,6 +30,7 @@ namespace pitomba {
         void fillSurface(ColorRGB) override;
         bool preRender() override;
         void render() override;
+        void render(iRenderableTexture* renderableTexture) override;
         void postRender() override;
         void createD3DTexture(std::wstring const& fullPath, LPDIRECT3DTEXTURE9* texture) override;
         void createD3DVertexBuffer(int bufferSize, DWORD fvf, LPDIRECT3DVERTEXBUFFER9* vertexBuffer) override;
@@ -49,8 +50,6 @@ namespace pitomba {
         ColorRGB clearColor = { 0.2F,0.2F,0.2F };
 
         iWindowProvider* pWindowProvider_;
-
-
 
     };
 

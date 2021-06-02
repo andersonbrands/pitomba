@@ -2,10 +2,10 @@
 #ifndef SPRITE_ANIMATION_H_
 #define SPRITE_ANIMATION_H_
 
-#include "D3DSprite.h"
 #include <vector>
 #include "../../Math/Vector3.h"
 #include "../../Utils/Utils.h"
+#include "../Texture/iRenderableTexture.h"
 
 using namespace std;
 
@@ -21,14 +21,14 @@ namespace pitomba {
         bool playing_ = false;
         float deltaTime_ = 0.0F;
 
-        vector<D3DSprite*> spriteV_;
+        vector<iRenderableTexture*> spriteV_;
     public:
         SpriteAnimation() = default;
         SpriteAnimation(unsigned int totalFrames, float fps);
         SpriteAnimation(unsigned int totalFrames, float fps, bool loop);
         virtual ~SpriteAnimation();
 
-        void addFrame(D3DSprite* pSprite);
+        void addFrame(iRenderableTexture* pSprite);
 
         unsigned int getCurrentFrame() const {
             return currentFrame_;
@@ -42,7 +42,7 @@ namespace pitomba {
 
         void update(TimeUnit delta);
 
-        void render();
+        iRenderableTexture* spriteToRender();
     };
 
 }

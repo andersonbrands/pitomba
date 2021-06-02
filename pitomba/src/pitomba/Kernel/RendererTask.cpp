@@ -2,7 +2,7 @@
 #include "../Utils/Logger.h"
 #include "../Utils/Utils.h"
 #include "TimerTask.h"
-
+#include "../EventManager/EventData.h"
 
 namespace pitomba {
 
@@ -41,7 +41,8 @@ namespace pitomba {
 
             pRenderer_->render();
 
-            pEventManagerLocator_->get()->sendEvent(ev::id::RENDER);
+            auto data = ev::data::Render{ pRenderer_.get() };
+            pEventManagerLocator_->get()->sendEvent(ev::id::RENDER, &data);
             scheduler_.tick(pTimerLocator_->get()->delta()); // TODO handle Render event
 
             pRenderer_->postRender();

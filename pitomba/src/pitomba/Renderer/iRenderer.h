@@ -6,6 +6,7 @@
 #include "../Math/Vector3.h"
 #include "../Math/Matrix4.h"
 #include "../Math/Transform.h"
+#include "Texture/iRenderableTexture.h"
 #include <d3dx9.h>
 #include <string>
 
@@ -22,6 +23,7 @@ namespace pitomba {
         virtual void fillSurface(ColorRGB) = 0;
         virtual bool preRender() = 0;
         virtual void render() = 0;
+        virtual void render(iRenderableTexture* renderableTexture) = 0;
         virtual void postRender() = 0;
         virtual void createD3DTexture(std::wstring const& fullPath, LPDIRECT3DTEXTURE9* texture) = 0;
         virtual void createD3DVertexBuffer(int bufferSize, DWORD fvf, LPDIRECT3DVERTEXBUFFER9* vertexBuffer) = 0;

@@ -23,13 +23,20 @@ namespace pitomba {
         }
     }
 
-    void D3DSprite::render() {
-        pRendererLocator_->get()->renderTexture(
-            *pTextureContainerLocator_->get()->get(getTextureId()),
-            pVertexBuffer_,
-            sizeof(SPRITE_VERTEX),
-            FVF_SPRITE_VERTEX
-        );
+    LPDIRECT3DTEXTURE9 D3DSprite::getTexture() {
+        return *pTextureContainerLocator_->get()->get(getTextureId());
+    }
+
+    LPDIRECT3DVERTEXBUFFER9 D3DSprite::getVertexBuffer() {
+        return pVertexBuffer_;
+    }
+
+    std::size_t D3DSprite::getVertexStructSize() {
+        return sizeof(SPRITE_VERTEX);
+    }
+
+    DWORD D3DSprite::getFVF() {
+        return FVF_SPRITE_VERTEX;
     }
 
     void D3DSprite::createVertexBuffer() {

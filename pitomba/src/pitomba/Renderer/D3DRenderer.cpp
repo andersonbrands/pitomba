@@ -194,6 +194,17 @@ namespace pitomba {
         g_pd3dDevice->SetTransform(D3DTS_PROJECTION, &matProj);
     }
 
+    void D3DRenderer::render(iRenderableTexture* renderableTexture) {
+        if (renderableTexture) {
+            renderTexture(
+                renderableTexture->getTexture(),
+                renderableTexture->getVertexBuffer(),
+                renderableTexture->getVertexStructSize(),
+                renderableTexture->getFVF()
+            );
+        }
+    }
+
     void D3DRenderer::setTransform(const Matrix4& matrix) {
         D3DMATRIX worldMat;
 

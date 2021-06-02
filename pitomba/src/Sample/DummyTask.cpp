@@ -105,9 +105,7 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
         case ev::id::RENDER:
         {
             pRendererLocator_->get()->setTransform(Vector3(0.0F), Vector3(1.0F), Vector3(0.0F));
-            starAnimation_.render();
-
-            pRendererLocator_->get()->setTransform(star_.get<TransformComponent>()->getMatrix());
+            pRendererLocator_->get()->render(starAnimation_.spriteToRender());
             break;
         }
         default:

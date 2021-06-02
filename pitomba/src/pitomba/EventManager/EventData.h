@@ -5,6 +5,7 @@
 #include <string>
 #include <d3dx9.h>
 #include "../Math/Vector3.h"
+#include "../Renderer/iRenderer.h"
 
 
 namespace pitomba {
@@ -12,6 +13,10 @@ namespace pitomba {
     namespace ev {
 
         namespace data {
+
+            struct Render {
+                iRenderer* PRenderer;
+            };
 
         }
     }

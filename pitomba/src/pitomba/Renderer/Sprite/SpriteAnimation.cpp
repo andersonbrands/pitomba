@@ -17,7 +17,7 @@ namespace pitomba {
         spriteV_.clear();
     }
 
-    void SpriteAnimation::addFrame(D3DSprite* pSprite) {
+    void SpriteAnimation::addFrame(iRenderableTexture* pSprite) {
         spriteV_.push_back(pSprite);
     }
 
@@ -70,9 +70,11 @@ namespace pitomba {
 
     }
 
-    void SpriteAnimation::render() {
+    iRenderableTexture* SpriteAnimation::spriteToRender() {
         if (currentFrame_)
-            spriteV_.at(currentFrame_ - 1)->render();
+            return spriteV_.at(currentFrame_ - 1);
+
+        return nullptr;
     }
 
 }
