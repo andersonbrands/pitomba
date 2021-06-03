@@ -6,6 +6,12 @@
 
 
 namespace pitomba {
+    InputTask::~InputTask() {
+        if (mpDI_) {
+            mpDI_->Release();
+            mpDI_ = nullptr;
+        }
+    }
 
     void InputTask::onInitialize() {
         // Create the DirectInput object.
@@ -16,14 +22,16 @@ namespace pitomba {
         }
 
         pD3DKeyboard_->initialize(mpDI_, pWindowProvider_->getWindow());
+        pD3DMouse_->initialize(mpDI_, pWindowProvider_->getWindow());
 
         pEventManagerLocator_->get()->registerEvent(ev::id::INPUT_UPDATED);
     }
 
     void InputTask::onUpdate() {
         pD3DKeyboard_->update();
+        pD3DMouse_->update();
 
-        auto data = ev::data::InputUpdated{ pKeyboard_ };
+        auto data = ev::data::InputUpdated{ pKeyboard_, pMouse_ };
         pEventManagerLocator_->get()->sendEvent(ev::id::INPUT_UPDATED, &data);
     }
 

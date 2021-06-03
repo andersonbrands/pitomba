@@ -7,6 +7,7 @@
 #include "../Math/Vector3.h"
 #include "../Renderer/iRenderer.h"
 #include "../Input/iKeyboard.h"
+#include "../Input/iMouse.h"
 
 
 namespace pitomba {
@@ -21,6 +22,7 @@ namespace pitomba {
 
             struct InputUpdated {
                 iKeyboard* pKeyboard;
+                iMouse* pMouse;
             };
 
         }

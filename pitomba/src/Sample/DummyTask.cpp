@@ -92,9 +92,15 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
     switch (eventId) {
         case ev::id::INPUT_UPDATED:
         {
-            auto pKeyboard(static_cast<ev::data::InputUpdated*>(pData)->pKeyboard);
+            auto data = static_cast<ev::data::InputUpdated*>(pData);
+            auto pKeyboard(data->pKeyboard);
+            auto pMouse(data->pMouse);
 
-            if (!pKeyboard->isKeyDown(DIK_SPACE)) {
+            if (pKeyboard->isKeyDown(DIK_ESCAPE)) {
+                pEventManagerLocator_->get()->sendEvent(ev::id::APPLICATION_QUIT);
+            }
+
+            if (!pKeyboard->isKeyDown(DIK_SPACE) && !pMouse->isMouseLeftButtonDown()) {
                 auto pos = Vector3(
                     pRngLocator_->get()->rand_float(20.0F, 40.0F),
                     pRngLocator_->get()->rand_float(20.0F, 40.0F),

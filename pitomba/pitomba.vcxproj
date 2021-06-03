@@ -149,6 +149,7 @@
     <ClCompile Include="src\pitomba\GameObjects\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\pitomba\GameObjects\GameObject.cpp" />
     <ClCompile Include="src\pitomba\Input\D3DKeyboard.cpp" />
+    <ClCompile Include="src\pitomba\Input\D3DMouse.cpp" />
     <ClCompile Include="src\pitomba\Kernel\InputTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
     <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
@@ -185,7 +186,9 @@
     <ClInclude Include="src\pitomba\GameObjects\Components\TransformComponent.h" />
     <ClInclude Include="src\pitomba\GameObjects\GameObject.h" />
     <ClInclude Include="src\pitomba\Input\D3DKeyboard.h" />
+    <ClInclude Include="src\pitomba\Input\D3DMouse.h" />
     <ClInclude Include="src\pitomba\Input\iKeyboard.h" />
+    <ClInclude Include="src\pitomba\Input\iMouse.h" />
     <ClInclude Include="src\pitomba\Kernel\InputTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />

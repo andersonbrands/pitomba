@@ -22,7 +22,7 @@ namespace pitomba {
 
         void initialize(LPDIRECTINPUT8 mpDI, HWND hWnd);
 
-        virtual void update();
+        void update();
 
 
         // Inherited via iKeyboard
