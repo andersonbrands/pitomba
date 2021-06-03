@@ -14,6 +14,7 @@ GameApplication::GameApplication() : Application() {
     pRng_ = make_unique<Rng>();
     pTimerTask_ = make_unique<TimerTask>(Task::TIMER_PRIORITY, pTimer_, pManagedTimer_);
     pRendererTask_ = make_unique<RendererTask>(Task::RENDERER_PRIORITY, pEventManagerLocator_, pTimerLocator_, pRngLocator_, pLoggerLocator_);
+    pInputTask_ = make_unique<InputTask>(Task::INPUT_PRIORITY, pEventManagerLocator_, pRendererTask_->getWindowProvider());
     pDummyTask_ = make_unique<DummyTask>(Task::GAME_PRIORITY, pEventManagerLocator_, pRendererLocator_, pRngLocator_, pTimerLocator_, pTextureContainerLocator_, pTextureDirProvider_);
 }
 
@@ -36,6 +37,7 @@ bool GameApplication::initialize() {
     addTask(pDummyTask_.get());
     addTask(pTimerTask_.get());
     addTask(pRendererTask_.get());
+    addTask(pInputTask_.get());
 
     return success;
 }

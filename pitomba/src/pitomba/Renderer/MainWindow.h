@@ -31,6 +31,7 @@ namespace pitomba {
 
         // Inherited via iWindowProvider
         HWND getWindow() const override;
+        HINSTANCE getHInstance() const override;
     };
 }
 

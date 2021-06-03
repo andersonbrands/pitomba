@@ -41,8 +41,6 @@ namespace pitomba {
             HWND hWndParent = nullptr,
             HMENU hMenu = nullptr
         ) {
-            WNDCLASS wc = { 0 };
-
             wc.lpfnWndProc = DERIVED_TYPE::WindowProc;
             wc.hInstance = GetModuleHandle(NULL);
             wc.lpszClassName = ClassName();
@@ -59,6 +57,10 @@ namespace pitomba {
 
         HWND Window() const { return m_hwnd; }
 
+        HINSTANCE getHInst() const {
+            return wc.hInstance;
+        }
+
     protected:
 
         virtual PCWSTR  ClassName() const = 0;
@@ -67,6 +69,7 @@ namespace pitomba {
 
     private:
         HWND m_hwnd = nullptr;
+        WNDCLASS wc = { 0 };
     };
 }
 

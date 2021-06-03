@@ -8,6 +8,7 @@
 #include "../pitomba/Utils/ServiceLocator.h"
 #include "../pitomba/Utils/Timer.h"
 #include "../pitomba/Kernel/TimerTask.h"
+#include "../pitomba/Kernel/InputTask.h"
 #include "../pitomba/Kernel/RendererTask.h"
 #include "../pitomba/Renderer/Texture/iTextureContainer.h"
 #include "../pitomba/Renderer/Texture/TextureContainer.h"
@@ -41,6 +42,7 @@ private:
 
     std::unique_ptr<DummyTask> pDummyTask_ = nullptr;
     std::unique_ptr<TimerTask> pTimerTask_ = nullptr;
+    std::unique_ptr<InputTask> pInputTask_ = nullptr;
     std::unique_ptr<RendererTask> pRendererTask_ = nullptr;
 
 

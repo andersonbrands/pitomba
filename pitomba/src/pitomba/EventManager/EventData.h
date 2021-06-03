@@ -6,6 +6,7 @@
 #include <d3dx9.h>
 #include "../Math/Vector3.h"
 #include "../Renderer/iRenderer.h"
+#include "../Input/iKeyboard.h"
 
 
 namespace pitomba {
@@ -15,7 +16,11 @@ namespace pitomba {
         namespace data {
 
             struct Render {
-                iRenderer* PRenderer;
+                iRenderer* pRenderer;
+            };
+
+            struct InputUpdated {
+                iKeyboard* pKeyboard;
             };
 
         }

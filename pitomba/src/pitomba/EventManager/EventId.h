@@ -14,6 +14,7 @@ namespace pitomba {
             static const EventId PRE_RENDER = 2;
             static const EventId RENDER = 3;
             static const EventId POST_RENDER = 4;
+            static const EventId INPUT_UPDATED = 5;
 
         }
     }

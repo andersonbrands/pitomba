@@ -95,7 +95,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3dx9d.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3dx9d.lib;d3d9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -148,6 +148,8 @@
     <ClCompile Include="src\pitomba\GameObjects\Components\SpriteAnimationComponent.cpp" />
     <ClCompile Include="src\pitomba\GameObjects\Components\SpriteComponent.cpp" />
     <ClCompile Include="src\pitomba\GameObjects\GameObject.cpp" />
+    <ClCompile Include="src\pitomba\Input\D3DKeyboard.cpp" />
+    <ClCompile Include="src\pitomba\Kernel\InputTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
     <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
     <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
@@ -182,6 +184,9 @@
     <ClInclude Include="src\pitomba\GameObjects\Components\SpriteComponent.h" />
     <ClInclude Include="src\pitomba\GameObjects\Components\TransformComponent.h" />
     <ClInclude Include="src\pitomba\GameObjects\GameObject.h" />
+    <ClInclude Include="src\pitomba\Input\D3DKeyboard.h" />
+    <ClInclude Include="src\pitomba\Input\iKeyboard.h" />
+    <ClInclude Include="src\pitomba\Kernel\InputTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
     <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
     <ClInclude Include="src\pitomba\Kernel\Task.h" />

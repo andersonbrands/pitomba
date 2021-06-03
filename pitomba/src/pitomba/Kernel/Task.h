@@ -34,8 +34,9 @@ namespace pitomba {
         unsigned int getPriority() const;
 
         static const unsigned int TIMER_PRIORITY = TASK_MAX_PRIORITY;
-        static const unsigned int GAME_PRIORITY = 1000;
-        static const unsigned int RENDERER_PRIORITY = 2000;
+        static const unsigned int INPUT_PRIORITY = 1000;
+        static const unsigned int GAME_PRIORITY = 2000;
+        static const unsigned int RENDERER_PRIORITY = 3000;
     };
 
     inline void Task::onInitialize() { /* Intentionally unimplemented... */ }

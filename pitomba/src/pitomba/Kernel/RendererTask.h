@@ -32,6 +32,9 @@ namespace pitomba {
         void onStop() final;
 
         iRenderer* getRenderer() const;
+        iWindowProvider* getWindowProvider() const {
+            return pWindow_.get();
+        }
 
     private:
         iLocator<iEventManager>* pEventManagerLocator_;

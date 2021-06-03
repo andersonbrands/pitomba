@@ -5,6 +5,8 @@
 #include "../pitomba/GameObjects/Components/SpriteComponent.h"
 #include "../pitomba/GameObjects/Components/SpriteAnimationComponent.h"
 #include "../pitomba/GameObjects/Components/TransformComponent.h"
+#include "../pitomba/EventManager/EventData.h"
+#include <dinput.h>
 
 
 DummyTask::DummyTask(const unsigned int priority,
@@ -33,14 +35,6 @@ DummyTask::DummyTask(const unsigned int priority,
 
 void DummyTask::onUpdate() {
     if (!isRunning()) return;
-
-    auto pos = Vector3(
-        pRngLocator_->get()->rand_float(20.0F, 40.0F),
-        pRngLocator_->get()->rand_float(20.0F, 40.0F),
-        0.0F
-    );
-
-    star_.get<TransformComponent>()->setTranslation(pos);
 
     starAnimation_.update(pTimerLocator_->get()->delta());
 }
@@ -87,6 +81,7 @@ void DummyTask::onStart() {
 
     animatedStar_.get<SpriteAnimationComponent>()->setAnimation(&starAnimation_);
 
+    pEventManagerLocator_->get()->attachEvent(ev::id::INPUT_UPDATED, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::PRE_RENDER, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *star_.get<SpriteComponent>());
@@ -95,6 +90,20 @@ void DummyTask::onStart() {
 
 void DummyTask::handleEvent(EventId eventId, void* pData) {
     switch (eventId) {
+        case ev::id::INPUT_UPDATED:
+        {
+            auto pKeyboard(static_cast<ev::data::InputUpdated*>(pData)->pKeyboard);
+
+            if (!pKeyboard->isKeyDown(DIK_SPACE)) {
+                auto pos = Vector3(
+                    pRngLocator_->get()->rand_float(20.0F, 40.0F),
+                    pRngLocator_->get()->rand_float(20.0F, 40.0F),
+                    0.0F
+                );
+
+                star_.get<TransformComponent>()->setTranslation(pos);
+            }
+        }
         case ev::id::PRE_RENDER:
         {
             Vector3 camPos(0.0f);

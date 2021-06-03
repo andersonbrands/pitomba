@@ -49,4 +49,8 @@ namespace pitomba {
         return Window();
     }
 
+    HINSTANCE MainWindow::getHInstance() const {
+        return getHInst();
+    }
+
 }

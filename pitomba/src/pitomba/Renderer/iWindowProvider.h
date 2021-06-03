@@ -12,6 +12,7 @@ namespace pitomba {
         virtual ~iWindowProvider() = default;
 
         virtual HWND getWindow() const = 0;
+        virtual HINSTANCE getHInstance() const = 0;
     };
 }
 

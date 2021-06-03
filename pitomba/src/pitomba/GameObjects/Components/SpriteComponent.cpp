@@ -13,7 +13,7 @@ namespace pitomba {
         }
 
         if (eventId == ev::id::RENDER) {
-            auto pRenderer(static_cast<ev::data::Render*>(pData)->PRenderer);
+            auto pRenderer(static_cast<ev::data::Render*>(pData)->pRenderer);
             const auto& matrix = getOwner()->get<TransformComponent>()->getMatrix();
 
             pRenderer->setTransform(matrix);
