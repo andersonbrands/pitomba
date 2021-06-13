@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.58066223"
-     inkscape:cx="776.55294"
-     inkscape:cy="407.72657"
+     inkscape:zoom="20.174988"
+     inkscape:cx="26.002636"
+     inkscape:cy="1009.1669"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      inkscape:document-rotation="0"
@@ -94,7 +94,19 @@
        orientation="-1,0"
        id="guide844"
        inkscape:label=""
-       inkscape:locked="false"
+       inkscape:locked="true"
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="5.9999994e-09,6.3499868"
+       orientation="0,-1"
+       id="guide946"
+       inkscape:locked="true" />
+    <sodipodi:guide
+       position="3.96875,6.35"
+       orientation="-1,0"
+       id="guide875"
+       inkscape:label=""
+       inkscape:locked="true"
        inkscape:color="rgb(0,0,255)" />
   </sodipodi:namedview>
   <metadata
@@ -185,6 +197,13 @@
        height="25.4"
        x="228.59998"
        y="4.318847e-06" />
+    <rect
+       style="fill:#ff82ff;stroke-width:0.264999"
+       id="rect868"
+       width="6.3499999"
+       height="6.3499999"
+       x="-4.4408921e-16"
+       y="264.58334" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -300,6 +319,32 @@
          d="M 16.432436,8.7754895 18.739209,15.875005 12.7,20.262747 6.660791,15.875005 8.9675635,8.7754896 Z"
          id="path905"
          sodipodi:nodetypes="cccccc" />
+    </g>
+    <g
+       id="g944"
+       transform="matrix(0.34830649,0,0,0.34830649,-2.8561132,262.87665)">
+      <polygon
+         fill="#ffffff"
+         points="19.8,16.5 13,16.5 12.6,16.6 8.2,20.9 8.2,4.9 "
+         id="polygon925"
+         style="fill:#000000" />
+      <polygon
+         fill="#ffffff"
+         points="17.3,21.6 13.7,23.1 9,12 12.7,10.5 "
+         id="polygon927"
+         style="fill:#000000" />
+      <rect
+         x="12.5"
+         y="13.6"
+         transform="matrix(0.9221,-0.3871,0.3871,0.9221,-5.7605,6.5909)"
+         width="2"
+         height="8"
+         id="rect929"
+         style="fill:#ffffff" />
+      <polygon
+         points="12.2,15.6 12.6,15.5 17.4,15.5 9.2,7.3 9.2,18.5 "
+         id="polygon931"
+         style="fill:#ffffff" />
     </g>
   </g>
 </svg>
