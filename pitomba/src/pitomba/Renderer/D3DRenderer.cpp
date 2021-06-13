@@ -1,6 +1,7 @@
 
 #include "D3DRenderer.h"
 #include <cassert>
+#include <d3dx9core.h>
 
 namespace pitomba {
 
@@ -10,12 +11,19 @@ namespace pitomba {
     D3DRenderer::~D3DRenderer() {
         if (g_pd3dDevice) g_pd3dDevice->Release();
         if (g_pD3D) g_pD3D->Release();
+
+        if (pFont_) {
+            pFont_->Release();
+            pFont_ = nullptr;
+        }
     }
 
     bool D3DRenderer::initialize() {
         if (!SUCCEEDED(setupD3D())) {
             return false;
         }
+
+        createFont(L"Arial", 20);
 
         return true;
     }
@@ -192,6 +200,81 @@ namespace pitomba {
         D3DXMATRIX matProj;
         D3DXMatrixOrthoLH(&matProj, w, h, zNear, zFar);
         g_pd3dDevice->SetTransform(D3DTS_PROJECTION, &matProj);
+    }
+
+    bool D3DRenderer::createFont(std::wstring const& faceName, int size, bool bold, bool italic) {
+        HRESULT hr = 0;
+
+        hr = D3DXCreateFont(g_pd3dDevice, -size, 0, bold ? 800 : 0, 1, italic, DEFAULT_CHARSET,
+                            OUT_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, faceName.c_str(), &pFont_);
+        if (FAILED(hr)) {
+            MessageBox(nullptr, L"D3DXCreateFont() failed.", L"Error", MB_OK);
+            return false;
+        }
+
+        return true;
+    }
+
+    RECT D3DRenderer::drawText(std::wstring const& text, int xPosition, int yPosition, ColorRGBA color, LPD3DXSPRITE sprite,
+                               int textBoxWidth, int textBoxHeight, FontAlign alignment, bool dimensionsOnly) const {
+        RECT rect = { 0,0,0,0 };
+        if (!pFont_) {
+            return rect;
+        }
+        DWORD format = DT_EXPANDTABS;
+        if (textBoxWidth == 0) {
+            format |= DT_NOCLIP;
+        } else {
+            format |= DT_WORDBREAK;
+            switch (alignment) {
+                case FontAlign::LEFT:
+                    format |= DT_LEFT;
+                    break;
+                case FontAlign::CENTER:
+                    format |= DT_CENTER;
+                    break;
+                case FontAlign::RIGHT:
+                    format |= DT_RIGHT;
+                    break;
+                case FontAlign::TOP_RIGHT:
+                    format |= DT_RIGHT | DT_TOP;
+                    break;
+                case FontAlign::BOTTOM_RIGHT:
+                    format |= DT_RIGHT | DT_BOTTOM;
+                    break;
+                case FontAlign::TOP_LEFT:
+                    format |= DT_LEFT | DT_TOP;
+                    break;
+                case FontAlign::BOTTOM_LEFT:
+                    format |= DT_LEFT | DT_BOTTOM;
+                    break;
+                default:
+                    break;
+            }
+            if (textBoxHeight == 0) {
+                // A width is specified, but not a height.
+                // Make it seem like height is infinite
+                textBoxHeight = 2000;
+            }
+        }
+        if (dimensionsOnly)
+            format |= DT_CALCRECT;
+
+        rect.left = xPosition;
+        rect.top = yPosition;
+        rect.right = xPosition + textBoxWidth;
+        rect.bottom = yPosition + textBoxHeight;
+
+        DWORD d3dColor = D3DCOLOR_RGBA(
+            int(255 * color.r),
+            int(255 * color.g),
+            int(255 * color.b),
+            int(255 * color.a)
+        );
+
+        pFont_->DrawText(sprite, text.c_str(), -1, &rect, format, d3dColor);
+
+        return rect;
     }
 
     void D3DRenderer::render(iRenderableTexture* renderableTexture) {

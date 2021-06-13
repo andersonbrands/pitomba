@@ -40,7 +40,10 @@ namespace pitomba {
         void setTransform(const Transform& transform) override;
         void setTransform(const Vector3& pos, const Vector3& scale, const Vector3& rotation) override;
         void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar) override;
+        RECT drawText(std::wstring const& text, int xPosition, int yPosition, ColorRGBA color, LPD3DXSPRITE sprite = nullptr,
+                      int textBoxWidth = 0, int textBoxHeight = 0, FontAlign alignment = FontAlign::LEFT, bool dimensionsOnly = false) const;
 
+        bool createFont(std::wstring const& faceName, int size, bool bold = FALSE, bool italic = FALSE);
     private:
         LPDIRECT3D9 g_pD3D = nullptr;
         LPDIRECT3DDEVICE9 g_pd3dDevice = nullptr;
@@ -50,6 +53,8 @@ namespace pitomba {
         ColorRGB clearColor = { 0.2F,0.2F,0.2F };
 
         iWindowProvider* pWindowProvider_;
+
+        LPD3DXFONT pFont_ = nullptr;
 
     };
 

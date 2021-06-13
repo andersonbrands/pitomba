@@ -109,6 +109,7 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
 
                 star_.get<TransformComponent>()->setTranslation(pos);
             }
+            break;
         }
         case ev::id::PRE_RENDER:
         {
@@ -130,6 +131,8 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
         {
             pRendererLocator_->get()->setTransform(Vector3(0.0F), Vector3(1.0F), Vector3(0.0F));
             pRendererLocator_->get()->render(starAnimation_.spriteToRender());
+
+            pRendererLocator_->get()->drawText(L"SAMPLE TEXT", 0, 0, ColorRGBA{ 1.0f, 1.0f, 1.0f, 0.5f }, nullptr, 180, 50);
             break;
         }
         default:

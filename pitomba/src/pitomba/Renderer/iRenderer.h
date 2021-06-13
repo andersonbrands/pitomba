@@ -13,6 +13,16 @@
 
 namespace pitomba {
 
+    enum class FontAlign {
+        LEFT,
+        CENTER,
+        RIGHT,
+        TOP_RIGHT,
+        TOP_LEFT,
+        BOTTOM_RIGHT,
+        BOTTOM_LEFT
+    };
+
     class iRenderer {
     public:
         explicit iRenderer() = default;
@@ -33,6 +43,8 @@ namespace pitomba {
         virtual void setTransform(const Transform& transform) = 0;
         virtual void setTransform(const Vector3& pos, const Vector3& scale, const Vector3& rotation) = 0;
         virtual void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar) = 0;
+        virtual RECT drawText(std::wstring const& text, int xPosition, int yPosition, ColorRGBA color, LPD3DXSPRITE sprite = nullptr,
+                              int textBoxWidth = 0, int textBoxHeight = 0, FontAlign alignment = FontAlign::LEFT, bool dimensionsOnly = false) const = 0;
     };
 }
 
