@@ -23,7 +23,8 @@ DummyTask::DummyTask(const unsigned int priority,
     pTimerLocator_(pTimerLocator),
     pTextureContainerLocator_(pTextureContainerLocator),
     pTextureDirProvider_(pTextureDirProvider),
-    sprite(pRendererLocator_, pTextureContainerLocator_),
+    starSprite(pRendererLocator_, pTextureContainerLocator_),
+    mousePointerSprite(pRendererLocator_, pTextureContainerLocator_),
     starSprite_0(pRendererLocator_, pTextureContainerLocator_),
     starSprite_1(pRendererLocator_, pTextureContainerLocator_),
     starSprite_2(pRendererLocator_, pTextureContainerLocator_),
@@ -46,13 +47,13 @@ void DummyTask::onStart() {
         pTextureContainerLocator_->get()->get(texture::SAMPLE_TEXTURE.id)
     );
 
-    sprite.setup(spr::STAR);
+    starSprite.setup(spr::STAR);
 
     star_.setActive(true);
     star_.add<SpriteComponent>();
     star_.add<TransformComponent>();
 
-    star_.get<SpriteComponent>()->setSprite(&sprite);
+    star_.get<SpriteComponent>()->setSprite(&starSprite);
 
     starSprite_0.setup(spr::STAR);
     starSprite_1.setup(spr::STAR_01);
@@ -81,11 +82,20 @@ void DummyTask::onStart() {
 
     animatedStar_.get<SpriteAnimationComponent>()->setAnimation(&starAnimation_);
 
+
+    mousePointerSprite.setup(spr::MOUSE_POINTER);
+
+    mouse_.setActive(true);
+    mouse_.add<SpriteComponent>();
+    mouse_.add<TransformComponent>();
+    mouse_.get<SpriteComponent>()->setSprite(&mousePointerSprite);
+
     pEventManagerLocator_->get()->attachEvent(ev::id::INPUT_UPDATED, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::PRE_RENDER, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *star_.get<SpriteComponent>());
     pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *animatedStar_.get<SpriteAnimationComponent>());
+    pEventManagerLocator_->get()->attachEvent(ev::id::RENDER, *mouse_.get<SpriteComponent>());
 }
 
 void DummyTask::handleEvent(EventId eventId, void* pData) {
@@ -109,6 +119,14 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
 
                 star_.get<TransformComponent>()->setTranslation(pos);
             }
+
+            mouse_.get<TransformComponent>()->translate(
+                Vector3(
+                    pMouse->getDeltaX() * 5.0F,
+                    -pMouse->getDeltaY() * 5.0F,
+                    0.0F
+                )
+            );
             break;
         }
         case ev::id::PRE_RENDER:
@@ -129,9 +147,6 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
         }
         case ev::id::RENDER:
         {
-            pRendererLocator_->get()->setTransform(Vector3(0.0F), Vector3(1.0F), Vector3(0.0F));
-            pRendererLocator_->get()->render(starAnimation_.spriteToRender());
-
             pRendererLocator_->get()->drawText(L"SAMPLE TEXT", 0, 0, ColorRGBA{ 1.0f, 1.0f, 1.0f, 0.5f }, nullptr, 180, 50);
             break;
         }

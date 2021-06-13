@@ -42,9 +42,12 @@ private:
     void onUpdate() final;
     void onStart() final;
 
-    D3DSprite sprite;
+    D3DSprite starSprite;
     GameObject star_;
     GameObject animatedStar_;
+
+    D3DSprite mousePointerSprite;
+    GameObject mouse_;
 
     D3DSprite starSprite_0;
     D3DSprite starSprite_1;

@@ -18,8 +18,8 @@ namespace pitomba {
         void clone(const Transform& transform);
 
         void rotate(const Vector3& rotation);
-        void scale(const Vector3& rotation);
-        void translate(const Vector3& rotation);
+        void scale(const Vector3& scale);
+        void translate(const Vector3& translation);
 
         void setRotation(const Vector3& rotation);
         const Vector3& getRotation() const;
