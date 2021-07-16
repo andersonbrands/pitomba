@@ -14,6 +14,7 @@
 #include "../pitomba/Renderer/Texture/iTextureDirProvider.h"
 #include "../pitomba/Renderer/Texture/iTextureContainer.h"
 #include "../pitomba/GameObjects/GameObject.h"
+#include "../pitomba/Collision/AABBCollider.h"
 
 
 using namespace pitomba;
@@ -45,9 +46,11 @@ private:
     D3DSprite starSprite;
     GameObject star_;
     GameObject animatedStar_;
+    std::unique_ptr<AABBCollider> pAnimatedStarCollider_ = nullptr;
 
     D3DSprite mousePointerSprite;
     GameObject mouse_;
+    std::unique_ptr<AABBCollider> pMouseCollider_ = nullptr;
 
     D3DSprite starSprite_0;
     D3DSprite starSprite_1;

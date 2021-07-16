@@ -42,6 +42,8 @@ namespace pitomba {
         void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar) override;
         RECT drawText(std::wstring const& text, int xPosition, int yPosition, ColorRGBA color, LPD3DXSPRITE sprite = nullptr,
                       int textBoxWidth = 0, int textBoxHeight = 0, FontAlign alignment = FontAlign::LEFT, bool dimensionsOnly = false) const;
+        void drawLine(const Vector3& from, const Vector3& to, const ColorRGBA& color = ColorRGBA{ 1.0f, 1.0f, 1.0f, 1.0f }) const override;
+        void drawAABB(const Vector3& min, const Vector3& max, const ColorRGBA& color = ColorRGBA{ 1.0f, 1.0f, 1.0f, 1.0f }) override;
 
         bool createFont(std::wstring const& faceName, int size, bool bold = FALSE, bool italic = FALSE);
     private:
@@ -55,6 +57,13 @@ namespace pitomba {
         iWindowProvider* pWindowProvider_;
 
         LPD3DXFONT pFont_ = nullptr;
+
+        using VertexDiffuse = struct {
+            float x;
+            float y;
+            float z;
+            D3DCOLOR diffuse;
+        };
 
     };
 

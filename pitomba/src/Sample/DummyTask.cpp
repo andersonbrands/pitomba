@@ -38,6 +38,13 @@ void DummyTask::onUpdate() {
     if (!isRunning()) return;
 
     starAnimation_.update(pTimerLocator_->get()->delta());
+
+    if (pAnimatedStarCollider_->collides(*pMouseCollider_)) {
+        star_.get<TransformComponent>()->setScale(Vector3(2.0F));
+    } else {
+        star_.get<TransformComponent>()->setScale(Vector3(0.5F));
+    }
+
 }
 
 void DummyTask::onStart() {
@@ -66,6 +73,7 @@ void DummyTask::onStart() {
     animatedStar_.add<TransformComponent>();
     animatedStar_.add<SpriteAnimationComponent>();
 
+    pAnimatedStarCollider_ = std::make_unique<AABBCollider>(animatedStar_.get<TransformComponent>(), Vector3(-1.0f), Vector3(1.0f));
 
     starAnimation_.addFrame(&starSprite_0);
     starAnimation_.addFrame(&starSprite_1);
@@ -89,6 +97,8 @@ void DummyTask::onStart() {
     mouse_.add<SpriteComponent>();
     mouse_.add<TransformComponent>();
     mouse_.get<SpriteComponent>()->setSprite(&mousePointerSprite);
+
+    pMouseCollider_ = std::make_unique<AABBCollider>(mouse_.get<TransformComponent>(), Vector3(-1.0f), Vector3(1.0f));
 
     pEventManagerLocator_->get()->attachEvent(ev::id::INPUT_UPDATED, *this);
     pEventManagerLocator_->get()->attachEvent(ev::id::PRE_RENDER, *this);
@@ -127,6 +137,11 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
                     0.0F
                 )
             );
+
+            if (pKeyboard->onKeyUp(DIK_Z)) {
+                mouse_.get<TransformComponent>()->setTranslation(Vector3(0.0F));
+            }
+
             break;
         }
         case ev::id::PRE_RENDER:
@@ -148,6 +163,13 @@ void DummyTask::handleEvent(EventId eventId, void* pData) {
         case ev::id::RENDER:
         {
             pRendererLocator_->get()->drawText(L"SAMPLE TEXT", 0, 0, ColorRGBA{ 1.0f, 1.0f, 1.0f, 0.5f }, nullptr, 180, 50);
+
+            pRendererLocator_->get()->setTransform(Vector3(0.0F), Vector3(1.0F), Vector3(0.0F));
+            pRendererLocator_->get()->drawLine(Vector3(0.0f), mouse_.get<TransformComponent>()->getTranslation());
+
+            pRendererLocator_->get()->drawAABB(pAnimatedStarCollider_->getMin(), pAnimatedStarCollider_->getMax());
+            pRendererLocator_->get()->drawAABB(pMouseCollider_->getMin(), pMouseCollider_->getMax());
+
             break;
         }
         default:

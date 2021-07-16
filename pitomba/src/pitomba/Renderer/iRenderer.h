@@ -45,6 +45,8 @@ namespace pitomba {
         virtual void setupLHOrthogonalProjectionMatrix(float w, float h, float zNear, float zFar) = 0;
         virtual RECT drawText(std::wstring const& text, int xPosition, int yPosition, ColorRGBA color, LPD3DXSPRITE sprite = nullptr,
                               int textBoxWidth = 0, int textBoxHeight = 0, FontAlign alignment = FontAlign::LEFT, bool dimensionsOnly = false) const = 0;
+        virtual void drawLine(const Vector3& from, const Vector3& to, const ColorRGBA& color = ColorRGBA{ 1.0f, 1.0f, 1.0f, 1.0f }) const = 0;
+        virtual void drawAABB(const Vector3& min, const Vector3& max, const ColorRGBA& color = ColorRGBA{ 1.0f, 1.0f, 1.0f, 1.0f }) = 0;
     };
 }
 

@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\pitomba\Collision\AABBCollider.cpp" />
     <ClCompile Include="src\pitomba\EventManager\Event.cpp" />
     <ClCompile Include="src\pitomba\EventManager\EventManager.cpp" />
     <ClCompile Include="src\pitomba\GameObjects\Components\SpriteAnimationComponent.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="src\pitomba\Utils\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\pitomba\Collision\AABBCollider.h" />
     <ClInclude Include="src\pitomba\EventManager\Event.h" />
     <ClInclude Include="src\pitomba\EventManager\EventData.h" />
     <ClInclude Include="src\pitomba\EventManager\EventHandler.h" />

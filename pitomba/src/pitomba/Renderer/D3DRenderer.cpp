@@ -215,6 +215,83 @@ namespace pitomba {
         return true;
     }
 
+    void D3DRenderer::drawLine(const Vector3& from, const Vector3& to, const ColorRGBA& color) const {
+
+        const DWORD vertex_difuse(D3DFVF_XYZ | D3DFVF_DIFFUSE);
+
+        VertexDiffuse line_vertices[2];
+
+        int r(int(color.r * 255));
+        int g(int(color.g * 255));
+        int b(int(color.b * 255));
+
+        line_vertices[0].x = from.getX();
+        line_vertices[0].y = from.getY();
+        line_vertices[0].z = from.getZ();
+        line_vertices[0].diffuse = D3DCOLOR_XRGB(r, g, b);
+
+        line_vertices[1].x = to.getX();
+        line_vertices[1].y = to.getY();
+        line_vertices[1].z = to.getZ();
+        line_vertices[1].diffuse = D3DCOLOR_XRGB(r, g, b);
+
+        DWORD renderState = g_pd3dDevice->GetRenderState(D3DRS_LIGHTING, &renderState);
+
+        g_pd3dDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+
+        g_pd3dDevice->SetFVF(vertex_difuse);
+        g_pd3dDevice->DrawPrimitiveUP(D3DPT_LINELIST, 2, line_vertices, sizeof(VertexDiffuse));
+
+        g_pd3dDevice->SetRenderState(D3DRS_LIGHTING, renderState);
+
+    }
+
+    void D3DRenderer::drawAABB(const Vector3& min, const Vector3& max, const ColorRGBA& color) {
+        setTransform(Vector3(0.0F), Vector3(1.0F), Vector3(0.0F));
+
+        Vector3 start, end;
+
+        start = Vector3(min.getX(), max.getY(), min.getZ());
+        end = Vector3(min.getX(), max.getY(), max.getZ());
+        drawLine(start, end, color);
+
+        start = end;
+        end = Vector3(max.getX(), max.getY(), max.getZ());
+        drawLine(start, end, color);
+        start = end;
+        end = Vector3(max.getX(), max.getY(), min.getZ());
+        drawLine(start, end, color);
+        start = end;
+        end = Vector3(min.getX(), max.getY(), min.getZ());
+        drawLine(start, end, color);
+
+        start = Vector3(min.getX(), min.getY(), min.getZ());
+        end = Vector3(min.getX(), min.getY(), max.getZ());
+        drawLine(start, end, color);
+        start = end;
+        end = Vector3(max.getX(), min.getY(), max.getZ());
+        drawLine(start, end, color);
+        start = end;
+        end = Vector3(max.getX(), min.getY(), min.getZ());
+        drawLine(start, end, color);
+        start = end;
+        end = Vector3(min.getX(), min.getY(), min.getZ());
+        drawLine(start, end, color);
+
+        start = Vector3(min.getX(), min.getY(), min.getZ());
+        end = Vector3(min.getX(), max.getY(), min.getZ());
+        drawLine(start, end, color);
+        start = Vector3(max.getX(), min.getY(), min.getZ());
+        end = Vector3(max.getX(), max.getY(), min.getZ());
+        drawLine(start, end, color);
+        start = Vector3(max.getX(), min.getY(), max.getZ());
+        end = Vector3(max.getX(), max.getY(), max.getZ());
+        drawLine(start, end, color);
+        start = Vector3(min.getX(), min.getY(), max.getZ());
+        end = Vector3(min.getX(), max.getY(), max.getZ());
+        drawLine(start, end, color);
+    }
+
     RECT D3DRenderer::drawText(std::wstring const& text, int xPosition, int yPosition, ColorRGBA color, LPD3DXSPRITE sprite,
                                int textBoxWidth, int textBoxHeight, FontAlign alignment, bool dimensionsOnly) const {
         RECT rect = { 0,0,0,0 };
