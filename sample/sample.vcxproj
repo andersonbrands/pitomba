@@ -21,13 +21,13 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ed0ff4c7-4045-48eb-8b68-fe256ed1c3bd}</ProjectGuid>
-    <RootNamespace>pitomba</RootNamespace>
+    <ProjectGuid>{16243c20-8bb3-4582-963f-03f21d57f927}</ProjectGuid>
+    <RootNamespace>sample</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)pitomba/src;$(IncludePath)</IncludePath>
     <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath)</LibraryPath>
-    <TargetName>$(ProjectName)_0.1.0-dev-win-x86</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -90,11 +90,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(DXSDK_DIR)Include;$(SolutionDir)deps\boost_1_75_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)Include;$(SolutionDir)deps\boost_1_75_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)pitomba/Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>d3dx9d.lib;d3d9.lib;dinput8.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -143,91 +144,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\pitomba\Collision\AABBCollider.cpp" />
-    <ClCompile Include="src\pitomba\EventManager\Event.cpp" />
-    <ClCompile Include="src\pitomba\EventManager\EventManager.cpp" />
-    <ClCompile Include="src\pitomba\GameObjects\Components\SpriteAnimationComponent.cpp" />
-    <ClCompile Include="src\pitomba\GameObjects\Components\SpriteComponent.cpp" />
-    <ClCompile Include="src\pitomba\GameObjects\GameObject.cpp" />
-    <ClCompile Include="src\pitomba\Input\D3DKeyboard.cpp" />
-    <ClCompile Include="src\pitomba\Input\D3DMouse.cpp" />
-    <ClCompile Include="src\pitomba\Kernel\InputTask.cpp" />
-    <ClCompile Include="src\pitomba\Kernel\Kernel.cpp" />
-    <ClCompile Include="src\pitomba\Kernel\RendererTask.cpp" />
-    <ClCompile Include="src\pitomba\Kernel\TimerTask.cpp" />
-    <ClCompile Include="src\pitomba\Math\Matrix4.cpp" />
-    <ClCompile Include="src\pitomba\Math\Transform.cpp" />
-    <ClCompile Include="src\pitomba\Math\Vector3.cpp" />
-    <ClCompile Include="src\pitomba\Renderer\D3DRenderer.cpp" />
-    <ClCompile Include="src\pitomba\Renderer\MainWindow.cpp" />
-    <ClCompile Include="src\pitomba\Renderer\Sprite\D3DSprite.cpp" />
-    <ClCompile Include="src\pitomba\Renderer\Sprite\Sprite.cpp" />
-    <ClCompile Include="src\pitomba\Renderer\Sprite\SpriteAnimation.cpp" />
-    <ClCompile Include="src\pitomba\Renderer\Texture\TextureContainer.cpp" />
-    <ClCompile Include="src\pitomba\Utils\Rng.cpp" />
-    <ClCompile Include="src\pitomba\Utils\Scheduler.cpp" />
-    <ClCompile Include="src\pitomba\Utils\Timer.cpp" />
-    <ClCompile Include="src\pitomba\Utils\Utils.cpp" />
-    <ClCompile Include="src\pitomba\Utils\Logger.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Sample\DummyTask.cpp" />
+    <ClCompile Include="src\Sample\GameApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\pitomba\Collision\AABBCollider.h" />
-    <ClInclude Include="src\pitomba\EventManager\Event.h" />
-    <ClInclude Include="src\pitomba\EventManager\EventData.h" />
-    <ClInclude Include="src\pitomba\EventManager\EventHandler.h" />
-    <ClInclude Include="src\pitomba\EventManager\EventId.h" />
-    <ClInclude Include="src\pitomba\EventManager\EventManager.h" />
-    <ClInclude Include="src\pitomba\EventManager\iEventManager.h" />
-    <ClInclude Include="src\pitomba\GameObjects\Component.h" />
-    <ClInclude Include="src\pitomba\GameObjects\ComponentId.h" />
-    <ClInclude Include="src\pitomba\GameObjects\Components\SpriteAnimationComponent.h" />
-    <ClInclude Include="src\pitomba\GameObjects\Components\SpriteComponent.h" />
-    <ClInclude Include="src\pitomba\GameObjects\Components\TransformComponent.h" />
-    <ClInclude Include="src\pitomba\GameObjects\GameObject.h" />
-    <ClInclude Include="src\pitomba\Input\D3DKeyboard.h" />
-    <ClInclude Include="src\pitomba\Input\D3DMouse.h" />
-    <ClInclude Include="src\pitomba\Input\iKeyboard.h" />
-    <ClInclude Include="src\pitomba\Input\iMouse.h" />
-    <ClInclude Include="src\pitomba\Kernel\InputTask.h" />
-    <ClInclude Include="src\pitomba\Kernel\Kernel.h" />
-    <ClInclude Include="src\pitomba\Kernel\RendererTask.h" />
-    <ClInclude Include="src\pitomba\Kernel\Task.h" />
-    <ClInclude Include="src\pitomba\Kernel\TimerTask.h" />
-    <ClInclude Include="src\pitomba\Math\Matrix4.h" />
-    <ClInclude Include="src\pitomba\Math\Transform.h" />
-    <ClInclude Include="src\pitomba\Math\Vector3.h" />
-    <ClInclude Include="src\pitomba\Renderer\BaseWindow.h" />
-    <ClInclude Include="src\pitomba\Renderer\D3DRenderer.h" />
-    <ClInclude Include="src\pitomba\Renderer\iWindowProvider.h" />
-    <ClInclude Include="src\pitomba\Renderer\MainWindow.h" />
-    <ClInclude Include="src\pitomba\Renderer\iRenderer.h" />
-    <ClInclude Include="src\pitomba\Renderer\Sprite\D3DSprite.h" />
-    <ClInclude Include="src\pitomba\Renderer\Sprite\Sprite.h" />
-    <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteAlign.h" />
-    <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteAnimation.h" />
-    <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteId.h" />
-    <ClInclude Include="src\pitomba\Renderer\Texture\iRenderableTexture.h" />
-    <ClInclude Include="src\pitomba\Renderer\Texture\iTextureContainer.h" />
-    <ClInclude Include="src\pitomba\Renderer\Texture\iTextureDirProvider.h" />
-    <ClInclude Include="src\pitomba\Renderer\Texture\TextureContainer.h" />
-    <ClInclude Include="src\pitomba\Utils\Color.h" />
-    <ClInclude Include="src\pitomba\Utils\iContainer.h" />
-    <ClInclude Include="src\pitomba\Utils\iLocator.h" />
-    <ClInclude Include="src\pitomba\Utils\iLogger.h" />
-    <ClInclude Include="src\pitomba\Utils\iManagedTimer.h" />
-    <ClInclude Include="src\pitomba\Utils\iRng.h" />
-    <ClInclude Include="src\pitomba\Utils\iTimer.h" />
-    <ClInclude Include="src\pitomba\Utils\Rng.h" />
-    <ClInclude Include="src\pitomba\Utils\Scheduler.h" />
-    <ClInclude Include="src\pitomba\Utils\ServiceLocator.h" />
-    <ClInclude Include="src\pitomba\Utils\Timer.h" />
-    <ClInclude Include="src\pitomba\Utils\UnorderedMapContainer.h" />
-    <ClInclude Include="src\pitomba\Utils\Utils.h" />
-    <ClInclude Include="src\pitomba\Application\Application.h" />
-    <ClInclude Include="src\pitomba\Utils\Logger.h" />
+    <ProjectReference Include="..\pitomba\pitomba.vcxproj">
+      <Project>{ed0ff4c7-4045-48eb-8b68-fe256ed1c3bd}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="data\textures\sample.png" />
+    <ClInclude Include="src\Sample\DummyTask.h" />
+    <ClInclude Include="src\Sample\GameApplication.h" />
+    <ClInclude Include="src\Sample\Ids\SpriteIds.h" />
+    <ClInclude Include="src\Sample\Ids\TextureIds.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,15 +3,15 @@
 
 
 #include <memory>
-#include "../pitomba/Application/Application.h"
-#include "../pitomba/EventManager/EventHandler.h"
-#include "../pitomba/Utils/ServiceLocator.h"
-#include "../pitomba/Utils/Timer.h"
-#include "../pitomba/Kernel/TimerTask.h"
-#include "../pitomba/Kernel/InputTask.h"
-#include "../pitomba/Kernel/RendererTask.h"
-#include "../pitomba/Renderer/Texture/iTextureContainer.h"
-#include "../pitomba/Renderer/Texture/TextureContainer.h"
+#include <pitomba/Application/Application.h>
+#include <pitomba/EventManager/EventHandler.h>
+#include <pitomba/Utils/ServiceLocator.h>
+#include <pitomba/Utils/Timer.h>
+#include <pitomba/Kernel/TimerTask.h>
+#include <pitomba/Kernel/InputTask.h>
+#include <pitomba/Kernel/RendererTask.h>
+#include <pitomba/Renderer/Texture/iTextureContainer.h>
+#include <pitomba/Renderer/Texture/TextureContainer.h>
 #include "DummyTask.h"
 
 using namespace pitomba;

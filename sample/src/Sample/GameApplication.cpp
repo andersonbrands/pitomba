@@ -1,7 +1,7 @@
 #include "GameApplication.h"
-#include "../pitomba/Utils/Logger.h"
-#include "../pitomba/Utils/Rng.h"
-#include "../pitomba/EventManager/EventManager.h"
+#include <pitomba/Utils/Logger.h>
+#include <pitomba/Utils/Rng.h>
+#include <pitomba/EventManager/EventManager.h>
 
 
 using namespace pitomba;

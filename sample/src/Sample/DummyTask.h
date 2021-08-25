@@ -3,18 +3,18 @@
 
 
 #include <memory>
-#include "../pitomba/Kernel/Task.h"
-#include "../pitomba/Renderer/Sprite/D3DSprite.h"
-#include "../pitomba/Renderer/Sprite/SpriteAnimation.h"
-#include "../pitomba/Utils/iLocator.h"
-#include "../pitomba/Utils/iRng.h"
-#include "../pitomba/Utils/iTimer.h"
-#include "../pitomba/EventManager/EventHandler.h"
-#include "../pitomba/Utils/iContainer.h"
-#include "../pitomba/Renderer/Texture/iTextureDirProvider.h"
-#include "../pitomba/Renderer/Texture/iTextureContainer.h"
-#include "../pitomba/GameObjects/GameObject.h"
-#include "../pitomba/Collision/AABBCollider.h"
+#include <pitomba/Kernel/Task.h>
+#include <pitomba/Renderer/Sprite/D3DSprite.h>
+#include <pitomba/Renderer/Sprite/SpriteAnimation.h>
+#include <pitomba/Utils/iLocator.h>
+#include <pitomba/Utils/iRng.h>
+#include <pitomba/Utils/iTimer.h>
+#include <pitomba/EventManager/EventHandler.h>
+#include <pitomba/Utils/iContainer.h>
+#include <pitomba/Renderer/Texture/iTextureDirProvider.h>
+#include <pitomba/Renderer/Texture/iTextureContainer.h>
+#include <pitomba/GameObjects/GameObject.h>
+#include <pitomba/Collision/AABBCollider.h>
 
 
 using namespace pitomba;

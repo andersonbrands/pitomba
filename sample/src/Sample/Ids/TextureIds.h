@@ -2,7 +2,7 @@
 #ifndef TEXTURE_IDS_H_
 #define TEXTURE_IDS_H_
 
-#include "../../pitomba/Utils/Utils.h"
+#include <pitomba/Utils/Utils.h>
 
 using namespace pitomba;
 

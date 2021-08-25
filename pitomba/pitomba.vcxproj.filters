@@ -15,19 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\pitomba\Utils\Logger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Sample\GameApplication.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\pitomba\Kernel\Kernel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Sample\DummyTask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\pitomba\Utils\Timer.cpp">
@@ -110,16 +101,10 @@
     <ClInclude Include="src\pitomba\Application\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Sample\GameApplication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\pitomba\Kernel\Kernel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pitomba\Kernel\Task.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Sample\DummyTask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pitomba\Utils\Timer.h">
@@ -173,9 +158,6 @@
     <ClInclude Include="src\pitomba\Renderer\Texture\TextureContainer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Sample\Ids\TextureIds.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\pitomba\Renderer\Sprite\D3DSprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -213,9 +195,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pitomba\Utils\iLocator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Sample\Ids\SpriteIds.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pitomba\Renderer\Sprite\SpriteId.h">

@@ -12,7 +12,6 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, PWSTR, int) {
     if (game.initialize()) {
         game.run();
     }
-
     return 0;
 }
 

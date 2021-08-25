@@ -2,10 +2,10 @@
 #include "DummyTask.h"
 #include "Ids/TextureIds.h"
 #include "Ids/SpriteIds.h"
-#include "../pitomba/GameObjects/Components/SpriteComponent.h"
-#include "../pitomba/GameObjects/Components/SpriteAnimationComponent.h"
-#include "../pitomba/GameObjects/Components/TransformComponent.h"
-#include "../pitomba/EventManager/EventData.h"
+#include <pitomba/GameObjects/Components/SpriteComponent.h>
+#include <pitomba/GameObjects/Components/SpriteAnimationComponent.h>
+#include <pitomba/GameObjects/Components/TransformComponent.h>
+#include <pitomba/EventManager/EventData.h>
 #include <dinput.h>
 
 

@@ -2,8 +2,8 @@
 #ifndef SPRITE_IDS_H_
 #define SPRITE_IDS_H_
 
-#include "../../pitomba/Renderer/Sprite/Sprite.h"
-#include "../../pitomba/Renderer/Sprite/SpriteId.h"
+#include <pitomba/Renderer/Sprite/Sprite.h>
+#include <pitomba/Renderer/Sprite/SpriteId.h>
 #include "TextureIds.h"
 
 
