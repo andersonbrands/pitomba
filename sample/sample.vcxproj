@@ -159,6 +159,9 @@
     <ClInclude Include="src\Sample\Ids\SpriteIds.h" />
     <ClInclude Include="src\Sample\Ids\TextureIds.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\textures\sample.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

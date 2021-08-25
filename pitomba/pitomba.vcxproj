@@ -226,9 +226,6 @@
     <ClInclude Include="src\pitomba\Application\Application.h" />
     <ClInclude Include="src\pitomba\Utils\Logger.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="data\textures\sample.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
